@@ -3,9 +3,11 @@ Date: 24.10.2016
 Author: Andrew Albershteyn
 Status: published
 
-# Maybe it's too much unnecessary text for such small note. There is need to be
-# more concrete and write only technical stuff. Nobody is intrested in reading
-# about me
+<!-- 
+Maybe it's too much unnecessary text for such small note. There is need to be
+more concrete and write only technical stuff. Nobody is intrested in reading
+about me
+-->
 
 Screenshot
 Intro.
@@ -30,31 +32,96 @@ stream). In this function we create construction where message text is wrap by
 special symbols which tells prompt to display this text with some styling as
 color, underline, background color etc.
 
-```
-Code
+```matlab
+% The set of function to print fancy messages in octave promt. To use it just 
+% call function name and as argument send a message you want to show.
+
+% Prevent octave to run it immediately.
+1;
+
+function infom(msg)
+    fprintf(1, [char(27), ...
+        '[94m' msg, ...
+        char(27), ...
+        '[0m\n']
+    );
+endfunction
+
+function error(msg)
+    fprintf(1, [char(27), ...
+        '[91m' msg, ...
+        char(27), ...
+        '[0m\n']
+    );
+endfunction
+
+function success(msg)
+    fprintf(1, [char(27), ...
+        '[32m' msg, ...
+        char(27), ...
+        '[0m\n']
+    );
+endfunction
+
+function head(msg)
+    fprintf(1, 
+        [char(27), ...
+        '[90m', ...
+        '==============================================================', ...
+        '========\n', ...
+        msg '\n', ...
+        '==============================================================', ...
+        '========\n',...
+        char(27), ...
+        '[0m']
+    );
+endfunction
+
+% Trying to change warning color, but for now fail
+function warn(varargin)
+    
+    fprintf(2, [char(27), ...
+        '[93m']);
+    warning(varargin);
+    fprintf(2, [char(27), ...
+        '[0m\n']
+    );
+endfunction
+
+% To test it use the next commands:
+% infom("Information message"); error("Error message"); 
+% success("Success message"); head("This is head message");
+
 ```
 
 You can change color of message by changing only one number in this contruction:
 
+<!-- 
 # IMAGE Showing which number user should change
+-->
 
 Codes of those colors you can find in the next table or google it for "bash
 terminal colors".
 
+<!-- 
 # TABLE Table with colors codes
+-->
 
 How to use it? It's easy enough, all you need to do is follow next steps:
-    1. Download the script
-    2. Create some catalog where you will store this script for further usage
-    3. Than in your Octave's config (by default it should be ~/.octaverc) add
-       and also don't forgot to change next commands:
-    ```
-    # Change to address for your catalog
-    addpath("/home/andrew/Documents/Octave/")
-    messages
-    PAGER_FLAGS("-r")
-    ```
-       First line adds your catalog to global search. So when you want to run
+
+1. Download the script
+2. Create some catalog where you will store this script for further usage
+3. Than in your Octave's config (by default it should be ~/.octaverc) add
+and also don't forgot to change next commands:
+
+```
+# Change to address for your catalog
+addpath("/home/andrew/Documents/Octave/")
+messages
+PAGER_FLAGS("-r")
+```
+
+First line adds your catalog to global search. So when you want to run
 this script you can just type in the prompt "messages" and this script will run.
 Second line run this script. Because this configuration file (.octaverc) is run
 at the startup of the Octave this script will be automaticly executed.
@@ -64,7 +131,9 @@ correctly display colors while you see output over the less program
 
 That all! Now you can use this function to get fancy output. For example:
 
+<!-- 
 # IMAGE Image with commands and corresponding messages.
+-->
 
 This is bash terminal we can use here bash rules.
 
@@ -73,13 +142,18 @@ Some explanation of code.
 Table of colors
 
 Add to .octaverc:
-    * Path to your files
-    * Running of your script
-    * more off if you would like
-    * Or PAGER_FLAGS("-r") to set argument to 'less' command
+
+ - Path to your files
+ - Running of your script
+ - more off if you would like
+ - Or PAGER_FLAGS("-r") to set argument to 'less' command
 
 Some examples of cool prompts and messages
 
-References, useful links
+#### References: ####
+
+- [Octave Documentation](https://www.gnu.org/software/octave/doc/v4.0.0/index.html)
+- [Bash colors and
+  formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
 
 
