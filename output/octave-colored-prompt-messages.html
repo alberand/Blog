@@ -65,23 +65,18 @@ about me
 
 <p>Screenshot
 Intro.
-I always like to see readable and clear output of my scripts. With appropriate
-formatting and fancy colors. It's take some time to write all this unnecessary
-stuff but in result you get metal satisfaction of seeing that your script is not
-only working but also you can show it somebody and it will look decent.</p>
-<p>Currently I'm studing at University and get a lot of engeeniring problems to
-solve. Even that I have free Matlab licence it's not an option for me. I trying
-to be in open-source community. So I'm using Octave</p>
-<p>Octave's prompt is similar to a classic unix terminal. So, we want to get
-colored output and if unix can do it so Octave prompt is also.</p>
-<p>In the beggining of the article you can see screenshot of information messages
+In Unix terminal we can use colorful output for emphasazing important
+information. I'm currently studing in the Unversity and have a lot of task to
+solve using Octave. Its prompt is similar to classic Unix terminal, so I decided
+to try implement colored output information messages for my scripts.</p>
+<p>In the beggining of the article you can see screenshot of messages
 that I write for myself to make output of my scripts a little bit fancier.</p>
 <p>Let's look at them closer. Every function is consist only of fprintf function
 which draw sent text to the standard output (first argument is the output
-stream). In this function we create construction where message text is wrap by
+stream). In those functions we create construction where message text is wrap by
 special symbols which tells prompt to display this text with some styling as
 color, underline, background color etc.</p>
-<div class="highlight"><pre><span></span><span class="c">% The set of function to print fancy messages in octave promt. To use it just </span>
+<div class="highlight"><pre><span></span><span class="c">% The set of function to print fancy messages in octave prompt. To use it just </span>
 <span class="c">% call function name and as argument send a message you want to show.</span>
 
 <span class="c">% Prevent octave to run it immediately.</span>
@@ -125,17 +120,6 @@ color, underline, background color etc.</p>
     <span class="p">);</span>
 <span class="n">endfunction</span>
 
-<span class="c">% Trying to change warning color, but for now fail</span>
-<span class="k">function</span><span class="w"> </span><span class="nf">warn</span><span class="p">(</span>varargin<span class="p">)</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">char</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="c">...</span>
-        <span class="s">&#39;[93m&#39;</span><span class="p">]);</span>
-    <span class="n">warning</span><span class="p">(</span><span class="n">varargin</span><span class="p">);</span>
-    <span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">char</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="c">...</span>
-        <span class="s">&#39;[0m\n&#39;</span><span class="p">]</span>
-    <span class="p">);</span>
-<span class="n">endfunction</span>
-
 <span class="c">% To test it use the next commands:</span>
 <span class="c">% infom(&quot;Information message&quot;); error(&quot;Error message&quot;); </span>
 <span class="c">% success(&quot;Success message&quot;); head(&quot;This is head message&quot;);</span>
@@ -149,47 +133,161 @@ color, underline, background color etc.</p>
 
 <p>Codes of those colors you can find in the next table or google it for "bash
 terminal colors".</p>
-<!-- 
-# TABLE Table with colors codes
--->
+<style>
+/* DivTable.com */
+.divTable{
+    display: table;
+    margin: 0 auto;
+    border-top: 1px #DEDEDE solid;
+    border-bottom: 1px #DEDEDE solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-<p>How to use it? It's easy enough, all you need to do is follow next steps:</p>
+.divTableRow {
+    display: table-row;
+}
+.divTableHeading {
+    display: table-header-group;
+    background-color: #EEE;
+    font-weight: bold;
+}
+
+.divTableCell, .divTableHead {
+    display: table-cell;
+    padding: 3px 10px;
+}
+
+.divTableHead {
+    border-bottom: 1px #DEDEDE solid
+}
+
+.divTableBody {
+    display: table-row-group;
+};
+</style>
+
+<div class="divTable">
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableHead">Code</div>
+<div class="divTableHead">Color</div>
+<div class="divTableHead">Preview</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">39</div>
+<div class="divTableCell">Default foreground color</div>
+<div class="divTableCell">Default</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">30</div>
+<div class="divTableCell">Black</div>
+<div class="divTableCell">Black</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">31</div>
+<div class="divTableCell">Red</div>
+<div class="divTableCell">Red</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">32</div>
+<div class="divTableCell">Green</div>
+<div class="divTableCell">Green</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">33</div>
+<div class="divTableCell">Yellow</div>
+<div class="divTableCell">Yellow</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">34</div>
+<div class="divTableCell">Blue</div>
+<div class="divTableCell">Blue</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">35</div>
+<div class="divTableCell">Magenta</div>
+<div class="divTableCell">Magenta</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">36</div>
+<div class="divTableCell">Cyan</div>
+<div class="divTableCell">Cyan</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">37</div>
+<div class="divTableCell">Light Gray</div>
+<div class="divTableCell">Light Gray</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">90</div>
+<div class="divTableCell">Dark Gray</div>
+<div class="divTableCell">Dark Gray</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">91</div>
+<div class="divTableCell">Light Red</div>
+<div class="divTableCell">Light Red</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">92</div>
+<div class="divTableCell">Light Green</div>
+<div class="divTableCell">Light Green</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">93</div>
+<div class="divTableCell">Light Yellow</div>
+<div class="divTableCell">Light Yellow</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">94</div>
+<div class="divTableCell">Light Blue</div>
+<div class="divTableCell">Light Blue</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">95</div>
+<div class="divTableCell">Light Magenta</div>
+<div class="divTableCell">Light Magenta</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">96</div>
+<div class="divTableCell">Light Cyan</div>
+<div class="divTableCell">Light Cyan</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell">97</div>
+<div class="divTableCell">White</div>
+<div class="divTableCell">White</div>
+</div>
+</div>
+</div>
+
+<p>How to use it? It's easy enough, all you need to do are few follow steps:</p>
 <ol>
 <li>Download the script</li>
 <li>Create some catalog where you will store this script for further usage</li>
-<li>Than in your Octave's config (by default it should be ~/.octaverc) add
+<li>Than in your Octave's config (by default it should be <code>~/.octaverc</code>) add
 and also don't forgot to change next commands:</li>
 </ol>
-<div class="highlight"><pre><span></span># Change to address for your catalog
-addpath(&quot;/home/andrew/Documents/Octave/&quot;)
+<div class="highlight"><pre><span></span><span class="c1"># Change to address for your catalog</span>
+addpath<span class="o">(</span><span class="s2">&quot;/home/andrew/Documents/Octave/&quot;</span><span class="o">)</span>
 messages
-PAGER_FLAGS(&quot;-r&quot;)
+PAGER_FLAGS<span class="o">(</span><span class="s2">&quot;-r&quot;</span><span class="o">)</span>
 </pre></div>
 
 
 <p>First line adds your catalog to global search. So when you want to run
-this script you can just type in the prompt "messages" and this script will run.
-Second line run this script. Because this configuration file (.octaverc) is run
-at the startup of the Octave this script will be automaticly executed.
-Last command add parameter to "less" program which is used when output of you
-code isn't suitable for one screen of the display. This parameter just needed to
-correctly display colors while you see output over the less program</p>
+this script you can just type in the prompt <code>messages</code> and this script will run.
+Second line runs this script. Because this configuration file (<code>.octaverc</code>) is 
+run at the startup of the Octave this script will be automaticly executed.
+Last command add parameter to <code>less</code> program which is used when output of your
+code isn't suitable for one screen of the display. This parameter needed to
+correctly display colors while you see output over the less program.</p>
 <p>That all! Now you can use this function to get fancy output. For example:</p>
 <!-- 
 # IMAGE Image with commands and corresponding messages.
 -->
 
-<p>This is bash terminal we can use here bash rules.</p>
-<p>Some explanation of code.</p>
-<p>Table of colors</p>
-<p>Add to .octaverc:</p>
-<ul>
-<li>Path to your files</li>
-<li>Running of your script</li>
-<li>more off if you would like</li>
-<li>Or PAGER_FLAGS("-r") to set argument to 'less' command</li>
-</ul>
-<p>Some examples of cool prompts and messages</p>
 <h4>References:</h4>
 <ul>
 <li><a href="https://www.gnu.org/software/octave/doc/v4.0.0/index.html">Octave Documentation</a></li>
