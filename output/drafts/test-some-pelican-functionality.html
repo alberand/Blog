@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
-        <title>Test some Pelican functionality</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-</head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Andrew Albershtein </a></h1>
-                <nav><ul>
-                    <li><a href="/pages/about.html">About</a></li>
-                    <li><a href="/pages/contacts.html">Contacts</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="/drafts/test-some-pelican-functionality.html" rel="bookmark"
-           title="Permalink to Test some Pelican functionality">Test some Pelican functionality</a></h1>
-    </header>
-
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-07-21T00:00:00+02:00">
-                Published: Thu 21 July 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/andrew-albershteyn.html">Andrew Albershteyn</a>
-        </address>
-<p>In <a href="/category/misc.html">misc</a>.</p>
-
-</footer><!-- /.post-info -->      <p>Let's test some links. <a href="/drafts/first-post.html">This is link to first post</a>.</p>
-<p><a href="/pages/contacts.html">Another link to contact page</a></p>
-<p>Let's link to my backalor thesis <a href="/pdfs/BP_Albershteyn_2016.pdf">PDF</a></p>
-<p>Now let's try to insert some image: <img alt="PI" src="/images/pi.jpg" /></p>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <title>Test some Pelican functionality - Andrew Albershtein</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://alberand.github.io/theme/bootstrap.css" rel="stylesheet" />
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet" />-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://alberand.github.io/theme/style.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body id="index" class="archive">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://alberand.github.io">Andrew Albershtein</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="https://alberand.github.io/tags.html">Tags</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+    <section id="content" class="article content">
+      <header>
+        <h2 class="entry-title">
+          Test some Pelican functionality
+        </h2>
+        
+        <div class="text-muted" style="float: left; margin-right: 20px;">22.07.2016</div>
+        <div class="text-muted">
+            <a href="https://alberand.github.io/category/misc.html"><div class="fa fa-lg fa-folder-open"></div> Misc</a>
+        </div>
+      </header>
+<!-- .entry-content -->
+      <div class="entry-content">
+        <p>Let's test some links. <a href="https://alberand.github.io/drafts/first-post.html">This is link to first post</a>.</p>
+<p><a href="https://alberand.github.io/pages/contacts.html">Another link to contact page</a></p>
+<p>Let's link to my backalor thesis <a href="https://alberand.github.io/pdfs/BP_Albershteyn_2016.pdf">PDF</a></p>
+<p>Now let's try to insert some image: <img alt="PI" src="https://alberand.github.io/images/pi.jpg"></p>
 <p>There are two ways to specify the identifier:</p>
 <div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The triple-colon syntax will *not* show line numbers.&quot;</span><span class="p">)</span>
 </pre></div>
@@ -50,37 +68,27 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The path-less shebang syntax *will* show line numbers.&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
-    </div><!-- /.entry-content -->
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="https://github.com/alberand">GitHub</a></li>
-                            <li><a href="https://www.facebook.com/andrew.albershteyn">Facebook</a></li>
-                            <li><a href="https://new.vk.com/id18931521">VK</a></li>
-                            <li><a href="mailto:Snashe1@gmail.com">Email</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+<p>And now let's test some Latex formula:
+$$\dfrac{exp(3)sin(3\pi)}{34\dot cos(34)}$$</p>
+<p style="text-align:center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H5NqIsnyTG8" frameborder="0" allowfullscreen></iframe>
+</p>
+      </div>
+<!-- /.entry-content 
+      <footer class="post-info text-muted">
+      </footer>-->
+      <!-- /.post-info -->
+    </section>
+    </div>
+    <!--
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; <a href="https://alberand.github.io">Andrew Albershtein</a> powered by <a href="http://getpelican.com/">pelican</a></p>
+      </div>
+    </footer>
+    //-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
 </html>

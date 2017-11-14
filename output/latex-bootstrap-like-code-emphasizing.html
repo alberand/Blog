@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <title>First Post - Andrew Albershtein</title>
+    <title>Latex - Bootstrap-like code emphasizing - Andrew Albershtein</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="https://alberand.github.io/theme/bootstrap.css" rel="stylesheet" />
@@ -45,24 +45,62 @@
     <section id="content" class="article content">
       <header>
         <h2 class="entry-title">
-          First Post
+          Latex - Bootstrap-like code emphasizing
         </h2>
         
-        <div class="text-muted" style="float: left; margin-right: 20px;">21.07.2016</div>
+        <div class="text-muted" style="float: left; margin-right: 20px;">11.08.2016</div>
         <div class="text-muted">
-            <a href="https://alberand.github.io/category/life.html"><div class="fa fa-lg fa-folder-open"></div> Life</a>
-            <a href="https://alberand.github.io/tag/first-post.html"><div class="fa fa-lg fa-tag"></div> first post</a>
-            <a href="https://alberand.github.io/tag/post.html"><div class="fa fa-lg fa-tag"></div> post</a>
-            <a href="https://alberand.github.io/tag/pelican.html"><div class="fa fa-lg fa-tag"></div> pelican</a>
+            <a href="https://alberand.github.io/category/misc.html"><div class="fa fa-lg fa-folder-open"></div> Misc</a>
+            <a href="https://alberand.github.io/tag/latex.html"><div class="fa fa-lg fa-tag"></div> Latex</a>
+            <a href="https://alberand.github.io/tag/bootstrap.html"><div class="fa fa-lg fa-tag"></div> Bootstrap</a>
+            <a href="https://alberand.github.io/tag/code.html"><div class="fa fa-lg fa-tag"></div> code</a>
+            <a href="https://alberand.github.io/tag/emphasizing.html"><div class="fa fa-lg fa-tag"></div> emphasizing</a>
         </div>
       </header>
 <!-- .entry-content -->
       <div class="entry-content">
-        <p>This my first post using static site generator Pecican. It can parse Markdown, 
-which, I think, will be my choise because a lot of documentation also write in
-this formating style (language?) but I still don't know much about it. Only some
-list and title specification.</p>
-<p>So let's generate articale from this note.</p>
+        <p><img alt="Screenshot of some pdf document with Bootstrap
+highlighting" src="https://alberand.github.io/images/latex_pdf_bcode_example.png"></p>
+<p>Do you like those little highlighting of commands, files, codes and other stuff 
+on sites with Bootstrap framework? I think it's really good for emphasizing key 
+points in your text (for tech stuff).</p>
+<p>In latex you are usually using bold or italic text styling. Those two methods
+attract less attention than Bootstrap highlighting. Try to look at some article
+while scrolling, you will see that you will immediately see those red boxes.</p>
+<p>I write function for Latex, which implements this type of highlighting. All you
+need just add following code to your Latex document.</p>
+<div class="highlight"><pre><span></span><span class="c">% Include package for drawing color boxes</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tcolorbox<span class="nb">}</span>
+
+<span class="c">% Define colors</span>
+<span class="k">\definecolor</span><span class="nb">{</span>codeBg<span class="nb">}{</span>rgb<span class="nb">}{</span>0.976, 0.949, 0.956<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>codeColor<span class="nb">}{</span>rgb<span class="nb">}{</span>0.780, 0.145, 0.305<span class="nb">}</span>
+
+<span class="c">% Define new command</span>
+<span class="k">\newtcbox</span><span class="nb">{</span><span class="k">\bCode</span><span class="nb">}{</span>
+    nobeforeafter,
+    fontupper=<span class="k">\color</span><span class="nb">{</span>codeColor<span class="nb">}</span>,
+    colframe=codeBg,
+    colback=codeBg,
+    boxrule=0.1pt,
+    arc=3pt,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=3pt,
+    bottom=4pt,
+    tcbox raise base<span class="nb">}</span>
+</pre></div>
+
+
+<p>Depending on your document settings sometimes you will need to change paddings 
+of the box to do it symmetric.</p>
+<p>This function can be easily used by <code>\bCode{your code}</code> command.</p>
+<h4>References:</h4>
+<ul>
+<li><a href="http://getbootstrap.com/">Bootstrap?</a></li>
+<li><a href="https://www.latex-project.org/">Latex?</a></li>
+</ul>
       </div>
 <!-- /.entry-content 
       <footer class="post-info text-muted">
