@@ -3,7 +3,7 @@ Date: 21.07.2016
 Modified: 21.07.2016
 Category: Life
 Tags: first post, post, pelican
-Status: published
+Status: draft
 
 This my first post using static site generator Pecican. It can parse Markdown, 
 which, I think, will be my choise because a lot of documentation also write in
