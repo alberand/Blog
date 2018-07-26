@@ -1,0 +1,3 @@
+[submodule "alberand.github.io"]
+	path = alberand.github.io
+	url = git@github.com:alberand/alberand.github.io.git
