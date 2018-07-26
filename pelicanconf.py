@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-THEME = 'nikhil-theme'
+THEME = 'theme'
 AUTHOR = 'Andrew Albershtein'
 SITENAME = 'Andrew Albershtein'
-SITEURL = 'http://localhost:8989'
+SITEURL = 'https://alberand.github.io'
+# SITEURL = 'http://127.0.0.1:8000'
 
-PATH = 'content'
+PATH = './content'
 
 TIMEZONE = 'Europe/Prague'
 
@@ -27,11 +28,16 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (('GitHub', 'https://github.com/alberand'),
         ('Facebook', 'https://www.facebook.com/andrew.albershteyn'),
-        ('VK', 'https://new.vk.com/id18931521'),
-        ('Email', 'mailto:Snashe1@gmail.com'),
+        ('Email', 'mailto:albershteyn.andrey@gmail.com'),
 )
 
 DEFAULT_PAGINATION = False
+DISPLAY_PAGES_ON_MENU = True
+
+# Sitemap
+DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', 'sitemap')
+
+SITEMAP_SAVE_AS = 'sitemap.xml'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -48,8 +54,8 @@ DEFAULT_METADATA = {
 DEFAULT_CATEGORY = 'Misc'
 
 # Latex
-PLUGIN_PATHS = ["plugins", "/srv/pelican/plugins"]
-PLUGINS = ['render_math',]
+# PLUGIN_PATHS = ["plugins", "/srv/pelican/plugins"]
+# PLUGINS = ['render_math',]
 
 # Date
 DEFAULT_DATE_FORMAT = '%d.%m.%Y'
