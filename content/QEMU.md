@@ -2,6 +2,7 @@ Title: Host-only networking set up for QEMU hypervisor
 Date: 24.03.2017
 Author: Andrew Albershtein
 Status: published
+Category: tools, networking
 tags: qemu, linux, networking
 
 In this short note I will try to describe how to set up host-only network for QEMU

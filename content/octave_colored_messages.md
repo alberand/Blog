@@ -2,6 +2,7 @@ Title: Octave - colored prompt messages
 Date: 24.10.2016
 Author: Andrew Albershteyn
 Status: published
+Category: tools, code snippets
 Tags: Octave, colored messages, colored prompt
 
 ![Octave Prompt Colored Messages]({filename}/images/octave_messages.png)
