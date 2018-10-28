@@ -119,9 +119,11 @@ cf_upload: publish
 
 github: publish
 	git add *; git commit -m "Automatic content update"
-	git push origin master
+	git remote show origin
 	cd output
+	git remote show origin
 	git add *; git commit -m "Automatic content update"
-	git push origin master
+	# git push --recurse-submodules=on-demand origin master
+
 
 .PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
