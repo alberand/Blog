@@ -2,7 +2,7 @@ Title: Latex - Bootstrap-like code emphasizing
 Date: 08.11.2016
 Author: Andrew Albershtein
 Status: draft
-tags: Latex, Bootstrap, code, emphasizing
+tags: Latex, Bootstrap, code snippet
 Lang: en
 
 Do you like those little highlighting for commands, files, codes and other stuff 
