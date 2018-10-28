@@ -1,1 +1,3 @@
 activate
+*.pyc
+*.swp
