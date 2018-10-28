@@ -86,7 +86,7 @@ xdotool key --window $WIN alt+o
 
 Those are the most elegant solution as they need additional software to the
 Selenium. However, it is simple and reliable. All the script can be downloaded
-via this link:
+from the following link:
 
 <p style="width:300px; text-align:center; margin: 0 auto;">
     [Download scripts](https://www.semicomplete.com/projects/xdotool/)
