@@ -13,7 +13,7 @@ from pelicanconf import *
 SITEURL = 'https://alberand.github.io'
 RELATIVE_URLS = False
 
-DELETE_OUTPUT_DIRECTORY = True
+DELETE_OUTPUT_DIRECTORY = False
 
 # Following items are often useful when publishing
 
