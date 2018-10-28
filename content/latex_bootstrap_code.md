@@ -3,6 +3,7 @@ Date: 08.11.2016
 Author: Andrew Albershtein
 Status: draft
 tags: Latex, Bootstrap, code, emphasizing
+Lang: en
 
 Do you like those little highlighting for commands, files, codes and other stuff 
 on sites with Bootstrap framework? I think it's really good for emphasizing key 

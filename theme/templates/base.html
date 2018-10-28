@@ -70,7 +70,16 @@
             <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
             {% endfor %}
             <li{% if author or tag %} class="active"{% endif %}{% block archclass %}{{ ARCHCLASS }}{% endblock archclass %}><a href="{{ SITEURL }}/tags.html">Tags</a></li>
+
+            {% if extra_siteurls %}
+            {% for lang, url in extra_siteurls.items() %}
+            <li><a href="{{ url }}/">{{ lang }}</a></li>
+            {% endfor %}
+            <!-- separator -->
+            <li style="background-color: white; padding: 5px;">&nbsp</li>
+            {% endif %}
           </ul>
+
         </div>
         <!-- /.navbar-collapse -->
       </div>

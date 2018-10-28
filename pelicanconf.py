@@ -3,16 +3,16 @@
 from __future__ import unicode_literals
 
 THEME = 'theme'
-AUTHOR = 'Andrew Albershtein'
-SITENAME = 'Andrew Albershtein'
-SITEURL = 'https://alberand.github.io'
-# SITEURL = 'http://127.0.0.1:8000'
+AUTHOR = 'Andrey Albershtein'
+SITENAME = 'Andrey Albershtein'
+SITEURL = 'http://127.0.0.1:8000'
 
 PATH = './content'
 
 TIMEZONE = 'Europe/Prague'
 
 DEFAULT_LANG = 'en'
+LOCALE = 'en_US.UTF-8'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -54,8 +54,7 @@ DEFAULT_METADATA = {
 DEFAULT_CATEGORY = 'Misc'
 
 # Latex
-# PLUGIN_PATHS = ["plugins", "/srv/pelican/plugins"]
-# PLUGINS = ['render_math',]
+PLUGIN_PATHS = ["plugins", "./plugins"]
 
 # Date
 DEFAULT_DATE_FORMAT = '%d.%m.%Y'
