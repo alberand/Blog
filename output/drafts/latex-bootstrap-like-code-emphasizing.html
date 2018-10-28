@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <title>Latex - Bootstrap-like code emphasizing - Andrey Albershtein</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://alberand.github.io/theme/bootstrap.css" rel="stylesheet" />
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet" />-->
+    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://alberand.github.io/theme/style.css" rel="stylesheet" />
+    <link href="https://alberand.github.io/theme/custom.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body id="index" class="archive">
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://alberand.github.io">Andrey Albershtein</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li><a href="https://alberand.github.io/pages/about.html">About</a></li>
+            <li><a href="https://alberand.github.io/tags.html">Tags</a></li>
+
+          </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+    </nav>
+    <div class="container">
+    <section id="content" class="article content">
+      <header>
+        <h2 class="entry-title">
+          Latex - Bootstrap-like code emphasizing
+        </h2>
+        
+        <div class="text-muted" style="float: left; margin-right: 20px;">11.08.2016</div>
+        <div class="text-muted">
+            <a href="https://alberand.github.io/category/misc.html"><div class="fa fa-lg fa-folder-open"></div> Misc</a>
+            <a href="https://alberand.github.io/tag/latex.html"><div class="fa fa-lg fa-tag"></div> Latex</a>
+            <a href="https://alberand.github.io/tag/bootstrap.html"><div class="fa fa-lg fa-tag"></div> Bootstrap</a>
+            <a href="https://alberand.github.io/tag/code.html"><div class="fa fa-lg fa-tag"></div> code</a>
+            <a href="https://alberand.github.io/tag/emphasizing.html"><div class="fa fa-lg fa-tag"></div> emphasizing</a>
+        </div>
+      </header>
+<!-- .entry-content -->
+      <div class="entry-content">
+        <p>Do you like those little highlighting for commands, files, codes and other stuff 
+on sites with Bootstrap framework? I think it's really good for emphasizing key 
+points in your text (for tech stuff).</p>
+<p><img alt="Screenshot of some pdf document with Bootstrap
+highlighting" src="https://alberand.github.io/images/latex_pdf_bcode_example.png"></p>
+<p>In latex you are usually using bold or italic text styling. Those two methods
+attract less attention than Bootstrap highlighting. Try to look at some article
+while scrolling, you will see that you will immediately see those red boxes.</p>
+<p>I wrote a function for Latex, which implements this type of highlighting. All you
+need to do is just add following code to your Latex document.</p>
+<div class="highlight"><pre><span></span><span class="c">% Include package for drawing color boxes</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tcolorbox<span class="nb">}</span>
+
+<span class="c">% Define colors</span>
+<span class="k">\definecolor</span><span class="nb">{</span>codeBg<span class="nb">}{</span>rgb<span class="nb">}{</span>0.976, 0.949, 0.956<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>codeColor<span class="nb">}{</span>rgb<span class="nb">}{</span>0.780, 0.145, 0.305<span class="nb">}</span>
+
+<span class="c">% Define new command</span>
+<span class="k">\newtcbox</span><span class="nb">{</span><span class="k">\bCode</span><span class="nb">}{</span>
+    nobeforeafter,
+    fontupper=<span class="k">\color</span><span class="nb">{</span>codeColor<span class="nb">}</span>,
+    colframe=codeBg,
+    colback=codeBg,
+    boxrule=0.1pt,
+    arc=3pt,
+    boxsep=0pt,
+    left=3pt,
+    right=3pt,
+    top=3pt,
+    bottom=4pt,
+    tcbox raise base<span class="nb">}</span>
+</pre></div>
+
+
+<p>Depending on your document settings, sometimes, you will need to change paddings 
+of the box (left/right/top/bottom) to make it symmetric.</p>
+<p>This function can be easily used by <code>\bCode{your code}</code> command.</p>
+<h4>References:</h4>
+<ul>
+<li><a href="http://getbootstrap.com/">Bootstrap?</a></li>
+<li><a href="https://www.latex-project.org/">Latex?</a></li>
+</ul>
+      </div>
+<!-- /.entry-content 
+      <footer class="post-info text-muted">
+      </footer>-->
+      <!-- /.post-info -->
+    </section>
+    <hr />
+    <div style="text-align: center;">
+        For comments, please send me an 
+        <a class="link-in-code" href="mailto:albershteyn.andrey@gmail.com"
+            target="_top">email</a>, or contact me on
+        <a class="link-in-code" href="https://t.me/alberand">Telegram</a>.
+    </div>
+    </div>
+    <!--
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; <a href="https://alberand.github.io">Andrey Albershtein</a> powered by <a href="http://getpelican.com/">pelican</a></p>
+      </div>
+    </footer>
+    //-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-112030276-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
