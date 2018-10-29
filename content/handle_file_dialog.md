@@ -2,6 +2,7 @@ Title: Handling file dialog in Selenium testing
 Date: 22.10.2018
 Modified: 22.10.2018
 Category: testing, tools
+Status: published
 Tags: Selenium, testing, AutoIt, xdotool
 Slug: selenium-file-dialog
 Authors: Andrey Albershtein
@@ -12,7 +13,7 @@ user's actions. I used it for a few times and found one important missing
 feature - it is impossible (as far as I know) to handle "Open File" or "Save
 File" dialog:
 
-![File Dialog Screenshot]({filename}/images/firefox_file_upload_dialog.png)
+<img alt="File Dialog Screenshot" src="{filename}/images/firefox_file_upload_dialog_small.png" width="90%" style="margin: 0 auto; display: block;">
 
 Selenium uses JavaScript to simulate clicks, typing and many other manipulation
 with a web-page. Unfortunately, there is one of the most basic action which
@@ -36,13 +37,13 @@ system password). So, it is not the way.
 After eventually unsuccessful search I find out that there is no way to handle
 file dialog via Selenium. 
 
-Then I turn to Sikuli - quite a nice library for automatization of graphical
+Then I turn to Sikuli - quite a nice library for automation of graphical
 interface. Its main advantage is that it use image processing to find similar
 elements (as you defined via prepared screenshots of the elements). However,
 Sikuli is quite big and has its own Pythonic language with dedicated IDE. That's
 too complex solution for such a simple task.
 
-After some further search I came across AutoIt - also an atomatization tool for
+After some further search I came across AutoIt - also an automation tool for
 graphical user interfaces. What catch my attention was that scripts written for
 AutoIt could be simply compiled into standalone executables. That's awesome! In
 result all you get in addition to your test is a .exe file. The following
@@ -61,7 +62,6 @@ WinActivate("Choose File to Upload") ; Internet Explorer
 send("C:\UserData\Andrew\Documents\42.txt")
 Send("{ENTER}")
 ```
-
 
 ##### Linux Solution - xdotool
 
@@ -88,12 +88,18 @@ These are the most elegant solution as they need additional software to the
 Selenium. However, it is simple and reliable. All the script can be downloaded
 from the following link:
 
-<p style="width:300px; text-align:center; margin: 0 auto;">
-    [Download scripts](https://www.semicomplete.com/projects/xdotool/)
-</p>
+<div style="width:300px; text-align:center; margin: 0 auto;">
+<a href="{filename}/materials/handle_file_dialog.tar">Download scripts</a>
+</div>
 
 ##### References
 
 * [xdotool webpage](https://www.semicomplete.com/projects/xdotool/)
 * [AutoIt website](https://www.autoitscript.com/site/autoit/)
 * [Selenium website](https://www.seleniumhq.org/)
+
+<style>
+    h5 {
+        font-weight: bold;
+    }
+</style>

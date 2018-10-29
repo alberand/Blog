@@ -43,7 +43,7 @@ SITEMAP_SAVE_AS = 'sitemap.xml'
 #RELATIVE_URLS = True
 
 # Copy files from conent folder to output folder
-STATIC_PATHS = ['images', 'pdfs']
+STATIC_PATHS = ['images', 'pdfs', 'materials']
 
 # Every new articale will be published as draft. So, nobody can see it.
 # To publish article add metadata Status: published
