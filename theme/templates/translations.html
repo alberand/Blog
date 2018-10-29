@@ -1,8 +1,10 @@
 {% macro translations_for(article) %}
 {% if article.translations %}
-Translations: 
 {% for translation in article.translations %}
-<a href="{{ SITEURL }}/{{ translation.url }}">{{ translation.lang }}</a>
+<a href="{{ SITEURL }}/{{ translation.url }}">
+  <img style="margin-top: -5px" src="{{ SITEURL }}/theme/{{ translation.lang }}.png" 
+    alt="{{ translation.lang }}">
+</a>
 {% endfor %}
 {% endif %}
 {% endmacro %}
