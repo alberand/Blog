@@ -1,9 +1,10 @@
 Title: Latex - Bootstrap-like code emphasizing
 Date: 08.11.2016
 Author: Andrew Albershtein
-Status: draft
+Status: published
 tags: Latex, Bootstrap, code snippet
-Lang: en
+slug: latex-bootstrap-code
+lang: en
 
 Do you like those little highlighting for commands, files, codes and other stuff 
 on sites with Bootstrap framework? I think it's really good for emphasizing key 

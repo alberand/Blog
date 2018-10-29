@@ -84,7 +84,7 @@ xdotool type --window $WIN "$file"
 xdotool key --window $WIN alt+o
 ```
 
-Those are the most elegant solution as they need additional software to the
+These are the most elegant solution as they need additional software to the
 Selenium. However, it is simple and reliable. All the script can be downloaded
 from the following link:
 
