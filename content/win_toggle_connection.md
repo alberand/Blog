@@ -1,6 +1,6 @@
 Title: Disconnect Windows from the internet
-Date: 10.11.2018
-Modified: 10.11.2018
+Date: 11.11.2018
+Modified: 11.11.2018
 Category: scripts
 Status: published
 Tags: Windows, networking
