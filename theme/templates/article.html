@@ -6,10 +6,12 @@
         <h2 class="entry-title">
           {{ article.title }}
         </h2>
+        <div class="text-muted" >
         {% import 'translations.html' as translations with context %}
         {{ translations.translations_for(article) }}
-        <div class="text-muted" style="float: left; margin-right: 20px;">{{ article.locale_date }}</div>
-        <div class="text-muted">
+        </div>
+        <div class="text-muted" style="margin-right: 20px;">{{ article.locale_date }}</div>
+        <div class="text-muted" style="margin-top: 4px;">
             <a href="{{ SITEURL }}/{{ article.category.url }}"><div class="fa fa-lg fa-folder-open"></div> {{ article.category }}</a>
             {% if article.tags %}
             {% for tag in article.tags %}
