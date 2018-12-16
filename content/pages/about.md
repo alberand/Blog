@@ -7,7 +7,7 @@ Authors: Andrey Albershtein
 I'm engineer currently living in Prague, Czech Republic. I graduated with a
 master's degree in Cybernetics and Robotics from Czech Technical University in
 Prague (CTU). I am very interested in Linux and Embedded development. I am on my
-way to become an expert in a Embedded devices =)
+way to become an expert in a Embedded device development =)
 
 I can be contacted by Email or Telegram (preferred):
 
