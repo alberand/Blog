@@ -1,4 +1,4 @@
-Title: Handling file dialog in Selenium testing
+Title: Handling file dialog in Selenium tests (Windows & Linux)
 Date: 22.10.2018
 Modified: 22.10.2018
 Category: testing, tools
@@ -30,7 +30,9 @@ When you choose a file the _value_ attribute changes to the address of your file
 Unfortunately (or not), we can't just change this attribute programmatically.
 It's forbidden due to security reasons. If it was possible we could steal user's
 private data by setting the attribute to some important files (for example,
-system password). So, it is not the way.
+system password). So, it is not the way. There are also some approaches with
+[pywuiauto](https://github.com/pywinauto/pywinauto) but it is windows specific
+and differs for particular browsers.
 
 ##### Windows Solution - AutoIt
 
@@ -52,16 +54,31 @@ browsers:
 
 ```
 ...
+#include <MsgBoxConstants.au3>
 
-; Name of uploading dialog
-;WinActivate("File Upload") ; Mozilla Firefox
-;WinActivate("Open") ; Google Chrome
-WinActivate("Choose File to Upload") ; Internet Explorer
+If $CmdLine[1] == "chrome" Then
+    $sTitle = "Open"
+ElseIf $CmdLine[1] == "edge" Then
+    $sTitle = "Open"
+ElseIf $CmdLine[1] == "firefox" Then
+    $sTitle = "File Upload"
+ElseIf $CmdLine[1] == "ie" Then
+    $sTitle = "Choose File to Upload"
+Else 
+    MsgBox($MB_SYSTEMMODAL, "", "Unknown browser")
+    Exit
+EndIf
+
+; Find window
+WinActivate($sTitle) 
 
 ; Path to the file
-send("C:\UserData\Andrew\Documents\42.txt")
-Send("{ENTER}")
+Send("{ALTDOWN}n{ALTUP}")
+send($CmdLine[2])
+Send("{ALTDOWN}O{ALTUP}")
 ```
+
+Run it with two arguments: `handler.exe firefox C:/path/to/file.txt`
 
 ##### Linux Solution - xdotool
 
@@ -73,6 +90,26 @@ the file and press "Open" button (can be done by a shortcut: ALT+O).
 
 ```
 ...
+
+file="/home/andrew/42.png"
+
+browser="firefox"
+# browser="chromium"
+
+if [ "$browser" = "firefox" ]; then
+    win_name="File Upload"
+fi
+
+if [ "$browser" = "chromium" ]; then
+    win_name="Open File"
+fi
+
+echo "Looking for the window of the '$browser' browser with name '$win_name'"
+
+# Find window PID
+WIN=$(for pid in $(xdotool search --class "$browser"); do \
+    if [[ $(xdotool getwindowname $pid) == "$win_name" ]]; \
+    then echo $pid; fi; done)
 
 # Switch to the window
 xdotool windowactivate $WIN
