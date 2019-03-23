@@ -62,6 +62,15 @@ way to become an expert in a Embedded device development =)
    </code>
  </li>
 </ul>
+
+    <div style="width: 210px; margin: 0 auto; border: 1px dashed thistle;">
+      <a href="https://stackoverflow.com/users/10385777/a-albershteyn"><img
+        src="https://stackoverflow.com/users/flair/10385777.png?theme=clean" width="208"
+        height="58" alt="profile for A. Albershteyn at Stack Overflow, Q&amp;A for
+        professional and enthusiast programmers" title="profile for A. Albershteyn at
+        Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+      </a>
+    </div>
   </div>
 </div>
 
