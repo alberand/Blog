@@ -1,0 +1,1126 @@
+
+~ 
+➔ mc
+
+
+~/Projects/stmeasure 
+➔ ls
+build  CMakeLists.txt  prj.conf  README.rst  sample.yaml  src
+
+~/Projects/stmeasure 
+➔ vim src/main.c 
+
+~/Projects/stmeasure 
+➔ cd build 
+
+Projects/stmeasure/build 
+➔ ls
+app  build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja  zephyr
+
+Projects/stmeasure/build 
+➔ ninja
+[1/102] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+FAILED: zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj 
+ccache /opt/zephyr-sdk/sysroots/x86_64-pokysdk-linux/usr/bin/arm-zephyr-eabi/arm-zephyr-eabi-gcc -DBUILD_VERSION=v1.14.0-rc1-649-g85d895c60ede -DKERNEL -DSTM32L073xx -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_FORTIFY_SOURCE=2 -D__ZEPHYR__=1 -I../../../kernel/include -I../../../arch/arm/include -I../../../include -I../../../include/drivers -Izephyr/include/generated -I../../../soc/arm/st_stm32/stm32l0 -I../../../lib/libc/minimal/include -I../../../drivers -I../../../ext/hal/cmsis/Include -I../../../ext/hal/st/stm32cube/stm32l0xx/soc -I../../../ext/hal/st/stm32cube/stm32l0xx/drivers/include -I../../../ext/hal/st/stm32cube/stm32l0xx/drivers/include/Legacy -isystem /opt/zephyr-sdk/sysroots/x86_64-pokysdk-linux/usr/lib/arm-zephyr-eabi/gcc/arm-zephyr-eabi/6.2.0/include -isystem /opt/zephyr-sdk/sysroots/x86_64-pokysdk-linux/usr/lib/arm-zephyr-eabi/gcc/arm-zephyr-eabi/6.2.0/include-fixed -Os -nostdinc -g -Wall -Wformat -Wformat-security -Wno-format-zero-length -imacros /home/andrew/Projects/zephyr/samples/stmeasure/build/zephyr/include/generated/autoconf.h -ffreestanding -Wno-main -fno-common --sysroot /opt/zephyr-sdk/sysroots/armv5-zephyr-eabi/usr -mthumb -mcpu=cortex-m0plus -fno-asynchronous-unwind-tables -fno-pie -fno-pic -fno-strict-overflow -Wno-pointer-sign -Wno-unused-but-set-variable -fno-reorder-functions -fno-defer-pop -Werror=implicit-int -Wpointer-arith -ffunction-sections -fdata-sections -mabi=aapcs -march=armv6s-m -std=c99 -MD -MT zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj -MF zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj.d -o zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj   -c /home/andrew/Projects/zephyr/arch/arm/core/offsets/offsets.c
+ccache: error: execv of /opt/zephyr-sdk/sysroots/x86_64-pokysdk-linux/usr/bin/arm-zephyr-eabi/arm-zephyr-eabi-gcc failed: No such file or directory
+ninja: build stopped: subcommand failed.
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+CMake Error: The current CMakeCache.txt directory /home/andrew/Projects/stmeasure/build/CMakeCache.txt is different than the directory /home/andrew/Projects/zephyr/samples/stmeasure/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/andrew/Projects/stmeasure/CMakeLists.txt" does not match the source "/home/andrew/Projects/zephyr/samples/stmeasure/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+
+Projects/stmeasure/build 
+➔ export ZEPHYR_TOOLCHAIN_VARIANT=zephyr
+
+Projects/stmeasure/build 
+➔ export ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..       
+CMake Error: The current CMakeCache.txt directory /home/andrew/Projects/stmeasure/build/CMakeCache.txt is different than the directory /home/andrew/Projects/zephyr/samples/stmeasure/build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+CMake Error: The source "/home/andrew/Projects/stmeasure/CMakeLists.txt" does not match the source "/home/andrew/Projects/zephyr/samples/stmeasure/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.
+
+Projects/stmeasure/build 
+➔ rm CMakeCache.txt 
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+CMake Error at CMakeLists.txt:3 (include):
+  include could not find load file:
+
+    /cmake/app/boilerplate.cmake
+
+
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Error at CMakeLists.txt:6 (target_sources):
+  Cannot specify sources for target "app" which is not built by this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/andrew/Projects/stmeasure/build/CMakeFiles/CMakeOutput.log".
+See also "/home/andrew/Projects/stmeasure/build/CMakeFiles/CMakeError.log".
+
+Projects/stmeasure/build 
+➔ ls
+app  build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja  zephyr
+
+Projects/stmeasure/build 
+➔ vim ../CMakeLists.txt 
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+CMake Error at CMakeLists.txt:3 (include):
+  include could not find load file:
+
+    /cmake/app/boilerplate.cmake
+
+
+CMake Error at CMakeLists.txt:6 (target_sources):
+  Cannot specify sources for target "app" which is not built by this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/andrew/Projects/stmeasure/build/CMakeFiles/CMakeOutput.log".
+See also "/home/andrew/Projects/stmeasure/build/CMakeFiles/CMakeError.log".
+
+Projects/stmeasure/build 
+➔ export ZEPHYR_TOOLCHAIN_VARIANT=zephyr       
+
+Projects/stmeasure/build 
+➔ source ../../zephyr/zephyr-env.sh 
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.0
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+-- Selected BOARD nucleo_l073rz
+-- Loading /home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz.dts as base
+-- Overlaying /home/andrew/Projects/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /home/andrew/Projects/zephyr/Kconfig
+Loading /home/andrew/Projects/stmeasure/build/zephyr/.config as base
+Configuration written to '/home/andrew/Projects/stmeasure/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Performing Test toolchain_is_ok
+-- Performing Test toolchain_is_ok - Success
+Including module(s): 
+-- Configuring done
+You have changed variables that require your cache to be deleted.
+Configure will be re-run and you may have to reset some variables.
+The following variables have changed:
+CMAKE_C_COMPILER= /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+CMAKE_C_COMPILER= /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+CMAKE_C_COMPILER= /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+
+Zephyr version: 1.14.0
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+CMake Error at /home/andrew/Projects/zephyr/cmake/app/boilerplate.cmake:171 (message):
+  BOARD is not being defined on the CMake command-line in the environment or
+  by the app.
+Call Stack (most recent call first):
+  CMakeLists.txt:3 (include)
+
+
+-- Configuring incomplete, errors occurred!
+
+Projects/stmeasure/build 
+➔ ls
+app  build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja  zephyr
+
+Projects/stmeasure/build 
+➔ rm CMakeCache.txt 
+
+Projects/stmeasure/build 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.0
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+-- Selected BOARD nucleo_l073rz
+-- Loading /home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz.dts as base
+-- Overlaying /home/andrew/Projects/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /home/andrew/Projects/zephyr/Kconfig
+Loading /home/andrew/Projects/stmeasure/build/zephyr/.config as base
+Configuration written to '/home/andrew/Projects/stmeasure/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Performing Test toolchain_is_ok
+-- Performing Test toolchain_is_ok - Success
+Including module(s): 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/andrew/Projects/stmeasure/build
+
+Projects/stmeasure/build 
+➔ ninja
+[1/110] Preparing syscall dependency handling
+
+[15/110] Building C object CMakeFiles/app.dir/src/main.c.obj
+../src/main.c:5:31: warning: 'input' defined but not used [-Wunused-variable]
+ static struct adc_channel_cfg input;
+                               ^~~~~
+[105/110] Linking C executable zephyr/zephyr_prebuilt.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       10384 B       192 KB      5.28%
+            SRAM:        4172 B        20 KB     20.37%
+        IDT_LIST:          72 B         2 KB      3.52%
+[110/110] Linking C executable zephyr/zephyr.elf
+
+Projects/stmeasure/build 
+➔ ninja
+ninja: no work to do.
+
+Projects/stmeasure/build 
+➔ ninja flash
+[0/1] Flashing nucleo_l073rz
+Using runner: openocd
+Open On-Chip Debugger 0.10.0+dev-g0b1cbf175-dirty (2019-03-08-20:54)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+adapter speed: 300 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : clock speed 300 kHz
+Info : STLINK V2J29M18 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.275017
+Info : stm32l0.cpu: hardware has 4 breakpoints, 2 watchpoints
+Info : Listening on port 3333 for gdb connections
+    TargetName         Type       Endian TapName            State       
+--  ------------------ ---------- ------ ------------------ ------------
+ 0* stm32l0.cpu        hla_target little stm32l0.cpu        running
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x08000d04 msp: 0x20000660
+auto erase enabled
+Info : Device: STM32L0xx (Cat.5)
+Info : STM32L flash has dual banks. Bank (0) size is 64kb, base address is 0x8000000
+wrote 12288 bytes from file /home/andrew/Projects/stmeasure/build/zephyr/zephyr.elf in 2.302031s (5.213 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x080010ec msp: 0x20000660
+verified 10384 bytes in 0.520474s (19.483 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+shutdown command invoked
+
+Projects/stmeasure/build 
+➔ ninja 
+../CMakeLists.txt
+../prj.conf
+/home/andrew/Projects/zephyr/CMakeLists.txt
+/home/andrew/Projects/zephyr/arch/CMakeLists.txt
+/home/andrew/Projects/zephyr/arch/arm/CMakeLists.txt
+/home/andrew/Projects/zephyr/arch/arm/core/CMakeLists.txt
+/home/andrew/Projects/zephyr/arch/arm/core/cortex_m/CMakeLists.txt
+/home/andrew/Projects/zephyr/arch/common/CMakeLists.txt
+/home/andrew/Projects/zephyr/boards/CMakeLists.txt
+/home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/CMakeLists.txt
+/home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/board.cmake
+/home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz.dts
+/home/andrew/Projects/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz_defconfig
+/home/andrew/Projects/zephyr/boards/common/openocd.board.cmake
+/home/andrew/Projects/zephyr/cmake/app/boilerplate.cmake
+/home/andrew/Projects/zephyr/cmake/backports/FindPythonInterp.cmake
+/home/andrew/Projects/zephyr/cmake/ccache.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/generic.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_asm.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_baremetal.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_cpp.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_optimizations.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_security_canaries.cmake
+/home/andrew/Projects/zephyr/cmake/compiler/gcc/target_security_fortify.cmake
+/home/andrew/Projects/zephyr/cmake/dts.cmake
+/home/andrew/Projects/zephyr/cmake/extensions.cmake
+/home/andrew/Projects/zephyr/cmake/extra_flags.cmake
+/home/andrew/Projects/zephyr/cmake/flash/CMakeLists.txt
+/home/andrew/Projects/zephyr/cmake/fpu-for-gcc-m-cpu.cmake
+/home/andrew/Projects/zephyr/cmake/gcc-m-cpu.cmake
+/home/andrew/Projects/zephyr/cmake/generic_toolchain.cmake
+/home/andrew/Projects/zephyr/cmake/git.cmake
+/home/andrew/Projects/zephyr/cmake/hex.cmake
+/home/andrew/Projects/zephyr/cmake/host-tools.cmake
+/home/andrew/Projects/zephyr/cmake/kconfig.cmake
+/home/andrew/Projects/zephyr/cmake/kobj.cmake
+/home/andrew/Projects/zephyr/cmake/python.cmake
+/home/andrew/Projects/zephyr/cmake/reports/CMakeLists.txt
+/home/andrew/Projects/zephyr/cmake/target_toolchain.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/0.10.0/generic.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/0.10.0/host-tools.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/0.10.0/target.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/generic.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/host-tools.cmake
+/home/andrew/Projects/zephyr/cmake/toolchain/zephyr/target.cmake
+/home/andrew/Projects/zephyr/cmake/usage/CMakeLists.txt
+/home/andrew/Projects/zephyr/cmake/version.cmake
+/home/andrew/Projects/zephyr/cmake/zephyr_module.cmake
+/home/andrew/Projects/zephyr/drivers/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/clock_control/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/console/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/gpio/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/interrupt_controller/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/pinmux/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/serial/CMakeLists.txt
+/home/andrew/Projects/zephyr/drivers/timer/CMakeLists.txt
+/home/andrew/Projects/zephyr/dts/common/common.dts
+/home/andrew/Projects/zephyr/ext/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/debug/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/debug/segger/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/atmel/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/atmel/asf/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/atmel/asf/common/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/atmel/asf/common/components/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/atmel/asf/common/components/wifi/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/cmsis/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/cypress/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/esp/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/microchip/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/nordic/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/nxp/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/openisa/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/silabs/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/st/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/st/stm32cube/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/st/stm32cube/stm32l0xx/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/ti/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/ti/simplelink/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/hal/ti/simplelink/source/ti/devices/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/lib/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/lib/crypto/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/lib/encoding/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/lib/ipc/CMakeLists.txt
+/home/andrew/Projects/zephyr/ext/lib/mgmt/CMakeLists.txt
+/home/andrew/Projects/zephyr/include/arch/arm/cortex_m/scripts/app_smem.ld
+/home/andrew/Projects/zephyr/include/arch/common/app_data_alignment.ld
+/home/andrew/Projects/zephyr/kernel/CMakeLists.txt
+/home/andrew/Projects/zephyr/lib/CMakeLists.txt
+/home/andrew/Projects/zephyr/lib/gui/CMakeLists.txt
+/home/andrew/Projects/zephyr/lib/libc/CMakeLists.txt
+/home/andrew/Projects/zephyr/lib/libc/minimal/CMakeLists.txt
+/home/andrew/Projects/zephyr/lib/os/CMakeLists.txt
+/home/andrew/Projects/zephyr/misc/generated/CMakeLists.txt
+/home/andrew/Projects/zephyr/misc/generated/configs.c.in
+/home/andrew/Projects/zephyr/soc/arm/CMakeLists.txt
+/home/andrew/Projects/zephyr/soc/arm/st_stm32/CMakeLists.txt
+/home/andrew/Projects/zephyr/soc/arm/st_stm32/common/CMakeLists.txt
+/home/andrew/Projects/zephyr/soc/arm/st_stm32/stm32l0/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/debug/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/debug/tracing/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/fb/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/fs/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/logging/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/power/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/power/policy/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/random/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/stats/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/storage/CMakeLists.txt
+/home/andrew/Projects/zephyr/subsys/testsuite/CMakeLists.txt
+/home/andrew/Projects/zephyr/version.h.in
+/usr/share/cmake-3.14/Modules/CMakeASMCompiler.cmake.in
+/usr/share/cmake-3.14/Modules/CMakeASMInformation.cmake
+/usr/share/cmake-3.14/Modules/CMakeCCompiler.cmake.in
+/usr/share/cmake-3.14/Modules/CMakeCInformation.cmake
+/usr/share/cmake-3.14/Modules/CMakeCXXCompiler.cmake.in
+/usr/share/cmake-3.14/Modules/CMakeCXXInformation.cmake
+/usr/share/cmake-3.14/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+/usr/share/cmake-3.14/Modules/CMakeCommonLanguageInclude.cmake
+/usr/share/cmake-3.14/Modules/CMakeCompilerIdDetection.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineASMCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineCCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineCXXCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineCompilerId.cmake
+/usr/share/cmake-3.14/Modules/CMakeDetermineSystem.cmake
+/usr/share/cmake-3.14/Modules/CMakeFindBinUtils.cmake
+/usr/share/cmake-3.14/Modules/CMakeGenericSystem.cmake
+/usr/share/cmake-3.14/Modules/CMakeInitializeConfigs.cmake
+/usr/share/cmake-3.14/Modules/CMakeLanguageInformation.cmake
+/usr/share/cmake-3.14/Modules/CMakeNinjaFindMake.cmake
+/usr/share/cmake-3.14/Modules/CMakeSystem.cmake.in
+/usr/share/cmake-3.14/Modules/CMakeSystemSpecificInformation.cmake
+/usr/share/cmake-3.14/Modules/CMakeSystemSpecificInitialize.cmake
+/usr/share/cmake-3.14/Modules/CMakeTestASMCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeTestCCompiler.cmake
+/usr/share/cmake-3.14/Modules/CMakeTestCXXCompiler.cmake
+/usr/share/cmake-3.14/Modules/CheckCCompilerFlag.cmake
+/usr/share/cmake-3.14/Modules/CheckCSourceCompiles.cmake
+/usr/share/cmake-3.14/Modules/CheckCXXCompilerFlag.cmake
+/usr/share/cmake-3.14/Modules/CheckCXXSourceCompiles.cmake
+/usr/share/cmake-3.14/Modules/Compiler/ADSP-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/ARMCC-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/AppleClang-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Borland-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Bruce-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Clang-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Clang-DetermineCompilerInternal.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Compaq-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Cray-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Embarcadero-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Fujitsu-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GHS-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-ASM.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-C.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-CXX.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU-FindBinUtils.cmake
+/usr/share/cmake-3.14/Modules/Compiler/GNU.cmake
+/usr/share/cmake-3.14/Modules/Compiler/HP-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/HP-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/IAR-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake
+/usr/share/cmake-3.14/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Intel-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/MIPSpro-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/MSVC-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/NVIDIA-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/PGI-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/PathScale-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/SCO-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/SDCC-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/SunPro-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/TI-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/Watcom-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/XL-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/XL-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/zOS-C-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake
+/usr/share/cmake-3.14/Modules/FindGit.cmake
+/usr/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+/usr/share/cmake-3.14/Modules/FindPackageMessage.cmake
+/usr/share/cmake-3.14/Modules/Internal/CMakeCheckCompilerFlag.cmake
+/usr/share/cmake-3.14/Modules/Platform/Generic.cmake
+CMakeCache.txt
+CMakeFiles/3.14.3/CMakeASMCompiler.cmake
+CMakeFiles/3.14.3/CMakeCCompiler.cmake
+CMakeFiles/3.14.3/CMakeCXXCompiler.cmake
+CMakeFiles/3.14.3/CMakeSystem.cmake
+CMakeFiles/app.dir/src/main.c.obj
+CMakeFiles/config-sanitycheck
+CMakeFiles/edit_cache.util
+CMakeFiles/menuconfig
+CMakeFiles/pristine
+CMakeFiles/rebuild_cache.util
+all
+app
+app/libapp.a
+arch__arm__core
+arch__arm__core__cortex_m
+attach
+boards__arm__nucleo_l073rz
+build.ninja
+clean
+cmake_object_order_depends_target_app
+cmake_object_order_depends_target_arch__arm__core
+cmake_object_order_depends_target_arch__arm__core__cortex_m
+cmake_object_order_depends_target_boards__arm__nucleo_l073rz
+cmake_object_order_depends_target_drivers__gpio
+cmake_object_order_depends_target_drivers__serial
+cmake_object_order_depends_target_kernel
+cmake_object_order_depends_target_kernel_elf
+cmake_object_order_depends_target_lib__libc__minimal
+cmake_object_order_depends_target_offsets
+cmake_object_order_depends_target_zephyr
+cmake_object_order_depends_target_zephyr_prebuilt
+code_data_relocation_target
+config-sanitycheck
+debug
+debugserver
+driver_validation_h_target
+drivers__gpio
+drivers__serial
+edit_cache
+flash
+help
+kernel
+kernel_elf
+kobj_types_h_target
+lib__libc__minimal
+libapp.a
+libarch__arm__core.a
+libarch__arm__core__cortex_m.a
+libboards__arm__nucleo_l073rz.a
+libdrivers__gpio.a
+libdrivers__serial.a
+libkernel.a
+liblib__libc__minimal.a
+libzephyr.a
+linker_pass_final_script_target
+linker_script_target
+menuconfig
+offsets
+offsets_h
+pristine
+ram_report
+rebuild_cache
+rom_report
+run
+syscall_list_h_target
+syscall_macros_h_target
+usage
+zephyr
+zephyr.elf
+zephyr/.config
+zephyr/CMakeFiles/driver_validation_h_target
+zephyr/CMakeFiles/edit_cache.util
+zephyr/CMakeFiles/kernel_elf.dir/isr_tables.c.obj
+zephyr/CMakeFiles/kernel_elf.dir/misc/empty_file.c.obj
+zephyr/CMakeFiles/kobj_types_h_target
+zephyr/CMakeFiles/linker_pass_final_script_target
+zephyr/CMakeFiles/linker_script_target
+zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+zephyr/CMakeFiles/offsets_h
+zephyr/CMakeFiles/rebuild_cache.util
+zephyr/CMakeFiles/run
+zephyr/CMakeFiles/syscall_list_h_target
+zephyr/CMakeFiles/syscall_macros_h_target
+zephyr/CMakeFiles/zephyr.dir/arch/common/isr_tables.c.obj
+zephyr/CMakeFiles/zephyr.dir/arch/common/sw_isr_common.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/clock_control/stm32_ll_clock.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/clock_control/stm32l0x_ll_clock.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/console/uart_console.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/interrupt_controller/exti_stm32.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/pinmux/stm32/pinmux_stm32.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/timer/cortex_m_systick.c.obj
+zephyr/CMakeFiles/zephyr.dir/drivers/timer/sys_clock_init.c.obj
+zephyr/CMakeFiles/zephyr.dir/ext/hal/st/stm32cube/stm32l0xx/drivers/src/stm32l0xx_hal.c.obj
+zephyr/CMakeFiles/zephyr.dir/ext/hal/st/stm32cube/stm32l0xx/drivers/src/stm32l0xx_hal_rcc.c.obj
+zephyr/CMakeFiles/zephyr.dir/ext/hal/st/stm32cube/stm32l0xx/drivers/src/stm32l0xx_ll_utils.c.obj
+zephyr/CMakeFiles/zephyr.dir/ext/hal/st/stm32cube/stm32l0xx/soc/system_stm32l0xx.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/crc16_sw.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/crc32_sw.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/crc7_sw.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/crc8_sw.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/fdtable.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/mempool.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/rb.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+zephyr/CMakeFiles/zephyr.dir/lib/os/work_q.c.obj
+zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+zephyr/CMakeFiles/zephyr.dir/soc/arm/st_stm32/common/stm32cube_hal.c.obj
+zephyr/CMakeFiles/zephyr.dir/soc/arm/st_stm32/stm32l0/soc.c.obj
+zephyr/CMakeFiles/zephyr_prebuilt.dir/misc/empty_file.c.obj
+zephyr/all
+zephyr/arch/CMakeFiles/edit_cache.util
+zephyr/arch/CMakeFiles/rebuild_cache.util
+zephyr/arch/all
+zephyr/arch/arch/arm/CMakeFiles/edit_cache.util
+zephyr/arch/arch/arm/CMakeFiles/rebuild_cache.util
+zephyr/arch/arch/arm/all
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/cpu_idle.S.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/exc_exit.S.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fault.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fault_s.S.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/irq_init.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/irq_manage.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/isr_wrapper.S.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/swap.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/swap_helper.S.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/sys_fatal_error_handler.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/thread.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/thread_abort.c.obj
+zephyr/arch/arch/arm/core/CMakeFiles/edit_cache.util
+zephyr/arch/arch/arm/core/CMakeFiles/rebuild_cache.util
+zephyr/arch/arch/arm/core/all
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_manage.c.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/nmi.c.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/nmi_on_reset.S.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/edit_cache.util
+zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/rebuild_cache.util
+zephyr/arch/arch/arm/core/cortex_m/all
+zephyr/arch/arch/arm/core/cortex_m/edit_cache
+zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+zephyr/arch/arch/arm/core/cortex_m/rebuild_cache
+zephyr/arch/arch/arm/core/edit_cache
+zephyr/arch/arch/arm/core/libarch__arm__core.a
+zephyr/arch/arch/arm/core/rebuild_cache
+zephyr/arch/arch/arm/edit_cache
+zephyr/arch/arch/arm/rebuild_cache
+zephyr/arch/common/CMakeFiles/edit_cache.util
+zephyr/arch/common/CMakeFiles/rebuild_cache.util
+zephyr/arch/common/all
+zephyr/arch/common/edit_cache
+zephyr/arch/common/rebuild_cache
+zephyr/arch/edit_cache
+zephyr/arch/rebuild_cache
+zephyr/boards/CMakeFiles/edit_cache.util
+zephyr/boards/CMakeFiles/rebuild_cache.util
+zephyr/boards/all
+zephyr/boards/arm/nucleo_l073rz/CMakeFiles/boards__arm__nucleo_l073rz.dir/pinmux.c.obj
+zephyr/boards/arm/nucleo_l073rz/CMakeFiles/edit_cache.util
+zephyr/boards/arm/nucleo_l073rz/CMakeFiles/rebuild_cache.util
+zephyr/boards/arm/nucleo_l073rz/all
+zephyr/boards/arm/nucleo_l073rz/edit_cache
+zephyr/boards/arm/nucleo_l073rz/libboards__arm__nucleo_l073rz.a
+zephyr/boards/arm/nucleo_l073rz/rebuild_cache
+zephyr/boards/edit_cache
+zephyr/boards/rebuild_cache
+zephyr/cmake/flash/CMakeFiles/attach
+zephyr/cmake/flash/CMakeFiles/debug
+zephyr/cmake/flash/CMakeFiles/debugserver
+zephyr/cmake/flash/CMakeFiles/edit_cache.util
+zephyr/cmake/flash/CMakeFiles/flash
+zephyr/cmake/flash/CMakeFiles/rebuild_cache.util
+zephyr/cmake/flash/all
+zephyr/cmake/flash/attach
+zephyr/cmake/flash/debug
+zephyr/cmake/flash/debugserver
+zephyr/cmake/flash/edit_cache
+zephyr/cmake/flash/flash
+zephyr/cmake/flash/rebuild_cache
+zephyr/cmake/reports/CMakeFiles/edit_cache.util
+zephyr/cmake/reports/CMakeFiles/ram_report
+zephyr/cmake/reports/CMakeFiles/rebuild_cache.util
+zephyr/cmake/reports/CMakeFiles/rom_report
+zephyr/cmake/reports/all
+zephyr/cmake/reports/edit_cache
+zephyr/cmake/reports/ram_report
+zephyr/cmake/reports/rebuild_cache
+zephyr/cmake/reports/rom_report
+zephyr/cmake/usage/CMakeFiles/edit_cache.util
+zephyr/cmake/usage/CMakeFiles/rebuild_cache.util
+zephyr/cmake/usage/CMakeFiles/usage
+zephyr/cmake/usage/all
+zephyr/cmake/usage/edit_cache
+zephyr/cmake/usage/rebuild_cache
+zephyr/cmake/usage/usage
+zephyr/driver_validation_h_target
+zephyr/drivers/CMakeFiles/edit_cache.util
+zephyr/drivers/CMakeFiles/rebuild_cache.util
+zephyr/drivers/all
+zephyr/drivers/clock_control/CMakeFiles/edit_cache.util
+zephyr/drivers/clock_control/CMakeFiles/rebuild_cache.util
+zephyr/drivers/clock_control/all
+zephyr/drivers/clock_control/edit_cache
+zephyr/drivers/clock_control/rebuild_cache
+zephyr/drivers/console/CMakeFiles/edit_cache.util
+zephyr/drivers/console/CMakeFiles/rebuild_cache.util
+zephyr/drivers/console/all
+zephyr/drivers/console/edit_cache
+zephyr/drivers/console/rebuild_cache
+zephyr/drivers/edit_cache
+zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_stm32.c.obj
+zephyr/drivers/gpio/CMakeFiles/edit_cache.util
+zephyr/drivers/gpio/CMakeFiles/rebuild_cache.util
+zephyr/drivers/gpio/all
+zephyr/drivers/gpio/edit_cache
+zephyr/drivers/gpio/libdrivers__gpio.a
+zephyr/drivers/gpio/rebuild_cache
+zephyr/drivers/interrupt_controller/CMakeFiles/edit_cache.util
+zephyr/drivers/interrupt_controller/CMakeFiles/rebuild_cache.util
+zephyr/drivers/interrupt_controller/all
+zephyr/drivers/interrupt_controller/edit_cache
+zephyr/drivers/interrupt_controller/rebuild_cache
+zephyr/drivers/pinmux/CMakeFiles/edit_cache.util
+zephyr/drivers/pinmux/CMakeFiles/rebuild_cache.util
+zephyr/drivers/pinmux/all
+zephyr/drivers/pinmux/edit_cache
+zephyr/drivers/pinmux/rebuild_cache
+zephyr/drivers/rebuild_cache
+zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_stm32.c.obj
+zephyr/drivers/serial/CMakeFiles/edit_cache.util
+zephyr/drivers/serial/CMakeFiles/rebuild_cache.util
+zephyr/drivers/serial/all
+zephyr/drivers/serial/edit_cache
+zephyr/drivers/serial/libdrivers__serial.a
+zephyr/drivers/serial/rebuild_cache
+zephyr/drivers/timer/CMakeFiles/edit_cache.util
+zephyr/drivers/timer/CMakeFiles/rebuild_cache.util
+zephyr/drivers/timer/all
+zephyr/drivers/timer/edit_cache
+zephyr/drivers/timer/rebuild_cache
+zephyr/edit_cache
+zephyr/ext/CMakeFiles/edit_cache.util
+zephyr/ext/CMakeFiles/rebuild_cache.util
+zephyr/ext/all
+zephyr/ext/debug/CMakeFiles/edit_cache.util
+zephyr/ext/debug/CMakeFiles/rebuild_cache.util
+zephyr/ext/debug/all
+zephyr/ext/debug/edit_cache
+zephyr/ext/debug/rebuild_cache
+zephyr/ext/debug/segger/CMakeFiles/edit_cache.util
+zephyr/ext/debug/segger/CMakeFiles/rebuild_cache.util
+zephyr/ext/debug/segger/all
+zephyr/ext/debug/segger/edit_cache
+zephyr/ext/debug/segger/rebuild_cache
+zephyr/ext/edit_cache
+zephyr/ext/hal/CMakeFiles/edit_cache.util
+zephyr/ext/hal/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/all
+zephyr/ext/hal/atmel/CMakeFiles/edit_cache.util
+zephyr/ext/hal/atmel/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/atmel/all
+zephyr/ext/hal/atmel/asf/CMakeFiles/edit_cache.util
+zephyr/ext/hal/atmel/asf/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/atmel/asf/all
+zephyr/ext/hal/atmel/asf/common/CMakeFiles/edit_cache.util
+zephyr/ext/hal/atmel/asf/common/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/atmel/asf/common/all
+zephyr/ext/hal/atmel/asf/common/components/CMakeFiles/edit_cache.util
+zephyr/ext/hal/atmel/asf/common/components/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/atmel/asf/common/components/all
+zephyr/ext/hal/atmel/asf/common/components/edit_cache
+zephyr/ext/hal/atmel/asf/common/components/rebuild_cache
+zephyr/ext/hal/atmel/asf/common/components/wifi/CMakeFiles/edit_cache.util
+zephyr/ext/hal/atmel/asf/common/components/wifi/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/atmel/asf/common/components/wifi/all
+zephyr/ext/hal/atmel/asf/common/components/wifi/edit_cache
+zephyr/ext/hal/atmel/asf/common/components/wifi/rebuild_cache
+zephyr/ext/hal/atmel/asf/common/edit_cache
+zephyr/ext/hal/atmel/asf/common/rebuild_cache
+zephyr/ext/hal/atmel/asf/edit_cache
+zephyr/ext/hal/atmel/asf/rebuild_cache
+zephyr/ext/hal/atmel/edit_cache
+zephyr/ext/hal/atmel/rebuild_cache
+zephyr/ext/hal/cmsis/CMakeFiles/edit_cache.util
+zephyr/ext/hal/cmsis/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/cmsis/all
+zephyr/ext/hal/cmsis/edit_cache
+zephyr/ext/hal/cmsis/rebuild_cache
+zephyr/ext/hal/cypress/CMakeFiles/edit_cache.util
+zephyr/ext/hal/cypress/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/cypress/all
+zephyr/ext/hal/cypress/edit_cache
+zephyr/ext/hal/cypress/rebuild_cache
+zephyr/ext/hal/edit_cache
+zephyr/ext/hal/esp/CMakeFiles/edit_cache.util
+zephyr/ext/hal/esp/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/esp/all
+zephyr/ext/hal/esp/edit_cache
+zephyr/ext/hal/esp/rebuild_cache
+zephyr/ext/hal/microchip/CMakeFiles/edit_cache.util
+zephyr/ext/hal/microchip/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/microchip/all
+zephyr/ext/hal/microchip/edit_cache
+zephyr/ext/hal/microchip/rebuild_cache
+zephyr/ext/hal/nordic/CMakeFiles/edit_cache.util
+zephyr/ext/hal/nordic/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/nordic/all
+zephyr/ext/hal/nordic/edit_cache
+zephyr/ext/hal/nordic/rebuild_cache
+zephyr/ext/hal/nxp/CMakeFiles/edit_cache.util
+zephyr/ext/hal/nxp/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/nxp/all
+zephyr/ext/hal/nxp/edit_cache
+zephyr/ext/hal/nxp/rebuild_cache
+zephyr/ext/hal/openisa/CMakeFiles/edit_cache.util
+zephyr/ext/hal/openisa/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/openisa/all
+zephyr/ext/hal/openisa/edit_cache
+zephyr/ext/hal/openisa/rebuild_cache
+zephyr/ext/hal/rebuild_cache
+zephyr/ext/hal/silabs/CMakeFiles/edit_cache.util
+zephyr/ext/hal/silabs/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/silabs/all
+zephyr/ext/hal/silabs/edit_cache
+zephyr/ext/hal/silabs/rebuild_cache
+zephyr/ext/hal/st/CMakeFiles/edit_cache.util
+zephyr/ext/hal/st/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/st/all
+zephyr/ext/hal/st/edit_cache
+zephyr/ext/hal/st/rebuild_cache
+zephyr/ext/hal/st/stm32cube/CMakeFiles/edit_cache.util
+zephyr/ext/hal/st/stm32cube/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/st/stm32cube/all
+zephyr/ext/hal/st/stm32cube/edit_cache
+zephyr/ext/hal/st/stm32cube/rebuild_cache
+zephyr/ext/hal/st/stm32cube/stm32l0xx/CMakeFiles/edit_cache.util
+zephyr/ext/hal/st/stm32cube/stm32l0xx/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/st/stm32cube/stm32l0xx/all
+zephyr/ext/hal/st/stm32cube/stm32l0xx/edit_cache
+zephyr/ext/hal/st/stm32cube/stm32l0xx/rebuild_cache
+zephyr/ext/hal/ti/CMakeFiles/edit_cache.util
+zephyr/ext/hal/ti/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/ti/all
+zephyr/ext/hal/ti/edit_cache
+zephyr/ext/hal/ti/rebuild_cache
+zephyr/ext/hal/ti/simplelink/CMakeFiles/edit_cache.util
+zephyr/ext/hal/ti/simplelink/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/ti/simplelink/all
+zephyr/ext/hal/ti/simplelink/edit_cache
+zephyr/ext/hal/ti/simplelink/rebuild_cache
+zephyr/ext/hal/ti/simplelink/source/ti/devices/CMakeFiles/edit_cache.util
+zephyr/ext/hal/ti/simplelink/source/ti/devices/CMakeFiles/rebuild_cache.util
+zephyr/ext/hal/ti/simplelink/source/ti/devices/all
+zephyr/ext/hal/ti/simplelink/source/ti/devices/edit_cache
+zephyr/ext/hal/ti/simplelink/source/ti/devices/rebuild_cache
+zephyr/ext/lib/CMakeFiles/edit_cache.util
+zephyr/ext/lib/CMakeFiles/rebuild_cache.util
+zephyr/ext/lib/all
+zephyr/ext/lib/crypto/CMakeFiles/edit_cache.util
+zephyr/ext/lib/crypto/CMakeFiles/rebuild_cache.util
+zephyr/ext/lib/crypto/all
+zephyr/ext/lib/crypto/edit_cache
+zephyr/ext/lib/crypto/rebuild_cache
+zephyr/ext/lib/edit_cache
+zephyr/ext/lib/encoding/CMakeFiles/edit_cache.util
+zephyr/ext/lib/encoding/CMakeFiles/rebuild_cache.util
+zephyr/ext/lib/encoding/all
+zephyr/ext/lib/encoding/edit_cache
+zephyr/ext/lib/encoding/rebuild_cache
+zephyr/ext/lib/ipc/CMakeFiles/edit_cache.util
+zephyr/ext/lib/ipc/CMakeFiles/rebuild_cache.util
+zephyr/ext/lib/ipc/all
+zephyr/ext/lib/ipc/edit_cache
+zephyr/ext/lib/ipc/rebuild_cache
+zephyr/ext/lib/mgmt/CMakeFiles/edit_cache.util
+zephyr/ext/lib/mgmt/CMakeFiles/rebuild_cache.util
+zephyr/ext/lib/mgmt/all
+zephyr/ext/lib/mgmt/edit_cache
+zephyr/ext/lib/mgmt/rebuild_cache
+zephyr/ext/lib/rebuild_cache
+zephyr/ext/rebuild_cache
+zephyr/include/generated/autoconf.h
+zephyr/include/generated/driver-validation.h
+zephyr/include/generated/kobj-types-enum.h
+zephyr/include/generated/offsets.h
+zephyr/include/generated/otype-to-str.h
+zephyr/include/generated/syscall_dispatch.c
+zephyr/include/generated/syscall_list.h
+zephyr/include/generated/syscall_macros.h
+zephyr/isr_tables.c
+zephyr/kernel/CMakeFiles/edit_cache.util
+zephyr/kernel/CMakeFiles/kernel.dir/atomic_c.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/idle.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/mailbox.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/msg_q.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/mutex.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/pipes.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/queue.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/sched.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/sem.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/smp.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/stack.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/system_work_q.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/thread.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/thread_abort.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+zephyr/kernel/CMakeFiles/kernel.dir/work_q.c.obj
+zephyr/kernel/CMakeFiles/rebuild_cache.util
+zephyr/kernel/all
+zephyr/kernel/edit_cache
+zephyr/kernel/libkernel.a
+zephyr/kernel/rebuild_cache
+zephyr/kobj_types_h_target
+zephyr/lib/CMakeFiles/edit_cache.util
+zephyr/lib/CMakeFiles/rebuild_cache.util
+zephyr/lib/all
+zephyr/lib/edit_cache
+zephyr/lib/gui/CMakeFiles/edit_cache.util
+zephyr/lib/gui/CMakeFiles/rebuild_cache.util
+zephyr/lib/gui/all
+zephyr/lib/gui/edit_cache
+zephyr/lib/gui/rebuild_cache
+zephyr/lib/libc/CMakeFiles/edit_cache.util
+zephyr/lib/libc/CMakeFiles/rebuild_cache.util
+zephyr/lib/libc/all
+zephyr/lib/libc/edit_cache
+zephyr/lib/libc/minimal/CMakeFiles/edit_cache.util
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdlib/atoi.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdlib/malloc.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdlib/strtol.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdlib/strtoul.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/fprintf.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/prf.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/sprintf.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/stdout/stdout_console.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/string/string.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/string/strncasecmp.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/lib__libc__minimal.dir/source/string/strstr.c.obj
+zephyr/lib/libc/minimal/CMakeFiles/rebuild_cache.util
+zephyr/lib/libc/minimal/all
+zephyr/lib/libc/minimal/edit_cache
+zephyr/lib/libc/minimal/liblib__libc__minimal.a
+zephyr/lib/libc/minimal/rebuild_cache
+zephyr/lib/libc/rebuild_cache
+zephyr/lib/os/CMakeFiles/edit_cache.util
+zephyr/lib/os/CMakeFiles/rebuild_cache.util
+zephyr/lib/os/all
+zephyr/lib/os/edit_cache
+zephyr/lib/os/rebuild_cache
+zephyr/lib/rebuild_cache
+zephyr/libzephyr.a
+zephyr/linker.cmd
+zephyr/linker_pass_final.cmd
+zephyr/linker_pass_final_script_target
+zephyr/linker_script_target
+zephyr/misc/generated/syscalls.json
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_app_memory
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arc
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arc_v2
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arc_v2_mpu
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arm
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arm_cortex_m
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arm_cortex_m_mpu
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_arm_cortex_m_scripts
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_common
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_nios2
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_posix
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_riscv32
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_riscv32_common
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_riscv32_riscv-privilege
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_x86
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_x86_64
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_arch_xtensa
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_audio
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_bluetooth
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_bluetooth_mesh
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_bluetooth_services
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_cmsis_rtos_v1
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_cmsis_rtos_v2
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_crypto
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_debug
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dfu
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_display
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_bluetooth
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_clock_control
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_console
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_gpio
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_i2c
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_i2c_slave
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_ieee802154
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_modem
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_pci
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_serial
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_usb
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_drivers_wifi
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_clock
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_gpio
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_i2c
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_interrupt-controller
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_pinctrl
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_dt-bindings_rdc
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_fs
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_linker
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_logging
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_mgmt
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_misc
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_net
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_nvs
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_posix
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_posix_sys
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_random
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_settings
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_shell
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_toolchain
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_usb
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_usb_class
+zephyr/misc/generated/syscalls_links/_home_andrew_Projects_zephyr_include_zephyr
+zephyr/misc/generated/syscalls_subdirs.trigger
+zephyr/misc/generated/syscalls_subdirs.txt
+zephyr/offsets
+zephyr/offsets_h
+zephyr/rebuild_cache
+zephyr/run
+zephyr/soc/arm/CMakeFiles/edit_cache.util
+zephyr/soc/arm/CMakeFiles/rebuild_cache.util
+zephyr/soc/arm/all
+zephyr/soc/arm/edit_cache
+zephyr/soc/arm/rebuild_cache
+zephyr/soc/arm/st_stm32/CMakeFiles/edit_cache.util
+zephyr/soc/arm/st_stm32/CMakeFiles/rebuild_cache.util
+zephyr/soc/arm/st_stm32/all
+zephyr/soc/arm/st_stm32/common/CMakeFiles/edit_cache.util
+zephyr/soc/arm/st_stm32/common/CMakeFiles/rebuild_cache.util
+zephyr/soc/arm/st_stm32/common/all
+zephyr/soc/arm/st_stm32/common/edit_cache
+zephyr/soc/arm/st_stm32/common/rebuild_cache
+zephyr/soc/arm/st_stm32/edit_cache
+zephyr/soc/arm/st_stm32/rebuild_cache
+zephyr/soc/arm/st_stm32/stm32l0/CMakeFiles/edit_cache.util
+zephyr/soc/arm/st_stm32/stm32l0/CMakeFiles/rebuild_cache.util
+zephyr/soc/arm/st_stm32/stm32l0/all
+zephyr/soc/arm/st_stm32/stm32l0/edit_cache
+zephyr/soc/arm/st_stm32/stm32l0/rebuild_cache
+zephyr/subsys/CMakeFiles/edit_cache.util
+zephyr/subsys/CMakeFiles/rebuild_cache.util
+zephyr/subsys/all
+zephyr/subsys/debug/CMakeFiles/edit_cache.util
+zephyr/subsys/debug/CMakeFiles/rebuild_cache.util
+zephyr/subsys/debug/all
+zephyr/subsys/debug/edit_cache
+zephyr/subsys/debug/rebuild_cache
+zephyr/subsys/debug/tracing/CMakeFiles/edit_cache.util
+zephyr/subsys/debug/tracing/CMakeFiles/rebuild_cache.util
+zephyr/subsys/debug/tracing/all
+zephyr/subsys/debug/tracing/edit_cache
+zephyr/subsys/debug/tracing/rebuild_cache
+zephyr/subsys/edit_cache
+zephyr/subsys/fb/CMakeFiles/edit_cache.util
+zephyr/subsys/fb/CMakeFiles/rebuild_cache.util
+zephyr/subsys/fb/all
+zephyr/subsys/fb/edit_cache
+zephyr/subsys/fb/rebuild_cache
+zephyr/subsys/fs/CMakeFiles/edit_cache.util
+zephyr/subsys/fs/CMakeFiles/rebuild_cache.util
+zephyr/subsys/fs/all
+zephyr/subsys/fs/edit_cache
+zephyr/subsys/fs/rebuild_cache
+zephyr/subsys/logging/CMakeFiles/edit_cache.util
+zephyr/subsys/logging/CMakeFiles/rebuild_cache.util
+zephyr/subsys/logging/all
+zephyr/subsys/logging/edit_cache
+zephyr/subsys/logging/rebuild_cache
+zephyr/subsys/power/CMakeFiles/edit_cache.util
+zephyr/subsys/power/CMakeFiles/rebuild_cache.util
+zephyr/subsys/power/all
+zephyr/subsys/power/edit_cache
+zephyr/subsys/power/policy/CMakeFiles/edit_cache.util
+zephyr/subsys/power/policy/CMakeFiles/rebuild_cache.util
+zephyr/subsys/power/policy/all
+zephyr/subsys/power/policy/edit_cache
+zephyr/subsys/power/policy/rebuild_cache
+zephyr/subsys/power/rebuild_cache
+zephyr/subsys/random/CMakeFiles/edit_cache.util
+zephyr/subsys/random/CMakeFiles/rebuild_cache.util
+zephyr/subsys/random/all
+zephyr/subsys/random/edit_cache
+zephyr/subsys/random/rebuild_cache
+zephyr/subsys/rebuild_cache
+zephyr/subsys/stats/CMakeFiles/edit_cache.util
+zephyr/subsys/stats/CMakeFiles/rebuild_cache.util
+zephyr/subsys/stats/all
+zephyr/subsys/stats/edit_cache
+zephyr/subsys/stats/rebuild_cache
+zephyr/subsys/storage/CMakeFiles/edit_cache.util
+zephyr/subsys/storage/CMakeFiles/rebuild_cache.util
+zephyr/subsys/storage/all
+zephyr/subsys/storage/edit_cache
+zephyr/subsys/storage/rebuild_cache
+zephyr/subsys/testsuite/CMakeFiles/edit_cache.util
+zephyr/subsys/testsuite/CMakeFiles/rebuild_cache.util
+zephyr/subsys/testsuite/all
+zephyr/subsys/testsuite/edit_cache
+zephyr/subsys/testsuite/rebuild_cache
+zephyr/syscall_list_h_target
+zephyr/syscall_macros_h_target
+zephyr/zephyr.elf
+zephyr/zephyr_prebuilt.elf
+zephyr_prebuilt
+zephyr_prebuilt.elf
+
+Projects/stmeasure/build 
+➔ ninja --help
+usage: ninja [options] [targets...]
+
+if targets are unspecified, builds the 'default' target (see manual).
+
+options:
+  --version      print ninja version ("1.9.0")
+  -v, --verbose  show all command lines while building
+
+  -C DIR   change to DIR before doing anything else
+  -f FILE  specify input build file [default=build.ninja]
+
+  -j N     run N jobs in parallel (0 means infinity) [default=6 on this system]
+  -k N     keep going until N jobs fail (0 means infinity) [default=1]
+  -l N     do not start new jobs if the load average is greater than N
+  -n       dry run (don't run commands but act like they succeeded)
+
+  -d MODE  enable debugging (use '-d list' to list modes)
+  -t TOOL  run a subtool (use '-t list' to list subtools)
+    terminates toplevel options; further flags are passed to the tool
+  -w FLAG  adjust warnings (use '-w list' to list warnings)
+
+Projects/stmeasure/build 
+➔ ls
+app  build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja  zephyr
+
+Projects/stmeasure/build 
+➔ ninja flash
+[0/1] Flashing nucleo_l073rz
+Using runner: openocd
+Open On-Chip Debugger 0.10.0+dev-g0b1cbf175-dirty (2019-03-08-20:54)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+adapter speed: 300 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : clock speed 300 kHz
+Info : STLINK V2J29M18 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.273443
+Info : stm32l0.cpu: hardware has 4 breakpoints, 2 watchpoints
+Info : Listening on port 3333 for gdb connections
+    TargetName         Type       Endian TapName            State       
+--  ------------------ ---------- ------ ------------------ ------------
+ 0* stm32l0.cpu        hla_target little stm32l0.cpu        running
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x080010ec msp: 0x20000660
+auto erase enabled
+Info : Device: STM32L0xx (Cat.5)
+Info : STM32L flash has dual banks. Bank (0) size is 64kb, base address is 0x8000000
+wrote 12288 bytes from file /home/andrew/Projects/stmeasure/build/zephyr/zephyr.elf in 2.315646s (5.182 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x080010ec msp: 0x20000660
+verified 10384 bytes in 0.519958s (19.503 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+shutdown command invoked
+
+Projects/stmeasure/build 
+➔ ls
+app  build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja  zephyr
+
+Projects/stmeasure/build 
+➔ 

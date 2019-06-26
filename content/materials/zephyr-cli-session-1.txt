@@ -1,0 +1,484 @@
+SeaBIOS (version rel-1.12.0-0-ga698c8995f-prebuilt.qemu.org)
+Booting from ROM..***** Booting Zephyr OS zephyr-v1.14.0-783-g021e27cfed46 *****
+Hello World! qemu_x86
+QEMU: Terminated
+
+samples/hello_world/build on master 
+➔ ninja flash
+[0/1] Flashing qemu_x86
+WARNING: No cached runners are available in /tmp/zephyrproject/zephyr/samples/hello_world/build/CMakeCact
+ERROR: command flash cannot be run in this context:
+
+No flash runner available for qemu_x86. Please either specify one
+manually, or check your board's documentation for
+alternative instructions.
+FAILED: zephyr/cmake/flash/CMakeFiles/flash 
+cd /tmp/zephyrproject/zephyr/samples/hello_world/build && /usr/bin/cmake -E env /home/andrew/.local/bin/d
+ninja: build stopped: subcommand failed.
+
+samples/hello_world/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+CMake Warning at /tmp/zephyrproject/zephyr/cmake/app/boilerplate.cmake:161 (message):
+  The build directory must be cleaned pristinely when changing boards
+Call Stack (most recent call first):
+  CMakeLists.txt:5 (include)
+
+
+-- Selected BOARD qemu_x86
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config as base
+Configuration written to '/tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/hello_world/build
+
+samples/hello_world/build on master 
+➔ ninja
+[81/90] Linking C executable zephyr/zephyr_prebuilt.elf
+Memory region         Used Size  Region Size  %age Used
+             ROM:       19736 B         1 MB      1.88%
+             RAM:          8 KB         4 MB      0.20%
+        IDT_LIST:         416 B         2 KB     20.31%
+        MMU_LIST:         104 B         1 KB     10.16%
+[90/90] Linking C executable zephyr/zephyr.elf
+
+samples/hello_world/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+CMake Warning at /tmp/zephyrproject/zephyr/cmake/app/boilerplate.cmake:161 (message):
+  The build directory must be cleaned pristinely when changing boards
+Call Stack (most recent call first):
+  CMakeLists.txt:5 (include)
+
+
+-- Selected BOARD qemu_x86
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config as base
+Configuration written to '/tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/hello_world/build
+
+samples/hello_world/build on master 
+➔ make
+make: *** No targets specified and no makefile found.  Stop.
+
+samples/hello_world/build on master 
+➔ ls
+app          CMakeCache.txt  cmake_install.cmake  rules.ninja  zephyr_modules.txt
+build.ninja  CMakeFiles      Kconfig.modules      zephyr       zephyr-sdk-0.10.0-setup.run
+
+samples/hello_world/build on master 
+➔ ninja clena
+ninja: error: unknown target 'clena', did you mean 'clean'?
+
+samples/hello_world/build on master 
+➔ ninja clean
+[1/1] Cleaning all built files...
+Cleaning... 173 files.
+
+samples/hello_world/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+CMake Warning at /tmp/zephyrproject/zephyr/cmake/app/boilerplate.cmake:161 (message):
+  The build directory must be cleaned pristinely when changing boards
+Call Stack (most recent call first):
+  CMakeLists.txt:5 (include)
+
+
+-- Selected BOARD qemu_x86
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config as base
+Configuration written to '/tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/hello_world/build
+
+samples/hello_world/build on master 
+➔ ls
+app          CMakeCache.txt  cmake_install.cmake  rules.ninja  zephyr_modules.txt
+build.ninja  CMakeFiles      Kconfig.modules      zephyr       zephyr-sdk-0.10.0-setup.run
+
+samples/hello_world/build on master 
+➔ cd ../
+ls                                                                                                       
+
+zephyr/samples/hello_world on master 
+➔ ls
+build  CMakeLists.txt  prj.conf  README.rst  sample.yaml  src
+
+zephyr/samples/hello_world on master 
+➔ cd ../
+ls                                                                                                       
+
+zephyrproject/zephyr/samples on master 
+➔ ls
+application_development  classic.rst          gui          net           sensor           testing
+basic                    cpp_synchronization  hello_world  nfc           shields          userspace
+bluetooth                display              index.rst    philosophers  subsys           xtensa_asm2
+boards                   drivers              mpu          portability   synchronization
+
+zephyrproject/zephyr/samples on master 
+➔ cd basic/blinky 
+
+samples/basic/blinky on master 
+➔ ls
+CMakeLists.txt  prj.conf  README.rst  sample.yaml  src
+
+samples/basic/blinky on master 
+➔ mkdir build
+
+samples/basic/blinky on master 
+➔ cd build 
+
+basic/blinky/build on master 
+➔ cmake -GNinja -DBOARD=qemu_x86 ..     
+Zephyr version: 1.14.99
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+-- Selected BOARD qemu_x86
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86_defconfig as base
+Merging /tmp/zephyrproject/zephyr/samples/basic/blinky/prj.conf
+Configuration written to '/tmp/zephyrproject/zephyr/samples/basic/blinky/build/zephyr/.config'
+
+warning: UART_CONSOLE (defined at drivers/console/Kconfig:46) was assigned the value 'y' but got the
+value 'n'. You can check symbol information (including dependencies) in the 'menuconfig' interface
+(see the Application Development Primer section of the manual), or in the Kconfig reference at
+http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_UART_CONSOLE.html (which is updated
+regularly from the master branch). See the 'Setting configuration values' section of the Board
+Porting Guide as well.
+
+warning: UART_NS16550 (defined at drivers/serial/Kconfig.ns16550:3) was assigned the value 'y' but
+got the value 'n'. You can check symbol information (including dependencies) in the 'menuconfig'
+interface (see the Application Development Primer section of the manual), or in the Kconfig
+reference at http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_UART_NS16550.html (which
+is updated regularly from the master branch). See the 'Setting configuration values' section of the
+Board Porting Guide as well.
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/zephyr-sdk/i586-zephyr-elf/bin/i586-zephyr-elf-gcc
+-- Performing Test toolchain_is_ok
+-- Performing Test toolchain_is_ok - Success
+-- Configuring done
+CMake Error at ../../../cmake/extensions.cmake:378 (add_library):
+  No SOURCES given to target: drivers__gpio
+Call Stack (most recent call first):
+  ../../../cmake/extensions.cmake:355 (zephyr_library_named)
+  ../../../drivers/gpio/CMakeLists.txt:3 (zephyr_library)
+
+
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/basic/blinky/build
+
+basic/blinky/build on master 
+➔ cmake -GNinja -DBOARD=qemu_x86 ..
+
+basic/blinky/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+CMake Warning at /tmp/zephyrproject/zephyr/cmake/app/boilerplate.cmake:161 (message):
+  The build directory must be cleaned pristinely when changing boards
+Call Stack (most recent call first):
+  CMakeLists.txt:4 (include)
+
+
+-- Selected BOARD qemu_x86
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/x86/qemu_x86/qemu_x86.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/samples/basic/blinky/build/zephyr/.config as base
+Configuration written to '/tmp/zephyrproject/zephyr/samples/basic/blinky/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- Configuring done
+CMake Error at ../../../cmake/extensions.cmake:378 (add_library):
+  No SOURCES given to target: drivers__gpio
+Call Stack (most recent call first):
+  ../../../cmake/extensions.cmake:355 (zephyr_library_named)
+  ../../../drivers/gpio/CMakeLists.txt:3 (zephyr_library)
+
+
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/basic/blinky/build
+
+basic/blinky/build on master 
+➔ ls                                    
+CMakeCache.txt  CMakeFiles  Kconfig.modules  zephyr  zephyr_modules.txt
+
+basic/blinky/build on master 
+➔ rm CMakeCache.txt 
+
+basic/blinky/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+-- Selected BOARD nucleo_l073rz
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz_defconfig as base
+Merging /tmp/zephyrproject/zephyr/samples/basic/blinky/prj.conf
+Configuration written to '/tmp/zephyrproject/zephyr/samples/basic/blinky/build/zephyr/.config'
+
+warning: UART_CONSOLE (defined at drivers/console/Kconfig:46) was assigned the value 'y' but got the
+value 'n'. You can check symbol information (including dependencies) in the 'menuconfig' interface
+(see the Application Development Primer section of the manual), or in the Kconfig reference at
+http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_UART_CONSOLE.html (which is updated
+regularly from the master branch). See the 'Setting configuration values' section of the Board
+Porting Guide as well.
+
+warning: UART_INTERRUPT_DRIVEN (defined at drivers/serial/Kconfig:36) was assigned the value 'y' but
+got the value 'n'. You can check symbol information (including dependencies) in the 'menuconfig'
+interface (see the Application Development Primer section of the manual), or in the Kconfig
+reference at
+http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_UART_INTERRUPT_DRIVEN.html (which is
+updated regularly from the master branch). See the 'Setting configuration values' section of the
+Board Porting Guide as well.
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Performing Test toolchain_is_ok
+-- Performing Test toolchain_is_ok - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/basic/blinky/build
+
+basic/blinky/build on master 
+➔ ninja
+[1/108] Preparing syscall dependency handling
+
+[103/108] Linking C executable zephyr/zephyr_prebuilt.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:        9944 B       192 KB      5.06%
+            SRAM:        4120 B        20 KB     20.12%
+        IDT_LIST:          56 B         2 KB      2.73%
+[108/108] Linking C executable zephyr/zephyr.elf
+
+basic/blinky/build on master 
+➔ ninja flash
+[0/1] Flashing nucleo_l073rz
+Using runner: openocd
+Open On-Chip Debugger 0.10.0+dev-g0b1cbf175-dirty (2019-03-08-20:54)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+adapter speed: 300 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to pD
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : clock speed 300 kHz
+Info : STLINK V2J29M18 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.262426
+Info : stm32l0.cpu: hardware has 4 breakpoints, 2 watchpoints
+Info : Listening on port 3333 for gdb connections
+    TargetName         Type       Endian TapName            State       
+--  ------------------ ---------- ------ ------------------ ------------
+ 0* stm32l0.cpu        hla_target little stm32l0.cpu        running
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x08005534 msp: 0x20002560
+auto erase enabled
+Info : Device: STM32L0xx (Cat.5)
+Info : STM32L flash has dual banks. Bank (0) size is 64kb, base address is 0x8000000
+wrote 12288 bytes from file /tmp/zephyrproject/zephyr/samples/basic/blinky/build/zephyr/zephyr.elf in 2.)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x08000ea4 msp: 0x20000658
+verified 9944 bytes in 0.498108s (19.496 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+shutdown command invoked
+
+basic/blinky/build on master 
+➔ cd ../../
+
+zephyr/samples/basic on master 
+➔ cd ../
+
+zephyrproject/zephyr/samples on master 
+➔ cd hello_world 
+
+zephyr/samples/hello_world on master 
+➔ ls
+build  CMakeLists.txt  prj.conf  README.rst  sample.yaml  src
+
+zephyr/samples/hello_world on master 
+➔ rm CMakeLists.txt 
+
+zephyr/samples/hello_world on master 
+➔ cd build 
+ls                                                                                                       
+
+samples/hello_world/build on master 
+➔ ls
+app          CMakeCache.txt  cmake_install.cmake  rules.ninja  zephyr_modules.txt
+build.ninja  CMakeFiles      Kconfig.modules      zephyr       zephyr-sdk-0.10.0-setup.run
+
+samples/hello_world/build on master 
+➔ rm CMakeCache.txt 
+
+samples/hello_world/build on master 
+➔ cmake -GNinja -DBOARD=nucleo_l073rz ..
+Zephyr version: 1.14.99
+-- Found PythonInterp: /usr/bin/python (found suitable version "3.7.3", minimum required is "3.4") 
+-- Selected BOARD nucleo_l073rz
+-- Found west: /home/andrew/.local/bin/west (found suitable version "0.5.7", minimum required is "0.5.6")
+-- Loading /tmp/zephyrproject/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz.dts as base
+-- Overlaying /tmp/zephyrproject/zephyr/dts/common/common.dts
+Parsing Kconfig tree in /tmp/zephyrproject/zephyr/Kconfig
+Loading /tmp/zephyrproject/zephyr/boards/arm/nucleo_l073rz/nucleo_l073rz_defconfig as base
+Merging /tmp/zephyrproject/zephyr/samples/hello_world/prj.conf
+Configuration written to '/tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/.config'
+-- Cache files will be written to: /home/andrew/.cache/zephyr
+-- The C compiler identification is GNU 8.3.0
+-- The CXX compiler identification is GNU 8.3.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Performing Test toolchain_is_ok
+-- Performing Test toolchain_is_ok - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/zephyrproject/zephyr/samples/hello_world/build
+
+samples/hello_world/build on master 
+➔ ninja
+[104/109] Linking C executable zephyr/zephyr_prebuilt.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       10708 B       192 KB      5.45%
+            SRAM:        4172 B        20 KB     20.37%
+        IDT_LIST:          72 B         2 KB      3.52%
+[109/109] Linking C executable zephyr/zephyr.elf
+
+samples/hello_world/build on master 
+➔ ninja flash
+[0/1] Flashing nucleo_l073rz
+Using runner: openocd
+Open On-Chip Debugger 0.10.0+dev-g0b1cbf175-dirty (2019-03-08-20:54)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+adapter speed: 300 kHz
+adapter_nsrst_delay: 100
+Info : The selected transport took over low-level target control. The results might differ compared to pD
+none separate
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+Info : clock speed 300 kHz
+Info : STLINK V2J29M18 (API v2) VID:PID 0483:374B
+Info : Target voltage: 3.275017
+Info : stm32l0.cpu: hardware has 4 breakpoints, 2 watchpoints
+Info : Listening on port 3333 for gdb connections
+    TargetName         Type       Endian TapName            State       
+--  ------------------ ---------- ------ ------------------ ------------
+ 0* stm32l0.cpu        hla_target little stm32l0.cpu        running
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x08000ea4 msp: 0x20000658
+auto erase enabled
+Info : Device: STM32L0xx (Cat.5)
+Info : STM32L flash has dual banks. Bank (0) size is 64kb, base address is 0x8000000
+wrote 12288 bytes from file /tmp/zephyrproject/zephyr/samples/hello_world/build/zephyr/zephyr.elf in 2.3)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+target halted due to debug-request, current mode: Thread 
+xPSR: 0xf1000000 pc: 0x08000d04 msp: 0x20000660
+verified 10708 bytes in 0.534538s (19.563 KiB/s)
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+Info : Unable to match requested speed 300 kHz, using 240 kHz
+adapter speed: 240 kHz
+shutdown command invoked
+
+samples/hello_world/build on master 
+➔ ls
+app          CMakeCache.txt  cmake_install.cmake  rules.ninja  zephyr_modules.txt
+build.ninja  CMakeFiles      Kconfig.modules      zephyr       zephyr-sdk-0.10.0-setup.run
+
+samples/hello_world/build on master 
+➔ sanitycheck --list-test kernel/build
+usage: sanitycheck [-h] [--force-toolchain] [-p PLATFORM] [-a ARCH] [-t TAG]
+                   [-e EXCLUDE_TAG] [-f] [-c CONFIG]
+                   [-s TEST | --sub-test SUB_TEST] [-l] [-o TESTCASE_REPORT]
+                   [-d DISCARD_REPORT] [--compare-report COMPARE_REPORT]
+                   [-B SUBSET] [-N] [-y] [--list-tags] [--list-tests]
+                   [--export-tests FILENAME] [--detailed-report FILENAME]
+                   [--timestamps] [-r] [-w] [-v] [-i] [--log-file FILENAME]
+                   [-m] [-u] [-F FILENAME] [-E FILENAME] [-b] [-j JOBS]
+                   [--device-testing] [-X FIXTURE]
+                   [--device-serial DEVICE_SERIAL] [--show-footprint]
+                   [-H FOOTPRINT_THRESHOLD] [-D] [-O OUTDIR] [-n]
+                   [-T TESTCASE_ROOT] [-A BOARD_ROOT] [-z SIZE] [-S]
+                   [--disable-unrecognized-section-test] [-R]
+                   [--disable-asserts] [-Q] [--disable-size-report]
+                   [-x EXTRA_ARGS] [--gcov-tool GCOV_TOOL] [--enable-coverage]
+                   [-C] [--coverage-platform COVERAGE_PLATFORM]
+sanitycheck: error: unrecognized arguments: kernel/build
+
+samples/hello_world/build on master 
+➔ sanitycheck --list-test -T zephyr/kernel/build
+JOBS: 8
+0 total.
+
+samples/hello_world/build on master 
+➔ sanitycheck --list-test -T zephyr/kernel      
+JOBS: 8
+0 total.
+
+samples/hello_world/build on master 
+➔ sanitycheck --list-test -T kernel       
+JOBS: 8
+0 total.
+
+samples/hello_world/build on master 
+➔ sanitycheck --list-test -T kernel/build
+JOBS: 8
+0 total.
+
+samples/hello_world/build on master 
+➔ ls
+app          CMakeCache.txt  cmake_install.cmake  rules.ninja  zephyr_modules.txt
+build.ninja  CMakeFiles      Kconfig.modules      zephyr       zephyr-sdk-0.10.0-setup.run
+
+samples/hello_world/build on master 
+➔ ls zephyr
+arch                 isrList.bin     linker_pass_final.cmd       subsys
+boards               isr_tables.c    linker_pass_final.cmd.dep   zephyr.bin
+cmake                kconfig         misc                        zephyr.elf
+CMakeFiles           kernel          nucleo_l073rz.dts_compiled  zephyr.hex
+cmake_install.cmake  lib             nucleo_l073rz.dts.pre.tmp   zephyr.lst
+drivers              libzephyr.a     qemu_x86.dts_compiled       zephyr.map
+ext                  linker.cmd      qemu_x86.dts.pre.tmp        zephyr_prebuilt.elf
+include              linker.cmd.dep  soc                         zephyr.stat
+
+samples/hello_world/build on master 
+➔ ls zephyr/kernel 
+CMakeFiles  cmake_install.cmake  libkernel.a
+
+samples/hello_world/build on master 
+➔  
