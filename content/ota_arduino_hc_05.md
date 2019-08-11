@@ -1,19 +1,22 @@
-Title: Template
+Title: Over the air updates for Arduino with Bluetooth
 Date: 09.06.2019
 Modified: 09.06.2019
 Category: electronics, arduino
 Status: draft
 Authors: Andrey Albershtein
-Summary: Over the air (wireless) update of the Arduino firmware
+Summary: Over the air (wireless) updates of the Arduino firmware with Bluetooth
+chip HC-05
 lang: en
 
 For one of my project I wanted to implement so called over the air (or shortly
-OTA) updates of firmware. It means uploading firmware into the Arduino with some
-wireless technology. I chosen Bluetooth, in particular cheap Chinese HC-05 chip.
+OTA) updates of firmware. It means instead of using USB cable you use one of the
+wireless technologies to upload your programs. In my case I used Bluetooth, in
+particular cheap Chinese HC-05 chip.
 
-The principle is quite simple. Firstly, when you power on your Arduino
-microcontroller starts to execute application stored in the memory. As uploading
-firmware with ISP is no so convenient people wrote bootloader. 
+The principle is quite simple. But first let's look at the booting process. 
+When you power on your microcontroller it starts to execute application
+stored in the internal memory. As uploading firmware with ISP is no so convenient people
+wrote bootloader. 
 
 The bootloader is simple application which is always stored in the memory. So,
 when you power on your Arduino it actually start to execute bootloader. The
@@ -95,8 +98,25 @@ the Arduino we want to program.
 It also use three digital pins to indicate programming 
 
 #### Configuring HC-05 module
+
+
+
 #### Test Bluetooth communication
+
+#### Future
+
+Updating firmware with overwriting the old one is a bad practice. If
+communication is not reliable or device unexpectedly turns off your firmware
+becomes unusable. The better way is to use external memory chip (or internal
+memory if your application is small) and, firstly, write firmware at the
+external memory and then copy and run it.
+
+One of the bootloader which allows this is DualOptiboot. I am planning to try
+this one in the next version of my Bluetooth controller. The first step will be
+to choose some memory chip and add it to the board.
+
 
 #### References
 * [HC-05]()
 * [Optiboot](https://github.com/Optiboot/optiboot)
+* [DialOptiboot](https://github.com/LowPowerLab/DualOptiboot)
