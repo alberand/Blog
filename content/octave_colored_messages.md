@@ -2,25 +2,22 @@ Title: Octave - colored prompt messages
 Date: 24.10.2016
 Author: Andrew Albershteyn
 Status: published
-Category: tools, code snippets
 Tags: Octave, colored messages, colored prompt
 
 ![Octave Prompt Colored Messages]({filename}/images/octave_messages.png)
 
-In Unix terminal we can use colorful output for emphasizing important
-information. I'm currently studying at University and have a lot of problems to
-solve using Octave. Its prompt is similar to classic Unix terminal. To make
-output more readable I tried to implement information colored messages for my 
-scripts.
+In Unix terminal we can use colorful output for emphasizing important pieces of 
+information such as fatal errors or warnings. As a student in the Technical
+University I have a lot of problem sets to solve in [Octave][1]. Its prompt is
+similar to the normal Unix terminal (and I suppose it is). To make the output of
+my scripts more readable I tried to implement a few function to colorize some
+important messages.
 
-In the beginning of the article you can see screenshot of messages
-that I write for myself to make output of my scripts a little bit fancier.
-
-Function are consist of **fprintf** function which draw obtained text to the 
-standard output (first argument is the output stream). Second argument is  
-specific construction where message text is wrapped by special symbols. Those 
-symbols tells prompt to display text with some styling such as color, 
-underline, background color etc.
+The functions make usage of **fprintf** function which draw obtained text to the 
+standard output or stderr (first argument is the output stream). The second
+argument is construction which wraps the message passed as `msg` by special so
+called ANSI escape sequences. These sequences tells prompt to display text with
+some special styling such as color, underline, background color etc.
 
 ```matlab
 % The set of function to print fancy messages in octave prompt. To use it just 
@@ -71,19 +68,20 @@ function head(msg)
 endfunction
 ```
 
-Background and foreground colors can be changed in construction shown below. It
-is consist of escape character `^` (or `\e`, `\033`, `\x1B`) and format
-code surrounded by **[** and **m** characters. First number is responsible for 
-text formatting (normal, bold, dim, underlined...), second for background color
- and third one for foreground color. 
+Background and foreground colors can be changed in the construction shown below.
+It consist of escape character `^` (or `\e`, `\033`, `\x1B`) and format
+code surrounded by the **[** and **m** characters. The first number is
+responsible for text formatting (normal, bold, dim, underlined...), the second
+for background color and third one for foreground color. 
 
 <div style="width: 150px; margin: 0 auto; font-size: 22px; padding: 0px 0px 5px
 0px; letter-spacing: 2px;">
     ^[0;49;30m
 </div>
 
-Codes of those colors can be found in the next table or google it for "bash
-terminal colors".
+So, the sequence above means 0 - normal text (all attributes to default), 49 -
+default background color and 30 - black text color. You can found more codes at
+the [following page][2] and in table below.
 
 <style>
 /* DivTable.com */
@@ -251,9 +249,9 @@ terminal colors".
 How to use it? It's easy enough, all you need to do are few follow steps:
 
 1. Download the script
-2. Create catalog where you will store this script for further usage
-3. Than in your Octave's config (by default it should be `~/.octaverc`) add
-and don't forgot to change next commands:
+2. Create directory where you will store this script for further usage
+3. Then in your Octave's config (by default it should be `~/.octaverc` on Linux
+   system) add and don't forgot to change next commands:
 
 ```bash
 # Change to address where your script is
@@ -262,19 +260,20 @@ messages
 PAGER_FLAGS("-r")
 ```
 
-First line adds your catalog to global search. So when you want to run
+First line adds your directory to the global search. So, when you want to run
 this script you can just type in the Octave prompt `messages` and this script 
 will be run.
+
 Second line runs this script. Because this configuration file (`.octaverc`) is 
 run at the startup of the Octave this script will be automatically executed.
 Last command add parameter to `less` program which is used when output of your
-code isn't suitable for one screen of the display. This parameter needed to
-correctly display colors while you see output over the less program.
+script isn't suitable for one screen of the terminal. This parameter is needed
+to correctly display colors while you see output over the `less` program.
 
 #### References: ####
 
 - [Octave Documentation](https://www.gnu.org/software/octave/doc/v4.0.0/index.html)
 - [Bash colors and
   formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
-
-
+[1]: https://www.gnu.org/software/octave/doc/v4.0.0/index.html
+[2]: https://misc.flogisoft.com/bash/tip_colors_and_formatting 

@@ -1,7 +1,6 @@
 Title: Template
 Date: 28.01.2017
 Modified: 28.01.2017
-Category: Misc
 Status: draft
 Tags: pelican, publishing
 Slug: my-super-post

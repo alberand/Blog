@@ -10,6 +10,10 @@ h5 {
     font-weight: bold;
 }
 
+h4 {
+    padding: 14px 0 14px 0;
+}
+
 #skills-box {
   width: 350px;
   padding: 7px;
