@@ -21,6 +21,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
@@ -33,6 +34,7 @@ SOCIAL = (('GitHub', 'https://github.com/alberand'),
 
 DEFAULT_PAGINATION = False
 DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
 
 # Sitemap
 DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', 'sitemap')
@@ -51,10 +53,16 @@ DEFAULT_METADATA = {
             'status': 'draft',
             }
 
-DEFAULT_CATEGORY = 'Misc'
+DEFAULT_CATEGORY = 'Article'
 
-# Latex
-PLUGIN_PATHS = ["plugins", "./plugins"]
+PLUGIN_PATHS = ["plugins", "/home/andrew/.local/share/pelican-plugins"]
+PLUGINS = [
+    'liquid_tags.include_code',
+    'render_math'
+]
+
+# Liquid tag
+CODE_DIR = 'materials'
 
 # Date
 DEFAULT_DATE_FORMAT = '%d.%m.%Y'

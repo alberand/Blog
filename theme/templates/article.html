@@ -11,14 +11,14 @@
         {{ translations.translations_for(article) }}
         </div>
         <div class="text-muted" style="margin-right: 20px;">{{ article.locale_date }}</div>
-        <div class="text-muted" style="margin-top: 4px;">
+        <!-- <div class="text-muted" style="margin-top: 4px;">
             <a href="{{ SITEURL }}/{{ article.category.url }}"><div class="fa fa-lg fa-folder-open"></div> {{ article.category }}</a>
             {% if article.tags %}
             {% for tag in article.tags %}
             <a href="{{ SITEURL }}/{{ tag.url }}"><div class="fa fa-lg fa-tag"></div> {{ tag }}</a>
             {% endfor %}
             {% endif %}
-        </div>
+        </div> -->
       </header>
 <!-- .entry-content -->
       <div class="entry-content">

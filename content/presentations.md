@@ -1,7 +1,6 @@
 Title: A few points on the explaining technical presentation
 Date: 23.09.2018
 Modified: 23.09.2018
-Category: Misc
 Tags: presentation
 Slug: good-presentation
 Authors: Andrey Albershtein

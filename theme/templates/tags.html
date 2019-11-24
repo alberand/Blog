@@ -2,11 +2,6 @@
 {% block title %}{{ SITENAME }} - Tags{% endblock %}
 {% block archclass %} class="active"{%endblock%}
 {% block content %}
-      <ol class="breadcrumb">
-        <li><a href="{{SITEURL}}"><div class="fa fa-lg fa-home"></div><span class="hidden-xs"> Home</span></a></li>
-        <li class="active"><div class="fa fa-lg fa-tags"></div> Tags <span class="badge">{{ tags|count }}</span></li>
-      </ol>
-
       <ul class="list-inline">
         {%- for tag, articles in tags|sort %}
         <li>
