@@ -48,7 +48,9 @@ Thermal resistance show how big is temperature difference in two points for a
 applied one Watt of applied power. Therefore, for given thermal resistance of 3
 C/W the temperature will descrease for 3 C for every applied Watt.
 
-[PICTURE of THERMAL RESISTANCE]
+<div class="centered-image margined">
+    <img width="500px" src="../images/mosfet_handdrawn.svg">
+</div>
 
 So, the thermal resistance shows us how hard it is for energy to move
 through the material. Material with really high resistance is a good insulator

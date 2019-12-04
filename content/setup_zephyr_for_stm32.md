@@ -1,7 +1,7 @@
 Title: Setup Zephyr OS for STM32 Nucleo
 Date: 28.05.2019
 Modified: 28.05.2019
-Status: published
+Status: draft
 Tags: stm32, zephyr
 Authors: Andrey Albershtein
 Summary: Setting up and running Zephyr RTOS for STM32 Nucleo

@@ -2,7 +2,7 @@ Title: Buffering on I/O
 Date: 08.09.2019
 Modified: 08.09.2017
 Category: Notes
-Status: published
+Status: draft
 Tags: buffering, c
 Slug: buffering-io
 Authors: Andrey Albershtein
