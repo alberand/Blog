@@ -31,3 +31,12 @@ h4 {
   font-size: 13px;
   float: right;
 }
+
+.centered-image {
+  text-align: center;
+}
+
+.margined {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
