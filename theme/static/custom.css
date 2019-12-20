@@ -40,3 +40,11 @@ h4 {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+.wide-boi {
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  text-align: center;
+  margin: 35px 0 35px 0;
+}

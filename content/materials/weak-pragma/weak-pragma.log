@@ -1,0 +1,119 @@
+andrew at andrew-laptop in ~
+➔ cd /tmp/mainfun
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ls
+app  fmem  main.c  snapshot.mem
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ vim main.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ./app
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -c main.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ls
+app  fmem  main.c  main.o  snapshot.mem
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ vim debug.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -c dee
+gcc: error: dee: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -c debug.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.o debug.o
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ./app
+[DEBUG] hello
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.o
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ./app
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ vim app
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o appd main.o debug.o
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ diff app appd
+Binary files app and appd differ
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ vimdiff <(xxd app) <(xxd appd)
+2 files to edit
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ vimdiff <(objdump -d app) <(objdump -d appd)
+2 files to edit
+
+[1]  + 1086226 suspended  vimdiff <(objdump -d app) <(objdump -d appd)
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ objdump --help | grep -E "(-s|-j)"
+  -S, --source             Intermix source code with disassembly
+      --source-comment[=<txt>] Prefix lines of source code with <txt>
+  -s, --full-contents      Display the full contents of all sections requested
+  -G, --stabs              Display (in raw form) any STABS info in the file
+  -t, --syms               Display the contents of the symbol table(s)
+  -T, --dynamic-syms       Display the contents of the dynamic symbol table
+  -j, --section=NAME             Only display information for section NAME
+      --file-start-context       Include context from start of file (with -S)
+      --start-address=ADDR       Only process data whose address is >= ADDR
+      --stop-address=ADDR        Only process data whose address is <= ADDR
+      --special-syms             Include special symbols in symbol dumps
+      --prefix-strip=LEVEL       Strip initial directory names for -S
+      --dwarf-start=N        Display DIEs starting with N, at the same depth
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ objdump -s -j .rodata appd
+
+appd:     file format elf64-x86-64
+
+Contents of section .rodata:
+ 2000 01000200 68656c6c 6f005b44 45425547  ....hello.[DEBUG
+ 2010 5d202573 0a00                        ] %s..
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ objdump -s -j .data appd
+
+appd:     file format elf64-x86-64
+
+Contents of section .data:
+ 4020 00000000 00000000 28400000 00000000  ........(@......
+ 4030 60110000 00000000                    `.......
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ fg
+[1]  + 1086226 continued  vimdiff <(objdump -d app) <(objdump -d appd)
+
+[1]  + 1086226 suspended  vimdiff <(objdump -d app) <(objdump -d appd)
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ objdump -s -j .data app
+
+app:     file format elf64-x86-64
+
+Contents of section .data:
+ 4018 00000000 00000000 20400000 00000000  ........ @......
+ 4028 00000000 00000000                    ........
+
+andrew at andrew-laptop in /tmp/mainfun
+➔
