@@ -105,11 +105,11 @@ Disassembly of the main function should be similar to this:
     0000000000001119 <main>:
         1119:       55                      push   %rbp
         111a:       48 89 e5                mov    %rsp,%rbp
-        111d:       48 8b 05 04 2f 00 00    mov    0x2f04(%rip),%rax        # 4028 <debugfunc>
+        111d:       48 8b 05 04 2f 00 00    mov    0x2f04(%rip),%rax    # 4028 <debugfunc>
         1124:       48 85 c0                test   %rax,%rax
         1127:       74 10                   je     1139 <main+0x20>
-        1129:       48 8b 05 f8 2e 00 00    mov    0x2ef8(%rip),%rax        # 4028 <debugfunc>
-        1130:       48 8d 3d cd 0e 00 00    lea    0xecd(%rip),%rdi        # 2004 <_IO_stdin_used+0x4>
+        1129:       48 8b 05 f8 2e 00 00    mov    0x2ef8(%rip),%rax    # 4028 <debugfunc>
+        1130:       48 8d 3d cd 0e 00 00    lea    0xecd(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
         1137:       ff d0                   callq  *%rax
         1139:       b8 00 00 00 00          mov    $0x0,%eax
         113e:       5d                      pop    %rbp
@@ -146,11 +146,11 @@ different addresses the `main()` is completely the same.
     0000000000001139 <main>:
         1139:       55                      push   %rbp
         113a:       48 89 e5                mov    %rsp,%rbp
-        113d:       48 8b 05 ec 2e 00 00    mov    0x2eec(%rip),%rax        # 4030 <debugfunc>
+        113d:       48 8b 05 ec 2e 00 00    mov    0x2eec(%rip),%rax    # 4030 <debugfunc>
         1144:       48 85 c0                test   %rax,%rax
         1147:       74 10                   je     1159 <main+0x20>
-        1149:       48 8b 05 e0 2e 00 00    mov    0x2ee0(%rip),%rax        # 4030 <debugfunc>
-        1150:       48 8d 3d ad 0e 00 00    lea    0xead(%rip),%rdi        # 2004 <_IO_stdin_used+0x4>
+        1149:       48 8b 05 e0 2e 00 00    mov    0x2ee0(%rip),%rax    # 4030 <debugfunc>
+        1150:       48 8d 3d ad 0e 00 00    lea    0xead(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
         1157:       ff d0                   callq  *%rax
         1159:       b8 00 00 00 00          mov    $0x0,%eax
         115e:       5d                      pop    %rbp
