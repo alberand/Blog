@@ -64,7 +64,7 @@ Now, you can run this as system command from your program (in my case it is
 Python script) to toggle network connection.
 
 <div style="width:300px; text-align:center; margin: 0 auto;">
-<a href="{filename}/materials/win_toggle_connection.tar">Download scripts</a>
+<a href="{static}/materials/win_toggle_connection.tar">Download scripts</a>
 </div>
 
 ##### References

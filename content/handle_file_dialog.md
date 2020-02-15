@@ -12,7 +12,7 @@ user's actions. I used it for a few times and found one important feature which
 is missing - as far as I know it is impossible to handle "Open File" or "Save
 File" dialog:
 
-<img alt="File Dialog Screenshot" src="{filename}/images/firefox_file_upload_dialog_small.png" width="90%" style="margin: 0 auto; display: block;">
+<img alt="File Dialog Screenshot" src="{static}/images/firefox_file_upload_dialog_small.png" width="90%" style="margin: 0 auto; display: block;">
 
 Selenium uses JavaScript to simulate clicks, typing and many other manipulation
 with a web-page. Unfortunately, when user clicks on the button to save a file
@@ -124,7 +124,7 @@ additional software it showed itself as simple and reliable way to approach file
 dialogs. All the script can be downloaded from the following link:
 
 <div style="width:300px; text-align:center; margin: 0 auto;">
-<a href="{filename}/materials/handle_file_dialog.tar">Download scripts</a>
+<a href="{static}/materials/handle_file_dialog.tar">Download scripts</a>
 </div>
 
 ##### References

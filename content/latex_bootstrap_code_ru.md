@@ -12,7 +12,7 @@ lang: ru
 информации нежели с помощью курсива или жирного шрифта.
 
 ![Screenshot of some pdf document with Bootstrap
-highlighting]({filename}/images/latex_pdf_bcode_example.png)
+highlighting]({static}/images/latex_pdf_bcode_example.png)
 
 Я написал функцию для Latex, которая предоставляет подобную подсветку. Её очень
 легко использовать, единственное что нужно это добавить следующий кусок кода в
