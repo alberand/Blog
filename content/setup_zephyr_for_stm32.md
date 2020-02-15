@@ -1,5 +1,5 @@
 Title: Setup Zephyr OS for STM32 Nucleo
-Date: 28.05.2019
+Date: 15.02.2020
 Modified: 15.02.2020
 Status: published
 Tags: stm32, zephyr
