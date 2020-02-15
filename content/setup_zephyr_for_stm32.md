@@ -13,7 +13,7 @@ excuse to do it. As I got one I started to look on one of the real-time OS
 which catch my attention a long time ago - [Zephyr OS][1].
 
 <div id="zephyr-logo-container" style="margin: -200px 0 0 -40%; width: 400px; position: absolute; z-index: -1; ">
-    <img id="zephyr-logo" style="width:400px; opacity: 0.25;" alt="Zephyr RTOS" src="{filename}/images/zephyr-logo.jpg">
+    <img id="zephyr-logo" style="width:400px; opacity: 0.25;" alt="Zephyr RTOS" src="{static}/images/zephyr-logo.jpg">
 </div>
 
 After a first look it appeared to me as very nicely design OS with rapidly
@@ -211,7 +211,7 @@ Now connect your board and run `ninja flash`. It should compile and upload
 application and built-in LED will start blinking.
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Zephyr RTOS blinky app" src="{filename}/images/stm32-zephyr.gif">
+    <img id="gifka" alt="Zephyr RTOS blinky app" src="{static}/images/stm32-zephyr.gif">
 </div>
 
 As you can see it is quite convenient to manage your application as it is

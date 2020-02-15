@@ -4,7 +4,7 @@ Author: Andrew Albershteyn
 Status: published
 Tags: Octave, colored messages, colored prompt
 
-![Octave Prompt Colored Messages]({filename}/images/octave_messages.png)
+![Octave Prompt Colored Messages]({static}/images/octave_messages.png)
 
 In Unix terminal we can use colorful output for emphasizing important pieces of 
 information such as fatal errors or warnings. As a student in the Technical

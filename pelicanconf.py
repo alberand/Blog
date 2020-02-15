@@ -33,12 +33,6 @@ SOCIAL = (('GitHub', 'https://github.com/alberand'),
         ('Email', 'mailto:albershteyn.andrey@gmail.com'),
 )
 
-MARKDOWN = {
-    'extension_configs': {
-        'markdown.extensions.extra': {'css_class': 'md_in_html'},
-    }
-}
-
 DEFAULT_PAGINATION = False
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
@@ -52,7 +46,18 @@ SITEMAP_SAVE_AS = 'sitemap.xml'
 #RELATIVE_URLS = True
 
 # Copy files from conent folder to output folder
-STATIC_PATHS = ['images', 'pdfs', 'materials']
+STATIC_PATHS = [
+	'images', 
+	'pdfs', 
+	'materials',
+    	'extra'
+]
+
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},  # and this
+    'extra/LICENSE': {'path': 'LICENSE'},
+}
 
 # Every new articale will be published as draft. So, nobody can see it.
 # To publish article add metadata Status: published

@@ -12,7 +12,7 @@ for emphasizing key points in your text especially in technical writing. For
 example, look at this paragraph taken from one of my documentation PDFs.
 
 ![Screenshot of PDF document with Bootstrap
-highlighting]({filename}/images/latex_pdf_bcode_example.png)
+highlighting]({static}/images/latex_pdf_bcode_example.png)
 
 There is not too many default text decoration styles to play with to emphasize
 something in Latex. Most of the times the standard **bold** and *italic* are
