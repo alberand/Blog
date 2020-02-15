@@ -5,7 +5,8 @@ from __future__ import unicode_literals
 THEME = 'theme'
 AUTHOR = 'Andrey Albershtein'
 SITENAME = 'Andrey Albershtein'
-SITEURL = 'http://127.0.0.1:8000'
+# SITEURL = 'http://127.0.0.1:8000'
+SITEURL = 'http://192.168.1.33:8000'
 
 PATH = './content'
 
@@ -31,6 +32,12 @@ SOCIAL = (('GitHub', 'https://github.com/alberand'),
         ('Facebook', 'https://www.facebook.com/andrew.albershteyn'),
         ('Email', 'mailto:albershteyn.andrey@gmail.com'),
 )
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.extra': {'css_class': 'md_in_html'},
+    }
+}
 
 DEFAULT_PAGINATION = False
 DISPLAY_PAGES_ON_MENU = True

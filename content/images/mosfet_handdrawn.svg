@@ -717,6 +717,220 @@
            inkscape:connector-curvature="0" />
       </symbol>
     </g>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Noise Fill"
+       id="filter5098">
+      <feTurbulence
+         type="fractalNoise"
+         baseFrequency="0.02 0.04"
+         numOctaves="5"
+         seed="1"
+         result="turbulence"
+         id="feTurbulence5082" />
+      <feComposite
+         in="SourceGraphic"
+         in2="turbulence"
+         operator="in"
+         result="composite1"
+         id="feComposite5084" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 "
+         result="color"
+         id="feColorMatrix5086" />
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(21,40,57)"
+         result="flood"
+         id="feFlood5088" />
+      <feMerge
+         result="merge"
+         id="feMerge5094">
+        <feMergeNode
+           in="flood"
+           id="feMergeNode5090" />
+        <feMergeNode
+           in="color"
+           id="feMergeNode5092" />
+      </feMerge>
+      <feComposite
+         in2="SourceGraphic"
+         operator="in"
+         result="fbSourceGraphic"
+         id="feComposite5096" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5100" />
+      <feTurbulence
+         id="feTurbulence5102"
+         type="fractalNoise"
+         baseFrequency="0.02 0.04"
+         numOctaves="5"
+         seed="1"
+         result="turbulence"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="turbulence"
+         id="feComposite5104"
+         in="fbSourceGraphic"
+         operator="in"
+         result="composite1" />
+      <feColorMatrix
+         id="feColorMatrix5106"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 "
+         result="color" />
+      <feFlood
+         id="feFlood5108"
+         flood-opacity="1"
+         flood-color="rgb(255,40,57)"
+         result="flood" />
+      <feMerge
+         id="feMerge5110"
+         result="merge">
+        <feMergeNode
+           id="feMergeNode5112"
+           in="flood" />
+        <feMergeNode
+           id="feMergeNode5114"
+           in="color" />
+      </feMerge>
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite5116"
+         operator="in"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5118" />
+      <feTurbulence
+         id="feTurbulence5120"
+         type="fractalNoise"
+         baseFrequency="0.02 0.04"
+         numOctaves="5"
+         seed="1"
+         result="turbulence"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="turbulence"
+         id="feComposite5122"
+         in="fbSourceGraphic"
+         operator="in"
+         result="composite1" />
+      <feColorMatrix
+         id="feColorMatrix5124"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 "
+         result="color" />
+      <feFlood
+         id="feFlood5126"
+         flood-opacity="1"
+         flood-color="rgb(255,0,0)"
+         result="flood" />
+      <feMerge
+         id="feMerge5128"
+         result="merge">
+        <feMergeNode
+           id="feMergeNode5130"
+           in="flood" />
+        <feMergeNode
+           id="feMergeNode5132"
+           in="color" />
+      </feMerge>
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite5134"
+         operator="in"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5136" />
+      <feTurbulence
+         id="feTurbulence5138"
+         type="fractalNoise"
+         baseFrequency="7.51323 0.04"
+         numOctaves="5"
+         seed="1"
+         result="turbulence"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="turbulence"
+         id="feComposite5140"
+         in="fbSourceGraphic"
+         operator="in"
+         result="composite1" />
+      <feColorMatrix
+         id="feColorMatrix5142"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 "
+         result="color" />
+      <feFlood
+         id="feFlood5144"
+         flood-opacity="1"
+         flood-color="rgb(255,0,0)"
+         result="flood" />
+      <feMerge
+         id="feMerge5146"
+         result="merge">
+        <feMergeNode
+           id="feMergeNode5148"
+           in="flood" />
+        <feMergeNode
+           id="feMergeNode5150"
+           in="color" />
+      </feMerge>
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite5152"
+         operator="in"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix5154" />
+      <feTurbulence
+         id="feTurbulence5156"
+         type="fractalNoise"
+         baseFrequency="7.91005 7.98942"
+         numOctaves="5"
+         seed="1"
+         result="turbulence"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="turbulence"
+         id="feComposite5158"
+         in="fbSourceGraphic"
+         operator="in"
+         result="composite1" />
+      <feColorMatrix
+         id="feColorMatrix5160"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 -1 "
+         result="color" />
+      <feFlood
+         id="feFlood5162"
+         flood-opacity="1"
+         flood-color="rgb(255,0,0)"
+         result="flood" />
+      <feMerge
+         id="feMerge5164"
+         result="merge">
+        <feMergeNode
+           id="feMergeNode5166"
+           in="flood" />
+        <feMergeNode
+           id="feMergeNode5168"
+           in="color" />
+      </feMerge>
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite5170"
+         operator="in"
+         result="composite2" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -725,9 +939,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="242.20651"
-     inkscape:cy="67.357781"
+     inkscape:zoom="11.313708"
+     inkscape:cx="209.1918"
+     inkscape:cy="36.730246"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -932,7 +1146,7 @@
          id="tspan5865"
          x="68.575478"
          y="19.104034"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">Case</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px;font-size:4.23333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Case</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:125%;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans';letter-spacing:0px;word-spacing:0px;fill:#000006;fill-opacity:0.9372549;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -944,7 +1158,7 @@
          id="tspan5865-5"
          x="68.453987"
          y="26.410942"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">Junction</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px;font-size:4.23333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Junction</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#0000c7;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM-4)"
        d="m 55.546986,4.0842551 c 5.291674,0 6.698764,0 11.990434,0"
@@ -962,7 +1176,7 @@
          id="tspan5865-8"
          x="68.452133"
          y="4.6430545"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">Heatsink</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px;font-size:4.23333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Heatsink</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:url(#linearGradient923);stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DotM-4-9)"
        d="m 43.963696,11.042705 c 4.85069,2e-5 9.7014,-4e-5 14.552084,0 h 9.02164"
@@ -980,22 +1194,11 @@
          id="tspan5865-8-0"
          x="68.432915"
          y="11.235324"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">Thermal paste</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:125%;font-family:Pacifico;-inkscape-font-specification:Pacifico;letter-spacing:0px;word-spacing:0px;display:inline;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.065;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0;"
-       x="22.031879"
-       y="18.483669"
-       id="overheat"><tspan
-         sodipodi:role="line"
-         id="tspan1399"
-         x="22.031879"
-         y="18.483669"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0000;stroke:#000000;stroke-width:0.065;stroke-miterlimit:4;stroke-dasharray:none;">Overheat</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';fill:#00006e;fill-opacity:1;stroke-width:0.26458332px;font-size:4.23333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">Thermal paste</tspan></text>
     <text
        transform="translate(-10.154123,-11.381658)"
        xml:space="preserve"
-       style="display:inline;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:125%;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="5.7753921"
        y="41.414566"
        id="text1821"><tspan
@@ -1003,6 +1206,27 @@
          id="tspan1819"
          x="5.7753921"
          y="41.414566"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:'Humor Sans';-inkscape-font-specification:'Humor Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">power</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#00006e;fill-opacity:1;stroke-width:0.26458332px">POWER</tspan></text>
+    <rect
+       style="opacity:0;fill:#ff0000;fill-opacity:0.61825729;fill-rule:nonzero;stroke:none;stroke-width:0.45300001;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;filter:url(#filter5098)"
+       id="oh_background"
+       width="22.291145"
+       height="5.1263018"
+       x="22.84483"
+       y="14.990063"
+       ry="0.2579349"
+       inkscape:label="#oh_background" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:125%;font-family:Pacifico;-inkscape-font-specification:Pacifico;letter-spacing:0px;word-spacing:0px;display:inline;opacity:0;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.05;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+       x="23.488636"
+       y="19.270552"
+       id="oh_text"
+       inkscape:label="#oh_text"><tspan
+         sodipodi:role="line"
+         id="tspan4878"
+         x="23.488636"
+         y="19.270552"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.05;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;">Overheat</tspan></text>
   </g>
 </svg>

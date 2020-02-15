@@ -238,9 +238,11 @@ function interactive_mosfet(data) {
         change_formula(value);
 
         if(value > temp_junction_max){
-            mf.select("text#overheat").style("opacity", 1.0)
+            mf.select("text#oh_text").style("opacity", 1.0)
+            mf.select("#oh_background").style("opacity", 1.0)
         } else {
-            mf.select("text#overheat").style("opacity", 0.0)
+            mf.select("text#oh_text").style("opacity", 0.0)
+            mf.select("#oh_background").style("opacity", 0.0)
         }
     }
 
