@@ -62,8 +62,8 @@ EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},  # and this
     'extra/LICENSE': {'path': 'LICENSE'},
-    'extra/.htaccess' : { 'path' : '../.htaccess'},
-    'extra/robots.txt' : { 'path' : '../robots.txt' }
+    'extra/.htaccess' : { 'path' : '.htaccess'},
+    'extra/robots.txt' : { 'path' : 'robots.txt' }
 }
 
 # Every new articale will be published as draft. So, nobody can see it.
