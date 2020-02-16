@@ -17,14 +17,14 @@ which catch my attention a long time ago - [Zephyr OS][1].
 </div>
 
 After a first look it appeared to me as very nicely design OS with rapidly
-growing number of features. The other thing which I noticed that the list of
-supported boards is enormously big, which can come handy in future. Moreover, as
-I noticed, it is under intense development by the Intel corporation which means
-that it won't die in a few years (I hope 😀).
+growing number of features. The other thing which I noticed is that the list of
+supported boards is enormously big, it can come handy in the future. Moreover, 
+it is under intense development by the Intel corporation which means that it
+won't die in a few years (I hope 😀).
 
 In this note I will describe process of setting up development environment
-for STM32 Nucleo platform with Zephyr OS. (Later I would like to add testing
-setup too)
+for STM32 Nucleo (particularly for STM32L010RB) board with Zephyr OS. Later
+I would like to add testing setup too.
 
 #### Environment setup
 
@@ -42,7 +42,7 @@ Commonly used notation for shell commands is <code>$</code> - commands executed
 by normal user and <code>#</code> commands executed as root
 </p>
 
-Then, install Zephyr's `west` tool. This is basically Python utility to help you
+Then, install Zephyr's `west` tool. It is basically Python utility to help you
 manage source codes and configuration of your repositories. To install it use
 `pip` (Python's package manager):
 
@@ -73,7 +73,7 @@ Lastly, we need to setup the zephyr-SDK (compilers and tools to build Zephyr).
     $ sh zephyr-sdk-0.10.0-setup.run
 ```
 
-The script will lead you through the installation process. The last thing to do
+The script will guide you through the installation process. The last thing to do
 is to define two environment variables which will be later used by the Zephyr's
 build system
 
@@ -93,7 +93,7 @@ build target. Therefore, if you have [Qemu][4] installed you can immediately
 start to play with the system API.
 
 Firstly, before building an application, we need to configure environment for
-the Zephyr. Luckily, it is simple. To do this just `source` the `zephyr-env.sh`
+the Zephyr. Luckily, it is simple - just `source` the `zephyr-env.sh`
 script:
 
 ```shell
@@ -180,10 +180,10 @@ can control the way Zephyr OS is build from your application building process.
 
 Zephyr is installed separately somewhere in the system. So, you use it as a
 library. I suppose that they choose this way to simplify the process of
-configuration management and building process kernel with integrated.
+configuration management and building of the kernel.
 
 As an examples let's create simple application based on blinky example. First of
-all create working directory and `cmake` project file:
+all create working directory and `cmake`'s project file:
 
 ```shell
 $ mkdir app && cd app
@@ -205,10 +205,10 @@ target_sources(app PRIVATE src/main.c)
 ```
 
 Then copy source code of provided blinky example. Go back to the `zephyr`
-folder and then take `samples/basic/blinky/src/main.c` and copy it `main.c`.
+folder and then take `samples/basic/blinky/src/main.c` and copy `main.c`.
 
 Now connect your board and run `ninja flash`. It should compile and upload
-application and built-in LED will start blinking.
+application, built-in LED will start blinking.
 
 <div class="wide-boi" >
     <img id="gifka" alt="Zephyr RTOS blinky app" src="{static}/images/stm32-zephyr.gif">
