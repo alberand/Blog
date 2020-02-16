@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import ntpath
 
 THEME = 'theme'
 AUTHOR = 'Andrey Albershtein'
 SITENAME = 'Andrey Albershtein'
 # SITEURL = 'http://127.0.0.1:8000'
 SITEURL = 'http://192.168.1.33:8000'
+GITHUB_SOURCE_PATH = 'https://github.com/alberand/Blog/blob/master/content/'
 
 PATH = './content'
 
@@ -81,3 +83,11 @@ DEFAULT_DATE_FORMAT = '%d.%m.%Y'
 
 # Articles in a right order
 ARTICLE_ORDER_BY = 'reversed-date'
+
+def getGitHubPage(source_file):
+    filename = ntpath.basename(source_file)
+    return '{0}/{1}'.format(GITHUB_SOURCE_PATH, filename)
+
+JINJA_FILTERS = {
+    'asGitHubPage' : getGitHubPage
+}
