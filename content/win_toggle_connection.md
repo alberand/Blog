@@ -1,4 +1,4 @@
-Title: Toggling internet connection on Windows
+Title: Disable internet connection on Windows
 Date: 11.11.2018
 Modified: 11.11.2018
 Status: published
@@ -58,7 +58,9 @@ Put it somewhere near your tests and set it up as follows:
 That's all! Now you can toggle your internet connection from Command prompt by
 this command:
 
+```text
     schtasks /Run /TN toggle_connection
+```
 
 Now, you can run this as system command from your program (in my case it is
 Python script) to toggle network connection.

@@ -37,15 +37,18 @@ is very very simple:
 
 See what happens if we compile `main.c` only:
 
+```shell
     andrew at andrew-laptop in /tmp/mainfun
     ➔ gcc -Wall -o app main.c
 
     andrew at andrew-laptop in /tmp/mainfun
     ➔ ./app
+```
 
 Nothing =). But if we compile `debug.c` and then link it together with newly
 compiled `main.c`, then:
 
+```shell
     andrew at andrew-laptop in /tmp/mainfun
     ➔ gcc -Wall -c main.c
 
@@ -58,6 +61,7 @@ compiled `main.c`, then:
     andrew at andrew-laptop in /tmp/mainfun
     ➔ ./app
     [DEBUG] hello
+```
 
 Note that to compile files separately without linking you need to use `-c`
 argument.
@@ -75,16 +79,19 @@ Let's look what is really happening in the binaries and if it is true what is
 described in the previous paragraph. Firstly, let's compile both examples as two
 separated binaries for further comparison:
 
+```shell
     andrew at andrew-laptop in /tmp/mainfun
     ➔ gcc -Wall -o app main.o
     
     andrew at andrew-laptop in /tmp/mainfun
     ➔ gcc -Wall -o appd main.o debug.o
+```
 
 Next let's look what is the difference between them. With `nm` utility we can see
 that in the first binary there no `debug` symbol (reference to the function) at
 all.
 
+```shell
     andrew at andrew-laptop in /tmp/mainfun
     ➔ nm app | grep debug
     0000000000004028 D debugfunc
@@ -93,15 +100,19 @@ all.
     ➔ nm appd | grep debug
     0000000000001160 T debug
     0000000000004030 D debugfunc
+```
 
 Actually, there quite a lot of small discrepancies between two binaries. You can
 look on the differences with the following command:
 
+```shell
     andrew at andrew-laptop in /tmp/mainfun
     ➔ vimdiff <(objdump -d app) <(objdump -d appd)
+```
 
 Disassembly of the main function should be similar to this:
 
+```text
     0000000000001119 <main>:
         1119:       55                      push   %rbp
         111a:       48 89 e5                mov    %rsp,%rbp
@@ -114,6 +125,7 @@ Disassembly of the main function should be similar to this:
         1139:       b8 00 00 00 00          mov    $0x0,%eax
         113e:       5d                      pop    %rbp
         113f:       c3                      retq
+```
 
 The first two instruction are used to save address of the previous stack frame
 and switch to the frame local the current function (for more info see \[4\][4]).
@@ -130,12 +142,14 @@ What is located at address 0x4028? As we know that it is global static variable
 it should be somewhere in the `.data` section. We can find it out with following
 command:
 
+```shell
     ➔ objdump -s -j .data app
     app:     file format elf64-x86-64
     
     Contents of section .data:
      4018 00000000 00000000 20400000 00000000  ........ @......
      4028 00000000 00000000                    ........
+```
 
 As you can see it is all zeros. So, ZF will be 0 and `je` will jump to 1139.
 
@@ -143,6 +157,7 @@ In opposite case if there was something at 4028 then %rax wasn't zero, ZF was se
 to zero and `je` didn't jump. Even though the second binary has a little bit
 different addresses the `main()` is completely the same.
 
+```text
     0000000000001139 <main>:
         1139:       55                      push   %rbp
         113a:       48 89 e5                mov    %rsp,%rbp
@@ -155,10 +170,12 @@ different addresses the `main()` is completely the same.
         1159:       b8 00 00 00 00          mov    $0x0,%eax
         115e:       5d                      pop    %rbp
         115f:       c3                      retq
+```
 
 The address of the to which `debugfunc` points is 0x4030. Again, let's use
 `objdump` to see what is in the `.data` section:
 
+```shell
     ➔ objdump -s -j .data appd
     
     appd:     file format elf64-x86-64
@@ -166,6 +183,7 @@ The address of the to which `debugfunc` points is 0x4030. Again, let's use
     Contents of section .data:
      4020 00000000 00000000 28400000 00000000  ........(@......
      4030 60110000 00000000                    `.......
+```
 
 #### Thoughts
 
@@ -196,3 +214,8 @@ features. Maybe in future I will find a way how to use it.
 [4]: https://stackoverflow.com/questions/41912684/what-is-the-purpose-of-the-rbp-register-in-x86-64-assembler
 [5]: https://en.wikipedia.org/wiki/TEST_(x86_instruction)
 [6]: https://stackoverflow.com/questions/29421766/what-does-mov-offsetrip-rax-do
+
+<script>
+document.querySelector('div.highlight:nth-child(24)').setAttribute('style', 'margin: 0 -50px 0 -50px;')
+document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0 -50px 0 -50px;')
+</script>

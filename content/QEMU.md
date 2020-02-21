@@ -72,15 +72,15 @@ qemu -device e1000,netdev=network0,mac=00:00:00:00:00:00 \
         -netdev tap,id=network0,ifname=tap0,script=no,downscript=no
 ```
 
-Assign static IP address to the guest system:
+In the guest system assign static IP address to the network interface:
 
-```
+```sh
 ip addr add 192.168.100.224/24 broadcast 192.168.100.255 dev eth0
 ```
 
 Don't forget to add root password:
 
-```
+```sh
 passwd
 ```
 
