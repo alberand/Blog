@@ -9,8 +9,8 @@ SITENAME = 'Andrey Albershtein'
 EMAIL = 'andrey.albershteyn@gmail.com'
 # General configuration
 THEME = 'theme'
-# SITEURL = 'http://127.0.0.1:8000'
-SITEURL = 'http://192.168.1.33:8000'
+SITEURL = 'http://127.0.0.1:8000'
+# SITEURL = 'http://192.168.1.33:8000'
 GITHUB_SOURCE_PATH = 'https://github.com/alberand/Blog/blob/master/content/'
 PATH = './content'
 # Time/Zone settings
