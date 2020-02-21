@@ -74,3 +74,15 @@ h4 {
   margin: 0;
   color: inherit;
 }
+
+.note-sign {
+  display: none;
+}
+
+#note-normal .note-sign {
+  display: inline-block;
+}
+
+#note-normal .note-sign {
+  display: inline-block;
+}

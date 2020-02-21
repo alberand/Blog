@@ -38,7 +38,7 @@ Firstly, install dependencies:
 ```
 
 <p class="note-right">
-Commonly used notation for shell commands is <code>$</code> - commands executed
+<span class="note-sign">Note:</span> Commonly used notation for shell commands is <code>$</code> - commands executed
 by normal user and <code>#</code> commands executed as root
 </p>
 
@@ -137,7 +137,7 @@ You should see something similar:
 The last line is our application. Hurray!
 
 <p class="note-left">
-To exit from Qemu press <code>CTRL + A</code> and then <code>X</code>
+<span class="note-sign">Note: </span>To exit from Qemu press <code>CTRL + A</code> and then <code>X</code>
 </p>
 
 #### Compiling and running example 
@@ -227,7 +227,7 @@ completely separate from source code of the OS.
             document.getElementById("zephyr-logo-container").style["margin-left"] = "-60%";
             document.getElementById("zephyr-logo-container").style["margin-top"] = "-320px";
             fancyNotes(false);
-        } else if(width > 480 && width < 900){
+        } else if(width > 480 && width < 1230){
             console.log("switch to hor. mobile");
             document.getElementById("gifka").setAttribute("style", "width: 80%;")
             document.getElementById("zephyr-logo").style["opacity"] = "0.25";
