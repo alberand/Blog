@@ -7,6 +7,7 @@ import ntpath
 AUTHOR = 'Andrey Albershtein'
 SITENAME = 'Andrey Albershtein'
 EMAIL = 'andrey.albershteyn@gmail.com'
+TWITTER_USERNAME = 'alberand_'
 # General configuration
 THEME = 'theme'
 SITEURL = 'http://127.0.0.1:8000'
