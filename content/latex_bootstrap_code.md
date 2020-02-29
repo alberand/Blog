@@ -1,6 +1,6 @@
 Title: Latex - Bootstrap-like code emphasizing
 Date: 08.11.2016
-Author: Andrew Albershtein
+Author: Andrey Albershtein
 Status: published
 tags: Latex, Bootstrap, code snippet
 slug: latex-bootstrap-code

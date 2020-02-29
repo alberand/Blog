@@ -1,10 +1,10 @@
 Title: Octave - colored prompt messages
 Date: 24.10.2016
-Author: Andrew Albershteyn
+Author: Andrey Albershteyn
 Status: published
 Tags: Octave, colored messages, colored prompt
 
-![Octave Prompt Colored Messages]({static}/images/octave_messages.png)
+![Octave Prompt with colors]({static}/images/octave_messages.png)
 
 In Unix terminal we can use colorful output for emphasizing important pieces of 
 information such as fatal errors or warnings. As a student in the Technical
@@ -128,119 +128,119 @@ the [following page][2] and in table below.
 <div class="divTableCell">39</div>
 <div class="divTableCell">Default</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/39.png" />
+  <img alt="Colors in the bash" src="./images/bash_colors/39.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">30</div>
 <div class="divTableCell">Black</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/30.png" />
+  <img alt="Exapmle of colors in bash" src="./images/bash_colors/30.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">31</div>
 <div class="divTableCell">Red</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/31.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/31.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">32</div>
 <div class="divTableCell">Green</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/32.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/32.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">33</div>
 <div class="divTableCell">Yellow</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/33.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/33.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">34</div>
 <div class="divTableCell">Blue</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/34.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/34.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">35</div>
 <div class="divTableCell">Magenta</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/35.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/35.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">36</div>
 <div class="divTableCell">Cyan</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/36.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/36.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">37</div>
 <div class="divTableCell">Light Gray</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/37.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/37.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">90</div>
 <div class="divTableCell">Dark Gray</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/90.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/90.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">91</div>
 <div class="divTableCell">Light Red</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/91.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/91.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">92</div>
 <div class="divTableCell">Light Green</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/92.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/92.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">93</div>
 <div class="divTableCell">Light Yellow</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/93.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/93.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">94</div>
 <div class="divTableCell">Light Blue</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/94.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/94.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">95</div>
 <div class="divTableCell">Light Magenta</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/95.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/95.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">96</div>
 <div class="divTableCell">Light Cyan</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/96.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/96.png" />
 </div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell">97</div>
 <div class="divTableCell">White</div>
 <div class="divTableCell">
-  <img src="./images/bash_colors/97.png" />
+  <img alt="Example of colorful output in bash" src="./images/bash_colors/97.png" />
 </div>
 </div>
 </div>

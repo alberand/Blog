@@ -1,6 +1,6 @@
 Title: Host-only networking set up for QEMU hypervisor
 Date: 24.03.2017
-Author: Andrew Albershtein
+Author: Andrey Albershtein
 Status: published
 tags: qemu, linux, networking
 
