@@ -107,7 +107,6 @@
             {% for p in CATEGORIES %}
             <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
             {% endfor %}
-            <li{% if author or tag %} class="active"{% endif %}{% block archclass %}{{ ARCHCLASS }}{% endblock archclass %}><a href="{{ SITEURL }}/tags.html">Tags</a></li>
 
             {% if extra_siteurls %}
             {% for lang, url in extra_siteurls.items() %}
