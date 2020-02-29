@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .link-in-code {
   color: #c7254e;
   text-decoration: none;
