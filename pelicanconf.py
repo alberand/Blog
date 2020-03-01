@@ -12,7 +12,7 @@ TWITTER_USERNAME = 'alberand_'
 THEME = 'theme'
 SITEURL = 'http://127.0.0.1:8000'
 SITELOGO = {
-    'url': SITEURL + '/images/blog-logo.png',
+    'url': 'images/blog-logo.png',
     'width': "256",
     'height': "256",
 }
