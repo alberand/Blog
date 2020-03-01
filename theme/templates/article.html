@@ -1,47 +1,64 @@
-    {% extends "base.html" %}
-    {% block title %}{{ article.title }} - {{SITENAME}}{% endblock title %}
-    {% block content %}
-    <section id="content" class="article content">
-      <header>
-        <h2 class="entry-title">
-          {{ article.title }}
-        </h2>
-        <div class="text-muted" >
-        {% import 'translations.html' as translations with context %}
-        {{ translations.translations_for(article) }}
-        </div>
-        <div class="text-muted" style="margin-right: 20px;">{{ article.locale_date }}</div>
-        <!-- <div class="text-muted" style="margin-top: 4px;">
-            <a href="{{ SITEURL }}/{{ article.category.url }}"><div class="fa fa-lg fa-folder-open"></div> {{ article.category }}</a>
-            {% if article.tags %}
-            {% for tag in article.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}"><div class="fa fa-lg fa-tag"></div> {{ tag }}</a>
-            {% endfor %}
-            {% endif %}
-        </div> -->
-      </header>
-<!-- .entry-content -->
-      <div class="entry-content">
-          <article>
-        {{ article.content }}
-          </article>
-      </div>
-<!-- /.entry-content 
-      <footer class="post-info text-muted">
-      </footer>-->
-      <!-- /.post-info -->
-      {% include 'disqus.html' %}
-    </section>
-    <hr />
-    <div style="text-align: center;">
-        <p>
-		  For comments, please send me an 
-          <a class="link-in-code" href="mailto:albershteyn.andrey@gmail.com"
-            target="_top">email</a> or contact me on
-          <a class="link-in-code" href="https://t.me/alberand">Telegram</a>.
-		</p>
-		<p>
-		  Or create <a class="link-in-code" href="{{ article.source_path | asGitHubPage }}">pull request with improvements</a>
-		</p>
+{% extends "base.html" %}
+{% block title %}{{ article.title }} - {{SITENAME}}{% endblock title %}
+{% block content %}
+<section id="content" class="article content">
+  <header>
+    <h2 class="entry-title"> {{ article.title }} </h2>
+
+    <div class="text-muted" >
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(article) }}
     </div>
-    {% endblock %}
+
+    <div class="text-muted" style="margin-right: 20px;">{{ article.locale_date }}</div>
+  </header>
+
+  <div class="entry-content">
+      <article>
+		{{ article.content }}
+      </article>
+  </div>
+
+</section>
+<hr />
+<div style="text-align: center;">
+    <p>
+	  For comments, please send me an 
+      <a class="link-in-code" href="mailto:albershteyn.andrey@gmail.com"
+        target="_top">email</a> or contact me on
+      <a class="link-in-code" href="https://t.me/alberand">Telegram</a>.
+	</p>
+	<p>
+	  Or create <a class="link-in-code" href="{{ article.source_path | asGitHubPage }}">pull request with improvements</a>
+	</p>
+</div>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+    {
+      "@context":"http://schema.org",
+      "@type":"BlogPosting",
+      "mainEntityOfPage":"{{SITEURL}}/{{ article.url }}",
+      "author":{
+        "@type": "Person",
+        "name": "{{ article.author }}"
+      },
+      "headline": "{{ article.title }}",
+      "description": "{{ article.metadata['summary']|striptags }}",
+      "datePublished": "{{ article.date }}",
+      "dateModified": "{{ article.metadata['modified'] }}",
+      "keywords": "{{ article.metadata['keywords'] }}",
+      "image": "{{ SITEURL }}/{{ article.metadata['image'] }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ SITENAME }}",
+        "logo": {
+			"@type": "ImageObject",
+            "url": "{{ SITELOGO['url'] }}",
+			"height": "{{ SITELOGO['height'] }}",
+            "width": "{{ SITELOGO['width'] }}"
+        }
+      }
+    }
+</script>
+{% endblock %}
