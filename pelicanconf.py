@@ -11,6 +11,11 @@ TWITTER_USERNAME = 'alberand_'
 # General configuration
 THEME = 'theme'
 SITEURL = 'http://127.0.0.1:8000'
+SITELOGO = {
+    'url': SITEURL + '/images/blog-logo.png',
+    'width': "256",
+    'height': "256",
+}
 # SITEURL = 'http://192.168.1.33:8000'
 GITHUB_SOURCE_PATH = 'https://github.com/alberand/Blog/blob/master/content/'
 PATH = './content'
