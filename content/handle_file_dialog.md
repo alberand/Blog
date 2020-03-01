@@ -3,9 +3,11 @@ Date: 22.10.2018
 Modified: 22.10.2018
 Status: published
 Tags: Selenium, testing, AutoIt, xdotool
+Keywords: Selenium, testing, AutoIt, xdotool
 Slug: selenium-file-dialog
-Authors: Andrey Albershtein
-Summary: Handling browser's file dialog within Selenium test
+Author: Andrey Albershtein
+Summary: How to handle file dialog in any browser with Selenium framework.
+Lang: en
 
 Selenium is awesome automation tool for testing your website and simulating
 user's actions. I used it for a few times and found one important feature which

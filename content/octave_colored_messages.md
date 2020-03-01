@@ -1,8 +1,13 @@
 Title: Octave - colored prompt messages
 Date: 24.10.2016
-Author: Andrey Albershteyn
+Modified: 01.03.2020
+Author: Andrey Albershtein
 Status: published
 Tags: Octave, colored messages, colored prompt
+Keywords: Octave, colored messages, colored prompt
+Summary: How to print colorful messages in the Octave prompt using shell escape sequences.
+Lang: en
+Image: images/octave_messages.png
 
 ![Octave Prompt with colors]({static}/images/octave_messages.png)
 

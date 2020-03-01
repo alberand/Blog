@@ -2,11 +2,12 @@ Title: How to connect HC-05 module to Linux
 Date: 21.02.2020
 Modified: 21.02.2020
 Status: draft
-Tags: pelican, publishing
+Tags: arduino, hc-05, bluetooth, linux
+Keywords: arduino, hc-05, bluetooth, linux
 Slug: hc-05-linux
-Authors: Andrey Albershtein
+Author: Andrey Albershtein
 Summary: Configure and connect Bluetooth HC-05 module to Linux
-lang: en
+Lang: en
 
 intro
 

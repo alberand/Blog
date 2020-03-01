@@ -2,11 +2,12 @@ Title: How does "#pragma weak" work
 Date: 16.12.2019
 Modified: 15.01.2020
 Status: published
-Category: Article
 Slug: weak-directive
-Authors: Andrey Albershtein
-Summary: Using Linker's directive to define optional functions
-lang: en
+Tags: linker, pragma, gcc
+Keywords: linker, pragma, gcc
+Author: Andrey Albershtein
+Summary: Using Linker's directive "#pragma weak" to define optional functions or use it for debugging
+Lang: en
 
 From this very [interesting article][1] about linking of executables I find out
 that there exist a `#pragma weak foofunction` directive. It tells linker to

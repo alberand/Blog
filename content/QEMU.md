@@ -1,11 +1,14 @@
 Title: Host-only networking set up for QEMU hypervisor
 Date: 24.03.2017
+Modified: 01.03.2020
 Author: Andrey Albershtein
 Status: published
-tags: qemu, linux, networking
+Tags: qemu, linux, networking
+Keywords: qemu, linux, network, host-guest
+Summary: In this short note I will try to describe how to set up host-only network for QEMU. It means that guest system (run in QEMU) will be in LAN network with a host system (physical machine).
 
 In this short note I will try to describe how to set up host-only network for QEMU
-hypervisor. It means that guest system (run in QEMU) will be in LAN connection
+hypervisor. It means that guest system (run in QEMU) will be in LAN network
 with a host system (physical machine). I used it for some experiments with SSH 
 functionality of a guest system.
 

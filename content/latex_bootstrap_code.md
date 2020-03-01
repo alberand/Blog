@@ -1,10 +1,13 @@
 Title: Latex - Bootstrap-like code emphasizing
 Date: 08.11.2016
+Modified: 01.03.2020
 Author: Andrey Albershtein
 Status: published
-tags: Latex, Bootstrap, code snippet
-slug: latex-bootstrap-code
-lang: en
+Tags: Latex, Bootstrap, code snippet
+Keywords: Latex, Bootstrap, code snippet, highlighting
+Slug: latex-bootstrap-code
+Lang: en
+Summary: How to create nice text highlighting in Latex document
 
 Do you like those little highlighting for commands, files, code snippets and
 other stuff used on the sites with Bootstrap framework? I think it's really good
