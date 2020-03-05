@@ -227,7 +227,7 @@ completely separate from source code of the OS.
             document.getElementById("gifka").setAttribute("style", "width: 100%;")
             document.getElementById("zephyr-logo").style["opacity"] = "0.15";
             document.getElementById("zephyr-logo-container").style["margin-left"] = "-60%";
-            document.getElementById("zephyr-logo-container").style["margin-top"] = "-320px";
+            document.getElementById("zephyr-logo-container").style["margin-top"] = "-75%";
             fancyNotes(false);
         } else if(width > 480 && width < 1230){
             console.log("switch to hor. mobile");
