@@ -2,14 +2,6 @@ html {
   overflow-y: scroll;
 }
 
-.link-in-code {
-  color: #c7254e;
-  text-decoration: none;
-}
-.link-in-code:hover {
-  color: #c7254e;
-  text-decoration: none;
-}
 h5 {
     font-weight: bold;
 }
@@ -18,9 +10,19 @@ h4 {
     padding: 14px 0 14px 0;
 }
 
+.link-in-code {
+  color: #c7254e;
+  text-decoration: none;
+}
+.link-in-code:hover {
+  color: #c7254e;
+  text-decoration: none;
+}
+
 .navbar {
   border-radius: 0px !important;
 }
+
 
 #skills-box {
   width: 350px;
@@ -49,12 +51,16 @@ h4 {
   margin-bottom: 40px;
 }
 
-.wide-boi {
-  width: 100vw;
-  position: relative;
-  left: calc(-50vw + 50%);
-  text-align: center;
-  margin: 35px 0 35px 0;
+
+
+@media only screen and (max-width: 900px) { 
+  img {
+    width: 100vw;
+    position: relative;
+    left: calc(-50vw + 50%);
+    text-align: center;
+    margin: 35px 0 35px 0;
+  }
 }
 
 .note-left {

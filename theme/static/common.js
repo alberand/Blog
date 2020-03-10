@@ -28,7 +28,7 @@ function adjustDynamicElements(){
         console.log("switch to vert. mobile");
         switchToVertMobile();
         fancyNotes(false);
-    } else if(width > 480 && width < 1230){
+    } else if(width > 480 && width < 900){
         console.log("switch to hor. mobile");
         switchToHorMobile();
         fancyNotes(false);
