@@ -220,52 +220,32 @@ As you can see it is quite convenient to manage your application as it is
 completely separate from source code of the OS. 
 
 <script>
-    function adjustDynamicElements(){
-        var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        if(width < 480){
+    switchToVertMobile = function () {
             console.log("switch to vert. mobile");
             document.getElementById("gifka").setAttribute("style", "width: 100%;")
             document.getElementById("zephyr-logo").style["opacity"] = "0.15";
             document.getElementById("zephyr-logo-container").style["margin-left"] = "-60%";
             document.getElementById("zephyr-logo-container").style["margin-top"] = "-75%";
             fancyNotes(false);
-        } else if(width > 480 && width < 1230){
+    };
+
+    switchToHorMobile = function () {
             console.log("switch to hor. mobile");
             document.getElementById("gifka").setAttribute("style", "width: 80%;")
             document.getElementById("zephyr-logo").style["opacity"] = "0.25";
             document.getElementById("zephyr-logo-container").style["margin-left"] = "-30%";
             document.getElementById("zephyr-logo-container").style["margin-top"] = "-200px";
             fancyNotes(false);
-        } else{
+    };
+
+    switchToDesktop = function () {
             console.log("switch to desktop");
             document.getElementById("gifka").setAttribute("style", "")
             document.getElementById("zephyr-logo").style["opacity"] = "0.25";
             document.getElementById("zephyr-logo-container").style["margin-left"] = "-40%";
             document.getElementById("zephyr-logo-container").style["margin-top"] = "-200px";
             fancyNotes();
-        }
-    }
-
-    function fancyNotes(enabled=true){
-        var i;
-        var value = "note-normal";
-        if(enabled){
-            value = "";
-        }
-            
-        var x = document.getElementsByClassName("note-left");
-        for (i = 0; i < x.length; i++) {
-            x[i].setAttribute('id', value);
-        } 
-        //lazy
-        var y = document.getElementsByClassName("note-right");
-        for (i = 0; i < y.length; i++) {
-            y[i].setAttribute('id', value);
-        } 
-    }
-
-    window.addEventListener('resize', adjustDynamicElements)
-    window.addEventListener('load', adjustDynamicElements)
+    };
 </script>
 <style>
 .content h2 {
