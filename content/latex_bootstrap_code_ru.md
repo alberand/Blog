@@ -11,8 +11,9 @@ lang: ru
 написанных с помощью Latex. Как по мне это куда более контрастное выделение
 информации нежели с помощью курсива или жирного шрифта.
 
-![Screenshot of some pdf document with Bootstrap
-highlighting]({static}/images/latex_pdf_bcode_example.png)
+<div style="margin: 20px 0;">
+    <img class="image" alt="Screenshot of PDF document with Bootstrap highlighting" src="{static}/images/latex_pdf_bcode_example.png">
+</div>
 
 Я написал функцию для Latex, которая предоставляет подобную подсветку. Её очень
 легко использовать, единственное что нужно это добавить следующий кусок кода в
