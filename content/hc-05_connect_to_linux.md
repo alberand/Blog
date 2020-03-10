@@ -76,7 +76,10 @@ Install Bluetooth stack
 $ sudo apt-get install bluez bluez-utils
 ```
 
-Check if `btusb` is loaded into the kernel:
+Now, lets check if kernel module is installed and loaded. For some chips it will
+be enough to have `btusb` loaded but for other chips (like mine Broadcom chip)
+you will need to find and install appropriate driver. You can check if `btusb`
+is loaded into the kernel by the following command:
 
 ```shell
 $ lsmod | grep btusb
@@ -87,20 +90,38 @@ btintel                32768  1 btusb
 bluetooth             675840  5 btrtl,btintel,btbcm,btusb
 ```
 
-Install generate Bluetooth driver
+If there is nothing in the output you should try to install general Bluetooth
+driver:
 
 ```shell
 $ sudo apt-get install btusb
 ```
 
-Start and enable Bluetooth service:
+If it won't work try to find driver for your particular device. You can find out
+some information about name of your Bluetooth chip with following commands:
+
+```shell
+$ lsusb | grep Bluetooth
+... output is hidden ...
+$ dmesg | grep Bluetooth
+... output is hidden ...
+```
+
+<p class="note-right">
+<span class="note-sign">Note:</span> 
+In case you also have <code>Broadcom</code> chip I would recommend to look into
+this [instruction][4]. It seems to be a common solution.
+</p>
+
+After driver is installed and kernel modules is loaded start and enable
+Bluetooth service:
 
 ```shell
 $ sudo systemctl enable bluetooth.service
 $ sudo systemctl start bluetooth.service
 ```
 
-Check that service successfully started and is fine: 
+Check that service successfully started:
 
 ```shell
 $ sudo systemctl status bluetooth.service
@@ -115,8 +136,10 @@ $ sudo systemctl status bluetooth.service
              └─779 /usr/lib/bluetooth/bluetoothd
 ```
 
-reboot
-check dmesg. should be similar
+Now, if you installed your driver reset your PC/laptop. It should not be reboot
+but power reset (power off -> power on) because during reboot your drivers could
+be still stay unloaded. After boot check output of `dmesg` it should be
+something similar to this:
 
 ```shell
 $ dmesg | grep Bluetooth
@@ -148,7 +171,7 @@ Agent registered
 [bluetooth]# 
 ```
 
-Power up built-in bluetooth module and run scanning
+Power up Bluetooth module and turn on the scan:
 
 ```shell
 [bluetooth]# power on
@@ -162,6 +185,7 @@ Discovery started
 [CHG] Device 00:13:EF:00:03:04 RSSI: -59
 ```
 
+After you will see your HC-05 you need to 
 Trust, Pair and connect to the HC-05
 
 ```shell
@@ -217,13 +241,13 @@ https://wiki.archlinux.org/index.php/Bluetooth
 
 * [HC-05 Bluetooth modules on Aliexpress (non-referal link)][1]
 * [HCTOOLS application on Github][3]
-* [][4]
-* [][5]
+* [How to fix Bluetooth with Broadcom chip][4]
+* [Arch Linux Wiki - Bluetooth][5]
 * [][3]
 
 [1]: https://www.aliexpress.com/wholesale?catId=0&SearchText=HC-05+Bluetooth
 [2]: https://platformio.org/
 [3]: https://github.com/alberand/hctools
-[4]: 
-[5]: 
+[4]: https://askubuntu.com/questions/632336/bluetooth-broadcom-43142-isnt-working/632348#632348 
+[5]: https://wiki.archlinux.org/index.php/Bluetooth
 [6]: 
