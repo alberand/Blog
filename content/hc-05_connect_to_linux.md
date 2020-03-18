@@ -9,14 +9,23 @@ Author: Andrey Albershtein
 Summary: Configure and connect Bluetooth HC-05 module to Linux
 Lang: en
 
-In Linux, sometimes, even a seemingly simple task can end up to be quite hard to
-solve. In this note I want to describe how to configure and connect [HC-05
-Bluetooth module][1] to the Linux PC.
+In Linux even a initially simple task could end up being such a big headache
+especially when it Bluetooth. In this note I want to describe how to configure
+and connect [HC-05 Bluetooth module][1] to the Linux PC.
 
-Play with these cheap (about `3$`) Bluetooth modules I wrote a small application
-which can help to diagnose and configure them. In this article I use Arduino
-Nano (atmega328p) and bare HC-05 without linear regulator. However, I create
-custom PCB for easier access to the pins on the breadboard.
+Playing with these cheap (about `3$`) Bluetooth modules I wrote a small
+application which can help to diagnose and configure them. In this article I use
+Arduino Nano (atmega328p) and bare HC-05 without linear power regulator. I think
+that you won't need solder anything as we will need only TX, RX and KEY pins of
+the HC-05.
+
+<div style="text-align: center;">
+    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/hc-05.jpg">
+    <p class="picture-legend">
+        Image is taken from 
+        <a alt="Arduino e-shop" href="https://www.laskarduino.cz/bluetooth-modul-hc-05-ttl/">www.laskarduino.cz</a>
+    </p>
+</div>
 
 #### [`HCTOOLS`][3] - Arduino application
 
@@ -46,8 +55,6 @@ has following commands/features:
 * **baudrate** - change baudrate of the module. This baudrate is used when
   module communicates with Arduino.
 
-TODO Gif of the console? (those look nice)
-
 To use it firstly you need to connect your Arduino and HC-05 module together.
 
 **Hardware Setup**. The principle is that we actually need to control power to
@@ -55,7 +62,9 @@ the HC-05 module and pin 34 (or PIO11 or KEY). This way the application can
 switch module between normal and AT command mode. That is actually everything
 what we need 😀.
 
-TODO: [Schematics][]
+<div style="text-align: center;">
+    <img id="schematics" class="image" alt="Schematics of connection of HC-05 Bluetooth module and Arduino" style="max-height: 400px;" src="{static}/images/008-schematics.png">
+</div>
 
 **Let's try it out!**. Connect Arduino and HC-05 as shown in the schematics
 above and flash the application to the Arduino (with [platformio][2] or Arduino
@@ -70,7 +79,7 @@ Type `help` to see all the available commands and their parameters.
 
 #### Back to PC
 
-Install Bluetooth stack
+Install Bluetooth stack:
 
 ```shell
 $ sudo apt-get install bluez bluez-utils
@@ -110,7 +119,7 @@ $ dmesg | grep Bluetooth
 <p class="note-right">
 <span class="note-sign">Note:</span> 
 In case you also have <code>Broadcom</code> chip I would recommend to look into
-this [instruction][4]. It seems to be a common solution.
+this <a href="https://askubuntu.com/questions/632336/bluetooth-broadcom-43142-isnt-working/632348#632348">instruction</a>. It seems to be a common solution.
 </p>
 
 After driver is installed and kernel modules is loaded start and enable
@@ -158,11 +167,9 @@ $ dmesg | grep Bluetooth
 
 #### Pairing with device
 
-power up
-try to connect with android phone
-TODO try out with iPhone
-
-run bluetoothctl
+First of all, I always try to connect to the HC-05 with Android phone. It always
+a good sign if everything going well. So, in case you have one try that. Anyway,
+in the linux run `bluetoothctl`:
 
 ```shell
 $ sudo bluetoothctl
@@ -171,7 +178,7 @@ Agent registered
 [bluetooth]# 
 ```
 
-Power up Bluetooth module and turn on the scan:
+Make power reset of the board build before and turn on scanning on your PC:
 
 ```shell
 [bluetooth]# power on
@@ -185,8 +192,10 @@ Discovery started
 [CHG] Device 00:13:EF:00:03:04 RSSI: -59
 ```
 
-After you will see your HC-05 you need to 
-Trust, Pair and connect to the HC-05
+After something like HC-05 will appear on the screen you will need to make it
+trustworthy, pair it with your PC and try to connect to it. That can be done by
+the following commands `trust <MAC>`, `pair <MAC>` and `connect <MAC>`
+accordingly.
 
 ```shell
 [bluetooth]# trust 00:13:EF:00:03:04
@@ -211,7 +220,7 @@ Device mymodule not available
 [mymodyle]# 
 ```
 
-Disconnet
+If you'd like to check if disconnect works:
 
 ```shell
 [mymodule]# disconnect
@@ -221,21 +230,98 @@ Successful disconnected
 [bluetooth]# 
 ```
 
+#### Time to open serial monitor
+
+The last step is to create serial port. The following command binds your
+Bluetooth device with rfcomm (`/dev/rmcomm0` in this case) device. It won't
+immediately connect to your HC-05 only when an application such as serial
+monitor will open it. More about [RFCOMM protocol and devices][6].
+
+Unfortunately, on some systems (e.g. arch linux) `rfcomm` utility can be
+deprecated and won't be available in the official repository. Try to find
+instruction of how to install it on your particular system (See [Arch Wiki][9]). 
+
+```shell
+    $ sudo rfcomm bind rfcomm0 <MAC-OF-HC-05>
+```
+
+Now you should have serial port `/dev/rmcomm0` which is attached to your
+Bluetooth device. 
+
+Let's test that it works. In another terminal open serial monitor attached to
+Arduino with `HCTOOLS` application and run `echo` command:
+
+```shell
+    $ pio -e nano -t monitor
+    ...long output is hidden...
+    Looking for advanced Serial Monitor with UI? Check
+    http://bit.ly/pio-advanced-monitor                     with IPv6
+    --- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+    --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+    HCTOOLS. Version: 1.0
+    # echo
+    Echoing every received character. CTRL-D to stop it.
+```
+
+Try to open serial monitor on this port and communicate with device:
+
+```shell
+    $ pio device monitor -p /dev/rfcomm0 -b 115200
+    ...long output is hidden...
+    --- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+    --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+    Hello
+```
+
+Now, if you send something to Arduino it will send it to HC-05 and then to your
+`/dev/rfcomm0` port. If you will send something to the `/dev/rfcomm0` with a
+newline it will send it back to you.
+
+<div style="text-align: center;">
+    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/008-hc-05-overall.png">
+</div>
 
 #### Troubleshooting
 
-Can't open RFCOMM control socket: Protocol not supported 
-- No rfcomm module
-https://duckduckgo.com/?t=ffab&q=Can%27t+open+RFCOMM+control+socket%3A+Protocol+not+supported&ia=web
+There is list of problems which I faced during my attempts to configure
+everything right.
 
-Can't modprobe rfcomm
-https://duckduckgo.com/?t=ffab&q=No+default+controller+available&ia=web
+1. The following messages in response to  `rfcomm bind` command probably means
+   that you don't have kernel module for RFCOMM protocol. Try to load it `sudo
+   modprobe rfcomm`. Also try to update the kernel.
 
-In case of other application occupied Bluetooth (startx ->connman occupies)
-https://duckduckgo.com/?t=ffab&q=No+default+controller+available&ia=web
+    ```
+        Can't open RFCOMM control socket: Protocol not supported 
+    ```
 
-A lot of information
-https://wiki.archlinux.org/index.php/Bluetooth
+2. If `bluetoothctl` show `No default controller available` make sure that you
+   have your driver installed and then run `bluetoothctl` with `sudo`
+   ([stackoverflow answer][7]).
+
+3. It can happen that other application is using Bluetooth and by doing so it
+   will occupy Bluetooth controller (in my case it was `connman`). You can
+   unblock it by running flowing command:
+
+        $ sudo rfkill list
+        0: tpacpi_bluetooth_sw: Bluetooth
+            Soft blocked: no
+            Hard blocked: no
+        1: hci0: Bluetooth
+            Soft blocked: yes
+            Hard blocked: no
+        5: phy3: Wireless LAN
+            Soft blocked: no
+            Hard blocked: no
+        $ sudo rfkill unblock all
+        $ sudo rfkill list
+        ...
+        1: hci0: Bluetooth
+            Soft blocked: no
+            Hard blocked: no
+        ...
+
+4. As always power on/off help in a few cases 😀.
+5. A lot of information about Bluetooth is available on the [Arch Linux Wiki][8]
 
 #### References
 
@@ -243,11 +329,32 @@ https://wiki.archlinux.org/index.php/Bluetooth
 * [HCTOOLS application on Github][3]
 * [How to fix Bluetooth with Broadcom chip][4]
 * [Arch Linux Wiki - Bluetooth][5]
-* [][3]
+* [RFCOMM Protocol][6]
 
 [1]: https://www.aliexpress.com/wholesale?catId=0&SearchText=HC-05+Bluetooth
 [2]: https://platformio.org/
 [3]: https://github.com/alberand/hctools
 [4]: https://askubuntu.com/questions/632336/bluetooth-broadcom-43142-isnt-working/632348#632348 
 [5]: https://wiki.archlinux.org/index.php/Bluetooth
-[6]: 
+[6]: https://www.amd.e-technik.uni-rostock.de/ma/gol/lectures/wirlec/bluetooth_info/rfcomm.html#Device%20Types
+[7]: https://stackoverflow.com/questions/48279646/bluetoothctl-no-default-controller-available
+[8]: https://wiki.archlinux.org/index.php/Bluetooth
+[9]: https://wiki.archlinux.org/index.php/bluetooth#Deprecated_BlueZ_tools
+
+<script>
+ margin: ;
+    switchToVertMobile = function () {
+            document.getElementById("schematics").style["margin"] = "30px 0";
+            document.getElementById("schematics").style["padding"] = "0 20px";
+    };
+
+    switchToHorMobile = function () {
+            document.getElementById("schematics").style["margin"] = "30px 0";
+            document.getElementById("schematics").style["padding"] = "0 20px";
+    };
+
+    switchToDesktop = function () {
+            document.getElementById("schematics").style["margin"] = "30px 0 30px -40px";
+            document.getElementById("schematics").style["padding"] = "0";
+    };
+</script>
