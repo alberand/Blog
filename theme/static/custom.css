@@ -42,6 +42,12 @@ h4 {
   float: right;
 }
 
+.picture-legend {
+  color: #9d9d9d;
+  font-size: 12px;
+  text-align: center;
+}
+
 .centered-image {
   text-align: center;
 }
