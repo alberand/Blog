@@ -1,18 +1,18 @@
 Title: How to connect HC-05 module to Linux
-Date: 21.03.2020
-Modified: 21.03.2020
-Status: draft
+Date: 23.03.2020
+Modified: 23.03.2020
+Status: published
 Tags: arduino, hc-05, bluetooth, linux
 Keywords: arduino, hc-05, bluetooth, linux
 Slug: hc-05-linux
 Author: Andrey Albershtein
-Summary: Configure and connect Bluetooth HC-05 module to Linux
+Summary: Configure and connect Bluetooth HC-05 module to Linux machine
 Lang: en
+Image: images/hc-05.jpg
 
 Bluetooth on Linux has always been a headache for me. As I expected connecting
 HC-05 module to my laptop wasn't any better. In this note I want to describe
-what problems I faced and how to solve them to configure and connect [HC-05
-Bluetooth module][1] to the Linux PC.
+how to configure and connect [HC-05 Bluetooth module][1] to the Linux PC.
 
 Playing with these cheap (about `3$`) Bluetooth modules I wrote a small
 application which can help to diagnose and configure them. In this article I use
