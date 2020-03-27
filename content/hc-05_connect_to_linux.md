@@ -194,9 +194,10 @@ $ dmesg | grep Bluetooth
 
 ### Pairing with the device
 
-First of all, I always try to connect to the HC-05 with Android phone. It always
-a good sign if everything going well. So, in case you have one try that. Anyway,
-in the linux run `bluetoothctl`:
+First of all, I always try to connect to the HC-05 with Android phone. I used
+[Serial Bluetooth Terminal][10] to connect and send some text to the module to
+check that it alive. It always a good sign if everything going well. So, in case
+you have one try that. Anyway, in the linux run `bluetoothctl`:
 
 ```console
 $ sudo bluetoothctl
@@ -370,6 +371,7 @@ everything right.
 [7]: https://stackoverflow.com/questions/48279646/bluetoothctl-no-default-controller-available
 [8]: https://wiki.archlinux.org/index.php/Bluetooth
 [9]: https://wiki.archlinux.org/index.php/bluetooth#Deprecated_BlueZ_tools
+[10]: https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en
 
 <script>
  margin: ;
