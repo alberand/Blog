@@ -84,7 +84,7 @@ into AT mode.
 The transistor can be any PNP transistor from your Arduino kit. Make sure that
 it is PNP by googling its datasheet. I used `2N3906`. The resistor also can
 vary. It is needed to limit current going through the base of the transistor. I
-picked 10 Ohm one. I suppose that anything under 500 Ohm would work.
+picked 1000 Ohm one. I suppose that anything around 500 - 1500 Ohm would work.
 
 **Let's try this out!** Connect Arduino and HC-05 as shown in the schematics
 above and flash the application to the Arduino (with [platformio][2] or Arduino
