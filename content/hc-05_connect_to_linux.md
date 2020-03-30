@@ -6,8 +6,7 @@ Tags: arduino, hc-05, bluetooth, linux
 Keywords: arduino, hc-05, bluetooth, linux
 Slug: hc-05-linux
 Author: Andrey Albershtein
-Summary: Connect Bluetooth HC-05 module to Linux PC using Arduino Nano for
-configuration
+Summary: Connect Bluetooth HC-05 module to Linux PC using Arduino Nano for configuration
 Lang: en
 Image: images/hc-05.jpg
 
