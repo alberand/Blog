@@ -310,8 +310,9 @@ newline it will send it back to you.
     <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/008-hc-05-overall.png">
 </div>
 
-For convenience you can add a `udev` rule to have a nice name for your device.
-The name is specified in the `SYMLINK` attribute. For example:
+For convenience you can add a `udev` rule to have a nice name for your device
+instead of `/dev/rfcomm0`.  The name is specified in the `SYMLINK` attribute.
+For example:
 
 ```console
 $ cat /etc/udev/rules.d/80-blueled.rules 
@@ -336,6 +337,8 @@ and the attributes from one single parent device.
     ATTR{channel}=="1"
     ATTR{address}=="00:13:ef:00:03:04"
 ```
+
+Now your device should be available under `/dev/blueled` path.
 
 #### Troubleshooting
 
