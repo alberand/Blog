@@ -310,6 +310,33 @@ newline it will send it back to you.
     <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/008-hc-05-overall.png">
 </div>
 
+For convenience you can add a `udev` rule to have a nice name for your device.
+The name is specified in the `SYMLINK` attribute. For example:
+
+```console
+$ cat /etc/udev/rules.d/80-blueled.rules 
+KERNEL=="rfcomm[0-9]", SUBSYSTEM=="tty", DRIVER=="", ATTR{channel}=="1", ATTR{address}=="00:13:ef:00:03:04", SYMLINK+="blueled"
+```
+
+As you can see there is attributes of particular device. These attributes can be
+found with following command:
+
+```console
+$ sudo udevadm info --attribute-walk --name=rfcomm0
+Udevadm info starts with the device specified by the devpath and then
+walks up the chain of parent devices. It prints for every device
+found, all possible attributes in the udev rules key format.
+A rule to match, can be composed by the attributes of the device
+and the attributes from one single parent device.
+
+  looking at device '/devices/virtual/tty/rfcomm0':
+    KERNEL=="rfcomm0"
+    SUBSYSTEM=="tty"
+    DRIVER==""
+    ATTR{channel}=="1"
+    ATTR{address}=="00:13:ef:00:03:04"
+```
+
 #### Troubleshooting
 
 There is list of problems which I faced during my attempts to configure
