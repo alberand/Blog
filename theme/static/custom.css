@@ -70,7 +70,7 @@ h3 {
   margin: 35px 0 35px 0;
 }
 
-@media only screen and (max-width: 1200px) { 
+@media only screen and (max-width: 700px) { 
   .image {
     width: 100vw;
     position: relative;
@@ -85,7 +85,7 @@ h3 {
   margin-left: -260px;
   margin-top: -100px;
   color: #666;
-  line-height: normal;
+  line-height: 2rem;
 }
 
 .note-right {
@@ -94,7 +94,7 @@ h3 {
   margin-left: 750px;
   margin-top: -100px;
   color: #666;
-  line-height: normal;
+  line-height: 2rem;
 }
 
 #note-normal {

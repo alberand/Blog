@@ -20,7 +20,7 @@ Arduino Nano (atmega328p) and calssical HC-05 with a linear power regulator.
 There is no need to solder anything complicated - only one little wire 😀.
 
 <div style="text-align: center;">
-    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/hc-05.jpg">
+    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 534px; height: 400px;" src="{static}/images/hc-05.jpg">
     <p class="picture-legend">
         Image is taken from 
         <a alt="Arduino e-shop" href="https://www.laskarduino.cz/bluetooth-modul-hc-05-ttl/">www.laskarduino.cz</a>
