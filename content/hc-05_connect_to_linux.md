@@ -168,7 +168,7 @@ $ sudo systemctl status bluetooth.service
              └─779 /usr/lib/bluetooth/bluetoothd
 ```
 <p class="note-left">
-<span class="note-sign">Note:</span> There should be:<br><code>Active: active (running)</code>
+<span class="note-sign">Note:</span> There should be - <br><code>Active: active (running)</code>
 </p>
 
 Now, if you installed your driver reset your PC/laptop. It should not be reboot
@@ -403,24 +403,31 @@ everything right.
 [10]: https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&hl=en
 
 <script>
- margin: ;
     switchToVertMobile = function () {
             document.getElementById("schematics").style["margin"] = "30px 0";
             document.getElementById("schematics").style["padding"] = "0 20px";
+            document.querySelector('.note-left').setAttribute('style', 'margin-top: 0;')
+            document.querySelector('.note-left br').setAttribute('style', 'display: none;')
+            document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0;')
     };
 
     switchToHorMobile = function () {
             document.getElementById("schematics").style["margin"] = "30px 0";
             document.getElementById("schematics").style["padding"] = "0 20px";
+            document.querySelector('.note-left').setAttribute('style', 'margin-top: 0;')
+            document.querySelector('.note-left br').setAttribute('style', 'display: none;')
+            document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0;')
     };
 
     switchToDesktop = function () {
             document.getElementById("schematics").style["margin"] = "30px 0 30px -40px";
             document.getElementById("schematics").style["padding"] = "0";
+            document.querySelector('.note-left br').setAttribute('style', 'display: block;')
+            document.querySelector('.note-left').setAttribute('style', 'margin-top: -180px;')
+            document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0 -50px 0 -50px;')
     };
 
     // make em wide
-    document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0 -50px 0 -50px;')
 </script>
 </script>
 <style>
