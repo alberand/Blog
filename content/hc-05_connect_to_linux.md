@@ -418,6 +418,10 @@ everything right.
             document.getElementById("schematics").style["margin"] = "30px 0 30px -40px";
             document.getElementById("schematics").style["padding"] = "0";
     };
+
+    // make em wide
+    document.querySelector('div.highlight:nth-child(31)').setAttribute('style', 'margin: 0 -50px 0 -50px;')
+</script>
 </script>
 <style>
 h3 {
