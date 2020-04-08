@@ -16,7 +16,7 @@ how to configure and connect [HC-05 Bluetooth module][1] to the Linux PC.
 
 Playing with these cheap (about `3$`) Bluetooth modules I wrote a small
 application which can help to diagnose and configure them. In this article I use
-Arduino Nano (atmega328p) and calssical HC-05 with a linear power regulator.
+Arduino Nano (atmega328p) and classical HC-05 with a linear power regulator.
 There is no need to solder anything complicated - only one little wire 😀.
 
 <div style="text-align: center;">
@@ -34,8 +34,8 @@ but it is simpler than doing everything by hand.
 
 This application can be used on most of the Arduinos starting from Arduino Nano.
 You can download it from the [Github][3]. I used [platformio][2] as a development
-environment so if you familiar with it you know what to do (look into
-`platformio.ini`). If not you can use classical Arduino IDE. To do so you need
+environment so if you are familiar with it you know what to do (look into
+`platformio.ini`). If not, you can use classical Arduino IDE. To do so, you need
 to:
 
 1. Copy content of `src/main.cpp` into Arduino IDE
@@ -171,8 +171,8 @@ $ sudo systemctl status bluetooth.service
 <span class="note-sign">Note:</span> There should be - <br><code>Active: active (running)</code>
 </p>
 
-Now, if you installed your driver reset your PC/laptop. It should not be reboot
-but power reset (power off -> power on) because during reboot your drivers could
+Now, after you install the driver reset your PC/laptop. It really has to be 
+power reset (power off -> power on) because during reboot your drivers could
 still stay unloaded (you know just in case). After boot check output of
 `dmesg` it should be something similar to this:
 
@@ -195,58 +195,59 @@ $ dmesg | grep Bluetooth
 
 First of all, I always try to connect to the HC-05 with Android phone. I used
 [Serial Bluetooth Terminal][10] to connect and send some text to the module to
-check that it alive. It always a good sign if everything going well. So, in case
-you have one try that. Anyway, in the linux run `bluetoothctl`:
+check that it's alive. It is always a good sign that everything going well. So,
+in case you have one try that. Anyway, in the linux run `bluetoothctl`:
 
 ```console
 $ sudo bluetoothctl
-Agent registered
-[CHG] Controller 80:56:F2:E5:43:E6 Pairable: yes
+ Agent registered
+ [CHG] Controller 80:56:F2:E5:43:E6 Pairable: yes
 [bluetooth]# 
 ```
 
-Make power reset of the HC-05 module and then turn on scanning on your PC:
+Make power reset of the HC-05 module and then turn on Bluetooth scan of nearby
+devices on your PC:
 
 ```console
 [bluetooth]# power on
-Changing power on succeeded
+ Changing power on succeeded
 [bluetooth]# scan on
-Discovery started
-[CHG] Controller 80:56:F2:E5:43:E6 Discovering: yes
-[CHG] Device 78:BD:BC:D3:D5:68 RSSI: -92
-[CHG] Device 78:BD:BC:D3:D5:68 Name: [TV] UE40J6272
-[CHG] Device 78:BD:BC:D3:D5:68 Alias: [TV] UE40J6272
-[CHG] Device 00:13:EF:00:03:04 RSSI: -59
+ Discovery started
+ [CHG] Controller 80:56:F2:E5:43:E6 Discovering: yes
+ [CHG] Device 78:BD:BC:D3:D5:68 RSSI: -92
+ [CHG] Device 78:BD:BC:D3:D5:68 Name: [TV] UE40J6272
+ [CHG] Device 78:BD:BC:D3:D5:68 Alias: [TV] UE40J6272
+ [CHG] Device 00:13:EF:00:03:04 RSSI: -59
 ```
 
 The exact MAC address of the HC-05 can be obtained by the `AT+ADDR?` command in
-the `atmode`. 
+the `atmode`. See application above👌.
 
-After something like HC-05 (`00:13:EF:00:03:04` in my case) will appear on the
+After something like HC-05 (`00:13:EF:00:03:04` in my case) has appeared on the
 screen you will need to make it trustworthy, pair it with your PC and try to
 connect to it. That can be done by the following commands `trust <MAC>`, `pair
 <MAC>` and `connect <MAC>` accordingly.
 
 ```console
 [bluetooth]# trust 00:13:EF:00:03:04
-[CHG] Device 00:13:EF:00:03:04 Trusted: yes
-Changing 00:13:EF:00:03:04 trust succeeded
+ [CHG] Device 00:13:EF:00:03:04 Trusted: yes
+ Changing 00:13:EF:00:03:04 trust succeeded
 [bluetooth]# pair 00:13:EF:00:03:04
-Attempting to pair with 00:13:EF:00:03:04
-Request PIN code
+ Attempting to pair with 00:13:EF:00:03:04
+ Request PIN code
 [agent] Enter PIN code: 1234
-[CHG] Device 00:13:EF:00:03:04 UUIDs: 00001101-0000-1000-8000-00805f9b34fb
-[CHG] Device 00:13:EF:00:03:04 ServicesResolved: yes
-[CHG] Device 00:13:EF:00:03:04 Paired: yes
-Pairing successful
+ [CHG] Device 00:13:EF:00:03:04 UUIDs: 00001101-0000-1000-8000-00805f9b34fb
+ [CHG] Device 00:13:EF:00:03:04 ServicesResolved: yes
+ [CHG] Device 00:13:EF:00:03:04 Paired: yes
+ Pairing successful
 [bluetooth]# set-alias mymodule
-[CHG] Device 00:13:EF:00:03:04 Alias: mymodule
-Changing mymodule succeeded
+ [CHG] Device 00:13:EF:00:03:04 Alias: mymodule
+ Changing mymodule succeeded
 [bluetooth]# connect mymodule
-Device mymodule not available
-[CHG] Device 00:13:EF:00:03:04 ServicesResolved: no
-[CHG] Device 00:13:EF:00:03:04 Connected: no
-[CHG] Device 00:13:EF:00:03:04 Connected: yes
+ Device mymodule not available
+ [CHG] Device 00:13:EF:00:03:04 ServicesResolved: no
+ [CHG] Device 00:13:EF:00:03:04 Connected: no
+ [CHG] Device 00:13:EF:00:03:04 Connected: yes
 [mymodyle]# 
 ```
 
@@ -254,9 +255,9 @@ If you'd like to check if disconnect works:
 
 ```console
 [mymodule]# disconnect
-Attempting to disconnect from 00:13:EF:00:03:04
-Successful disconnected
-[CHG] Device 00:13:EF:00:03:04 Connected: no
+ Attempting to disconnect from 00:13:EF:00:03:04
+ Successful disconnected
+ [CHG] Device 00:13:EF:00:03:04 Connected: no
 [bluetooth]# 
 ```
 
@@ -292,7 +293,7 @@ Arduino with `HCTOOLS` application and run `echo` command:
     Echoing every received character. CTRL-D to stop it.
 ```
 
-Try to open serial monitor on this port and communicate with device:
+Try to open serial monitor on the `rfcomm` port and send something to the device:
 
 ```console
     $ pio device monitor -p /dev/rfcomm0 -b 115200
@@ -310,9 +311,9 @@ newline it will send it back to you.
     <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/008-hc-05-overall.png">
 </div>
 
-For convenience you can add a `udev` rule to have a nice name for your device
-instead of `/dev/rfcomm0`.  The name is specified in the `SYMLINK` attribute.
-For example:
+That basically it. For convenience you can add a `udev` rule to have a nice name
+for your device instead of `/dev/rfcomm0`.  The name is specified in the
+`SYMLINK` attribute. For example:
 
 ```console
 $ cat /etc/udev/rules.d/80-blueled.rules 
