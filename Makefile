@@ -45,6 +45,7 @@ help:
 	@echo '   make clean                          remove the generated files         '
 	@echo '   make regenerate                     regenerate files upon modification '
 	@echo '   make publish                        generate using production settings '
+	@echo '   make proselint                      Run `proselint` on changed content '
 	@echo '   make serve [PORT=8000]              serve site at http://localhost:8000'
 	@echo '   make serve-global [SERVER=0.0.0.0]  serve (as root) to $(SERVER):80    '
 	@echo '   make devserver [PORT=8000]          start/restart develop_server.sh    '
@@ -124,4 +125,7 @@ github: publish
 materials:
 	$(MAKE) -C content/materials
 
-.PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
+proselint:
+	-for file in $$(git ls-files -m content); do proselint "$$file"; done
+
+.PHONY: html help clean regenerate serve serve-global devserver publish proselint ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
