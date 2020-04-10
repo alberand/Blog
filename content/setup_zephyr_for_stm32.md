@@ -18,9 +18,9 @@ which catch my attention a long time ago - [Zephyr OS][1].
     <img id="zephyr-logo" style="width:400px; opacity: 0.25;" alt="Zephyr RTOS" src="{static}/images/zephyr-logo.jpg">
 </div>
 
-After a first look it appeared to me as very nicely design OS with rapidly
-growing number of features. The other thing which I noticed is that the list of
-supported boards is enormously big, it can come handy in the future. Moreover, 
+After a first look it appeared to me as nicely design OS with rapidly growing
+number of features. The other thing which I noticed is that the list of
+supported boards is enormously big, it can come handy in the future. Moreover,
 it is under intense development by the Intel corporation which means that it
 won't die in a few years (I hope 😀).
 

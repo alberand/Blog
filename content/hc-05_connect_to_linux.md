@@ -27,7 +27,7 @@ There is no need to solder anything complicated - only one little wire 😀.
     </p>
 </div>
 
-Firstly, let me describe this Arduino app. I can't say that it is very reliable
+Firstly, let me describe this Arduino app. I can't say that it is reliable
 but it is simpler than doing everything by hand.
 
 ### [`HCTOOLS`][3] - Arduino application
@@ -50,7 +50,7 @@ has following commands/features:
   sending some text to it. The module will receive the text, send it to Arduino,
   Arduino will send it back to the module and then module will send it back to
   you. 
-* **atmode** - switch HC-05 into AT command mode.  The Arduino will just into
+* **atmode** - switch HC-05 into AT command mode. The Arduino will just into
   serial passtrhogh device between your PC and HC-05. This allow you to
   communicate with Bluetooth module without any additional hardware (with the
   exception of Arduino of course). You can test if it works by sending `AT`
