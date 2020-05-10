@@ -1,4 +1,4 @@
-Title: Latex - Bootstrap-like code emphasizing
+Title: Latex - Nice color boxes
 Date: 08.11.2016
 Modified: 01.03.2020
 Author: Andrey Albershtein
