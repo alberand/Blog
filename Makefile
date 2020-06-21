@@ -8,6 +8,8 @@ OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
+GENSITE_DIR=/tmp/output
+
 FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
@@ -119,8 +121,14 @@ cf_upload: publish
 	cd $(OUTPUTDIR) && swift -v -A https://auth.api.rackspacecloud.com/v1.0 -U $(CLOUDFILES_USERNAME) -K $(CLOUDFILES_API_KEY) upload -c $(CLOUDFILES_CONTAINER) .
 
 github: publish
-	git add *; git commit -m "Automatic content update"; git push origin master
-	cd output; git add *; git commit -m "Automatic content update"; git push -f origin HEAD:master
+	mkdir $(GENSITE_DIR)
+	git clone git@github.com:alberand/alberand.github.io.git $(GENSITE_DIR)
+	git -C $(GENSITE_DIR) pull
+	git -C $(GENSITE_DIR) checkout master
+	cp -r $(OUTPUTDIR) $(GENSITE_DIR)
+	git -C $(GENSITE_DIR) add $(GENSITE_DIR)
+	git -C $(GENSITE_DIR) commit -m "Automatic content update"
+	git push origin HEAD:master
 
 materials:
 	$(MAKE) -C content/materials
