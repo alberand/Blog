@@ -39,29 +39,29 @@ is very very simple:
 See what happens if we compile `main.c` only:
 
 ```console
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -o app main.c
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.c
 
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ ./app
+andrew at andrew-laptop in /tmp/mainfun
+➔ ./app
 ```
 
 Nothing =). But if we compile `debug.c` and then link it together with newly
 compiled `main.c`, then:
 
 ```console
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -c main.c
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -c main.c
 
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -c debug.c
-    
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -o app main.o debug.o
-    
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ ./app
-    [DEBUG] hello
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -c debug.c
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.o debug.o
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ ./app
+[DEBUG] hello
 ```
 
 Note that to compile files separately without linking you need to use `-c`
@@ -81,11 +81,11 @@ described in the previous paragraph. Firstly, let's compile both examples as two
 separated binaries for further comparison:
 
 ```console
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -o app main.o
-    
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ gcc -Wall -o appd main.o debug.o
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o app main.o
+
+andrew at andrew-laptop in /tmp/mainfun
+➔ gcc -Wall -o appd main.o debug.o
 ```
 
 Next let's look what is the difference between them. With `nm` utility we can see
@@ -93,39 +93,39 @@ that in the first binary there no `debug` symbol (reference to the function) at
 all.
 
 ```console
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ nm app | grep debug
-    0000000000004028 D debugfunc
+andrew at andrew-laptop in /tmp/mainfun
+➔ nm app | grep debug
+0000000000004028 D debugfunc
 
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ nm appd | grep debug
-    0000000000001160 T debug
-    0000000000004030 D debugfunc
+andrew at andrew-laptop in /tmp/mainfun
+➔ nm appd | grep debug
+0000000000001160 T debug
+0000000000004030 D debugfunc
 ```
 
 Actually, there quite a lot of small discrepancies between two binaries. You can
 look on the differences with the following command:
 
 ```console
-    andrew at andrew-laptop in /tmp/mainfun
-    ➔ vimdiff <(objdump -d app) <(objdump -d appd)
+andrew at andrew-laptop in /tmp/mainfun
+➔ vimdiff <(objdump -d app) <(objdump -d appd)
 ```
 
 Disassembly of the main function should be similar to this:
 
 ```text
-    0000000000001119 <main>:
-        1119:       55                      push   %rbp
-        111a:       48 89 e5                mov    %rsp,%rbp
-        111d:       48 8b 05 04 2f 00 00    mov    0x2f04(%rip),%rax    # 4028 <debugfunc>
-        1124:       48 85 c0                test   %rax,%rax
-        1127:       74 10                   je     1139 <main+0x20>
-        1129:       48 8b 05 f8 2e 00 00    mov    0x2ef8(%rip),%rax    # 4028 <debugfunc>
-        1130:       48 8d 3d cd 0e 00 00    lea    0xecd(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
-        1137:       ff d0                   callq  *%rax
-        1139:       b8 00 00 00 00          mov    $0x0,%eax
-        113e:       5d                      pop    %rbp
-        113f:       c3                      retq
+0000000000001119 <main>:
+    1119:       55                      push   %rbp
+    111a:       48 89 e5                mov    %rsp,%rbp
+    111d:       48 8b 05 04 2f 00 00    mov    0x2f04(%rip),%rax    # 4028 <debugfunc>
+    1124:       48 85 c0                test   %rax,%rax
+    1127:       74 10                   je     1139 <main+0x20>
+    1129:       48 8b 05 f8 2e 00 00    mov    0x2ef8(%rip),%rax    # 4028 <debugfunc>
+    1130:       48 8d 3d cd 0e 00 00    lea    0xecd(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
+    1137:       ff d0                   callq  *%rax
+    1139:       b8 00 00 00 00          mov    $0x0,%eax
+    113e:       5d                      pop    %rbp
+    113f:       c3                      retq
 ```
 
 The first two instruction are used to save address of the previous stack frame
@@ -144,12 +144,12 @@ it should be somewhere in the `.data` section. We can find it out with following
 command:
 
 ```console
-    ➔ objdump -s -j .data app
-    app:     file format elf64-x86-64
-    
-    Contents of section .data:
-     4018 00000000 00000000 20400000 00000000  ........ @......
-     4028 00000000 00000000                    ........
+➔ objdump -s -j .data app
+app:     file format elf64-x86-64
+
+Contents of section .data:
+ 4018 00000000 00000000 20400000 00000000  ........ @......
+ 4028 00000000 00000000                    ........
 ```
 
 As you can see it is all zeros. So, ZF will be 0 and `je` will jump to 1139.
@@ -159,31 +159,31 @@ to zero and `je` didn't jump. Even though the second binary has a little bit
 different addresses the `main()` is completely the same.
 
 ```text
-    0000000000001139 <main>:
-        1139:       55                      push   %rbp
-        113a:       48 89 e5                mov    %rsp,%rbp
-        113d:       48 8b 05 ec 2e 00 00    mov    0x2eec(%rip),%rax    # 4030 <debugfunc>
-        1144:       48 85 c0                test   %rax,%rax
-        1147:       74 10                   je     1159 <main+0x20>
-        1149:       48 8b 05 e0 2e 00 00    mov    0x2ee0(%rip),%rax    # 4030 <debugfunc>
-        1150:       48 8d 3d ad 0e 00 00    lea    0xead(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
-        1157:       ff d0                   callq  *%rax
-        1159:       b8 00 00 00 00          mov    $0x0,%eax
-        115e:       5d                      pop    %rbp
-        115f:       c3                      retq
+0000000000001139 <main>:
+    1139:       55                      push   %rbp
+    113a:       48 89 e5                mov    %rsp,%rbp
+    113d:       48 8b 05 ec 2e 00 00    mov    0x2eec(%rip),%rax    # 4030 <debugfunc>
+    1144:       48 85 c0                test   %rax,%rax
+    1147:       74 10                   je     1159 <main+0x20>
+    1149:       48 8b 05 e0 2e 00 00    mov    0x2ee0(%rip),%rax    # 4030 <debugfunc>
+    1150:       48 8d 3d ad 0e 00 00    lea    0xead(%rip),%rdi     # 2004 <_IO_stdin_used+0x4>
+    1157:       ff d0                   callq  *%rax
+    1159:       b8 00 00 00 00          mov    $0x0,%eax
+    115e:       5d                      pop    %rbp
+    115f:       c3                      retq
 ```
 
 The address of the to which `debugfunc` points is 0x4030. Again, let's use
 `objdump` to see what is in the `.data` section:
 
 ```console
-    ➔ objdump -s -j .data appd
-    
-    appd:     file format elf64-x86-64
-    
-    Contents of section .data:
-     4020 00000000 00000000 28400000 00000000  ........(@......
-     4030 60110000 00000000                    `.......
+➔ objdump -s -j .data appd
+
+appd:     file format elf64-x86-64
+
+Contents of section .data:
+ 4020 00000000 00000000 28400000 00000000  ........(@......
+ 4030 60110000 00000000                    `.......
 ```
 
 #### Thoughts
