@@ -121,6 +121,7 @@ cf_upload: publish
 	cd $(OUTPUTDIR) && swift -v -A https://auth.api.rackspacecloud.com/v1.0 -U $(CLOUDFILES_USERNAME) -K $(CLOUDFILES_API_KEY) upload -c $(CLOUDFILES_CONTAINER) .
 
 github: publish
+	rm -rf $(GENSITE_DIR)
 	mkdir $(GENSITE_DIR)
 	git clone git@github.com:alberand/alberand.github.io.git $(GENSITE_DIR)
 	git -C $(GENSITE_DIR) pull
@@ -128,7 +129,7 @@ github: publish
 	cp -r $(OUTPUTDIR) $(GENSITE_DIR)
 	git -C $(GENSITE_DIR) add $(GENSITE_DIR)
 	git -C $(GENSITE_DIR) commit -m "Automatic content update"
-	git push origin HEAD:master
+	git -C $(GENSITE_DIR) push origin HEAD:master
 
 materials:
 	$(MAKE) -C content/materials
