@@ -135,7 +135,7 @@ upload ArduionISP sketch from the standard set of examples. This application
 turns your Arduino into a programmer (like you heh). 
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Installing bootloader with Arduino Nano" 
+    <img id="gifka" alt="Installing bootloader with Arduino Nano" data-action="zoom"
         src="{static}/images/nano-update-bootloader.png">
 </div>
 
@@ -170,7 +170,7 @@ application.
 </p>
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Image of setup to change configuration in HC-05" 
+    <img id="gifka" alt="Image of setup to change configuration in HC-05" data-action="zoom"
         src="{static}/images/hc-05-configuration.png">
 </div>
 
