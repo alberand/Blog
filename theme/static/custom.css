@@ -66,6 +66,10 @@ h2 {
   margin-bottom: 40px;
 }
 
+#gifka {
+  max-width: 900px;
+}
+
 .wide-boi {
   width: 100vw;
   position: relative;
