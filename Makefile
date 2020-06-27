@@ -126,7 +126,7 @@ github: publish
 	git clone git@github.com:alberand/alberand.github.io.git $(GENSITE_DIR)
 	git -C $(GENSITE_DIR) pull
 	git -C $(GENSITE_DIR) checkout master
-	cp -r $(OUTPUTDIR) $(GENSITE_DIR)
+	cp -a $(OUTPUTDIR)/. $(GENSITE_DIR)/
 	git -C $(GENSITE_DIR) add $(GENSITE_DIR)
 	git -C $(GENSITE_DIR) commit -m "Automatic content update"
 	git -C $(GENSITE_DIR) push origin HEAD:master
