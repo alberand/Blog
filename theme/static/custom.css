@@ -51,6 +51,7 @@ h2 {
   float: right;
 }
 
+/* Images in the article */
 .picture-legend {
   color: #9d9d9d;
   font-size: 12px;
@@ -78,7 +79,11 @@ h2 {
   margin: 35px 0 35px 0;
 }
 
-@media only screen and (max-width: 700px) { 
+.image {
+  max-width: 900px;
+}
+
+@media only screen and (max-width: 900px) { 
   .image {
     width: 100vw;
     position: relative;
@@ -87,6 +92,7 @@ h2 {
   }
 }
 
+/* Notes in the article */
 .note-left {
   width: 250px;
   position:absolute;
@@ -110,7 +116,7 @@ h2 {
   z-index: 0;
   position: static;
   margin: 0 0 10px;
-  color: inherit;
+  color: #666;
 }
 
 .note-sign {
@@ -123,4 +129,15 @@ h2 {
 
 #note-normal .note-sign {
   display: inline-block;
+}
+
+/* Liquid tags - title for include code */
+.liquid-tags-code-title {
+  color: grey;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+.code > figcaption:nth-child(1) > a:nth-child(2) {
+  font-size: 12px;
 }
