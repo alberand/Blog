@@ -26,16 +26,28 @@ function adjustDynamicElements(){
 
     if(width < 480){
         console.log("switch to vert. mobile");
-        switchToVertMobile();
+        // Set images to the full width
+        // document.getElementById("gifka").setAttribute("style", "width: 100%;")
+        // Disable fancy notes
         fancyNotes(false);
+        // Call user function
+        switchToVerMobile();
     } else if(width > 480 && width < 1200){
         console.log("switch to hor. mobile");
-        switchToHorMobile();
+        // Set images to the almost full width
+        // document.getElementById("gifka").setAttribute("style", "width: 80%;")
+        // Disable fancy notes
         fancyNotes(false);
+        // Call user function
+        switchToHorMobile();
     } else{
         console.log("switch to desktop");
-        switchToDesktop();
+        // Set images wide
+        // document.getElementById("gifka").setAttribute("style", "max-width: 900px")
+        // Enable fancy notes
         fancyNotes();
+        // Call user function
+        switchToDesktop();
     }
 }
 
