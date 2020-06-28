@@ -1,0 +1,13 @@
+diff --git a/optiboot/bootloaders/optiboot/optiboot.c b/optiboot/bootloaders/optiboot/optiboot.c
+index 61862e1..0d92dcf 100644
+--- a/optiboot/bootloaders/optiboot/optiboot.c
++++ b/optiboot/bootloaders/optiboot/optiboot.c
+@@ -689,7 +689,7 @@ int main(void) {
+ #endif // soft_uart
+ 
+   // Set up watchdog to trigger after 1s
+-  watchdogConfig(WATCHDOG_1S);
++  watchdogConfig(WATCHDOG_8S);
+ 
+ #if (LED_START_FLASHES > 0) || defined(LED_DATA_FLASH) || defined(LED_START_ON)
+   /* Set LED pin as output */
