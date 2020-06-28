@@ -58,7 +58,7 @@ address where application is stored. From now on MCU starts executing received
 code.
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Bootloader process" data-action="zoom"
+    <img class="image" alt="Bootloader process" data-action="zoom"
         src="{static}/images/bootloader-principle.png">
 </div>
 
@@ -122,6 +122,8 @@ The default baudrate set in the bootloader is `115200`. I decide to leave it as
 it is. But that means that I need to change baudrate on the HC-05 module as
 default one is `38400`.
 
+{% include_code arduino-ota/001-optiboot-waits-8s-for-firmware.patch :hidefilename: Optiboot patch %}
+
 ### Installing bootloader with Arduino Nano
 
 The uploading process was a little bit tricky because all of my wires,
@@ -135,7 +137,7 @@ upload ArduionISP sketch from the standard set of examples. This application
 turns your Arduino into a programmer (like you heh). 
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Installing bootloader with Arduino Nano" data-action="zoom"
+    <img class="image" alt="Installing bootloader with Arduino Nano" data-action="zoom"
         src="{static}/images/nano-update-bootloader.png">
 </div>
 
@@ -170,7 +172,7 @@ application.
 </p>
 
 <div class="wide-boi" >
-    <img id="gifka" alt="Image of setup to change configuration in HC-05" data-action="zoom"
+    <img class="image" alt="Image of setup to change configuration in HC-05" data-action="zoom"
         src="{static}/images/hc-05-configuration.png">
 </div>
 
@@ -238,43 +240,53 @@ which could be easier to use if you want to configure multiple devices.
 
 ## Uploading firmware over Bluetooth
 
-On Windows HC-05 should be visible as `COMx` port. So, you could choose it
-directly in the Arduino IDE. On Linux there is a little bit more steps to
-connect the module. I wrote [the whole article][10] on that topic 🤨.
+On Windows HC-05 should be visible as `COMx` port. You can find this out in the
+"Device Manager". The port should be visible directly in in the Arduino IDE. On
+Linux there is a little bit more steps to do to connect the module. I wrote [the
+whole article][10] on that topic 🤨. However, if you have quite a good Bluetooth
+chip and drivers it should be simple.
+
+<p class="note-left">
+    <span class="note-sign">Note: </span> On Linux after connecting HC-05 with a
+    Bluetooth manager you will need to bind it with a `rfcomm`. 
+</p>
 
 ### Testing Bluetooth communication
 
 Let's test that communication works at all before we try to update firmware.
-Upload the same serial pass through firmware but with correct baudrate, as I
-mentioned I used `115200`.
+Upload the same "serial pass-through" firmware but with correct baudrate, as I
+mentioned I used `115200`. By the correct one I mean that which you set in the
+HC-05 module with `AT+UART` command.
 
-Then, run one serial monitor on port with Arduino (e.g. `COM1` or 🐧
-`/dev/ttyUSB0`). The second one on virtual port attached to Bluetooth channel
+Then, run the serial monitor on the port with Arduino (e.g. `COM1` or 🐧
+`/dev/ttyUSB0`). And another one on virtual port attached to Bluetooth channel
 (e.g. `COM2` or 🐧 `/dev/rfcomm0`).
 
 ### Wireless programming
 
-So, now uploading process is following:
+Time to try it. Prepare some simple application such as "Blink" and do the
+following:
 
 1. Compile application
-2. Run `avrdude` on serial port attached to the Bluetooth channel
-3. Press reset on the Arduino
+2. Run `avrdude` on serial port attached to the Bluetooth channel (or Upload
+   button in Arduino IDE)
+3. Press reset button on the Arduino
 
-It works well in both Arduino IDE and platformio. However, sometimes `avrdude`
-can't synchronise with the bootloader and start printing errors. Just reset it
-one more time and it will catch up.
+It works well in both Arduino IDE and platformio. However, `avrdude` can't
+sometimes synchronize with the bootloader and start printing errors. Simply reset
+the board again and it will catch up.
 
 ## Future Improvements
 
-Updating firmware with overwriting the old one is a bad practice. If
-communication is not reliable or device unexpectedly turns off your firmware
-becomes unusable. The better way is to use external memory chip (or internal
-memory if your application is small) and, firstly, write firmware at the
-external memory and then copy and run it.
+Updating firmware with overwriting the old one is a bad idea. If
+communication isn't reliable, or device unexpectedly turns off, the firmware
+could corrupt and becomes unusable. The better way is to use external memory
+chip (or internal memory if your program is small) - write firmware on the
+external memory first, then copy it to the primary location and run it.
 
 One of the bootloader which allows this is DualOptiboot. I am planning to try
 this one in the next version of my Bluetooth controller. The first step will be
-to choose some memory chip and add it to the board.
+to choose a memory chip and add it to the board.
 
 ### References
 * [HC-05][6]
