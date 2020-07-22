@@ -1,4 +1,4 @@
-Title: Host-only networking set up for QEMU hypervisor
+Title: Host only networking set up for QEMU
 Date: 24.03.2017
 Modified: 01.03.2020
 Author: Andrey Albershtein
