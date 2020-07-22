@@ -89,7 +89,7 @@ will start waiting for data on UART. With Arduino IDE (or actually `avrdude`)
 you write data to the Bluetooth port. The data or more precisely firmware is
 read by Bootloader and stored to the memory.
 
-[][TODO image of setup]
+[TODO DIAGRAM OF OTA SETUP][]
 
 To make it work we need to do two things:
 
@@ -99,7 +99,10 @@ To make it work we need to do two things:
 
 ### Needed hardware
 
-[IMAGE OF HW][]
+<div class="wide-boi" >
+    <img class="image" alt="Hardware used for Over the Air updates" data-action="zoom"
+        src="{static}/images/hardware-set-photo.png">
+</div>
 
 * Arduino Nano
 * Arduino Nano
@@ -169,7 +172,10 @@ are connected as follows:
 
 As I use it quite often I soldered it and now I can use it as standalone device:
 
-[IMAGE of arduino nano with leds][]
+<div class="wide-boi" >
+    <img class="image" alt="Custom board for uploading bootloading into Arduino" data-action="zoom"
+        src="{static}/images/arduino-bootloader-loader.png">
+</div>
 
 **How does it work?** The principle is following - the ArduinoISP is connected
 to the PC. Over the SPI this Arduino connects to the ICSP (those six pin put
