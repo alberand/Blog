@@ -1,4 +1,4 @@
-Title: How does "#pragma weak" work
+Title: What is pragma weak (GCC)?
 Date: 16.12.2019
 Modified: 15.01.2020
 Status: published
