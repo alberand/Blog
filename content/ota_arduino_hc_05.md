@@ -1,6 +1,6 @@
 Title: Programming Arduino over Bluetooth
-Date: 26.07.2019
-Modified: 26.07.2019
+Date: 26.07.2020
+Modified: 26.07.2020
 Status: published
 Tags: arduino, bluetooth
 Keywords: arduino, bluetooth, hc-05, ota, remotely, wireless, programming
