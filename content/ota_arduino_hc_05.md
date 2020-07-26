@@ -1,13 +1,18 @@
 Title: Programming Arduino over Bluetooth
 Date: 09.06.2019
 Modified: 09.06.2019
-Status: draft
+Status: published
 Tags: arduino, bluetooth
 Keywords: arduino, bluetooth, hc-05, ota, remotely, wireless, programming
 Slug: ota-for-arduino
 Author: Andrey Albershtein
 Summary: Over the air (wireless) programming of the Arduino with HC-05 Bluetooth module
 Lang: en
+
+<div class="wide-boi" >
+    <img class="image" alt="Over the air updates based on HC-05 and Arduino Nano" data-action="zoom"
+        src="{static}/images/ota-setup.png">
+</div>
 
 Wireless firmware updates are attractive. No wires, no broken cheap microUSB
 cables, no annoying grabbing in the box full cables to find the right one 😁.
@@ -88,8 +93,6 @@ is need to manually reset the board. After pressing a reset button bootloader
 will start waiting for data on UART. With Arduino IDE (or actually `avrdude`)
 you write data to the Bluetooth port. The data or more precisely firmware is
 read by Bootloader and stored to the memory.
-
-[TODO DIAGRAM OF OTA SETUP][]
 
 To make it work we need to do two things:
 
