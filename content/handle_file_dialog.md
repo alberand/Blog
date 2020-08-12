@@ -23,6 +23,8 @@ the site or even a browser. As JavaScript is "jailed" by the browser it can't
 get access to the external window. There comes the problem. How a test can save
 the file (press the save button)?
 
+[TOC]
+
 #### Existing Solutions
 
 The first solution came to my mind was to get control over the HTML's `input`

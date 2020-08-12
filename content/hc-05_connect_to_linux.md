@@ -30,6 +30,8 @@ There is no need to solder anything complicated - only one little wire 😀.
 Firstly, let me describe this Arduino app. I can't say that it is reliable
 but it is simpler than doing everything by hand.
 
+[TOC]
+
 ### [`HCTOOLS`][3] - Arduino application
 
 This application can be used on most of the Arduinos starting from Arduino Nano.

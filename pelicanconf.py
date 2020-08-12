@@ -82,6 +82,17 @@ PLUGINS = [
     'render_math'
 ]
 
+MARKDOWN = {
+  'extension_configs': {
+    'markdown.extensions.toc': {
+      'title': 'Table of contents:' 
+    },
+    'markdown.extensions.extra': {},
+    'markdown.extensions.meta': {},
+  },
+  'output_format': 'html5',
+}
+
 # Liquid tag
 CODE_DIR = 'materials'
 # Date

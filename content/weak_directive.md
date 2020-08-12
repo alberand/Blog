@@ -15,7 +15,9 @@ handle the following function as weakly defined. What it means is that if linker
 fails to find definition (implementation) of the function it will skip it and
 won't show any errors. In this note I will demonstrate how does it work.
 
-#### Prepare application
+[TOC]
+
+## Demo application
 
 Firstly, let's create a simple example to work with:
 
@@ -34,7 +36,7 @@ is very very simple:
 
 {% include_code weak-pragma/debug.c lang:c :hideall: %}
 
-#### Interesting part
+## Interesting part
 
 See what happens if we compile `main.c` only:
 
@@ -74,7 +76,7 @@ isn't called.  In the second case linker found implementation for `debug()` and
 treat it as a normal function. In this case `debugfunc` is pointing to the
 `debug()` (non-zero address in memory) and therefore will be called.
 
-#### Look inside
+## Look inside
 
 Let's look what is really happening in the binaries and if it is true what is
 described in the previous paragraph. Firstly, let's compile both examples as two
@@ -186,7 +188,7 @@ Contents of section .data:
  4030 60110000 00000000                    `.......
 ```
 
-#### Thoughts
+## Thoughts
 
 Personally, I don't think that it is a good approach to base your debugging
 function on this directive. As initially it was created for backward

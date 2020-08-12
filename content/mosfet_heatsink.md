@@ -14,6 +14,8 @@ and how to find proper heatsink for transistor or diode. I will go a little bit
 in details on what is thermal resistance and how it used in calculations. If you
 find any mistakes or want to comment something please see end of the page.
 
+[TOC]
+
 #### Overview
 
 TODO lifetime of MOSFET depending on temp https://en.wikipedia.org/wiki/Negative-bias_temperature_instability

@@ -14,6 +14,8 @@ I'm not a developer
 Just intresting to take it apart and learn how does it work
 Grain of salt
 
+[TOC]
+
 Intro
 Github project review
 Overall architecture of Optiboot

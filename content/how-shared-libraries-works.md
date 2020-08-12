@@ -17,6 +17,8 @@ don't crush? Is glibc loaded only once in the system?
 In this note I will try to describe my journey of answering these questions with
 experiments.
 
+[TOC]
+
 ### What is PIC (position-independent code)?
 
 tramolines

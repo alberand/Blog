@@ -28,6 +28,8 @@ In this note I will describe process of setting up development environment
 for STM32 Nucleo (particularly for STM32L010RB) board with Zephyr OS. Later
 I would like to add testing setup too.
 
+[TOC]
+
 ## Environment setup
 
 Firstly, install dependencies:

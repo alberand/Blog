@@ -21,6 +21,8 @@ For one of my project I decided to implement over the air updates of firmware
 was thinking how I can utilize my HC-05 modules. These are really cheap and
 could do a decent job for a simple wireless applications.
 
+[TOC]
+
 ## How bootloader works?
 
 Let's start from some theory. Initially I didn't want to tamper with a
