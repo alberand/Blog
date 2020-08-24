@@ -3,7 +3,7 @@ Date: 15.02.2020
 Modified: 01.03.2020
 Status: published
 Tags: stm32, zephyr
-Keywords: stm32, zephyr
+Keywords: stm32, zephyr, tutorial, os, rtos
 Author: Andrey Albershtein
 Summary: Setting up and running Zephyr RTOS for STM32 Nucleo
 Lang: en
