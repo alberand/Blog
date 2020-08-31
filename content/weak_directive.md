@@ -6,7 +6,7 @@ Slug: weak-directive
 Tags: linker, pragma, gcc
 Keywords: linker, pragma, gcc
 Author: Andrey Albershtein
-Summary: Using Linker's directive "#pragma weak" to define optional functions or use it for debugging
+Summary: Using Linker's directive '#pragma weak' to define optional functions or use it for debugging
 Lang: en
 
 From this very [interesting article][1] about linking of executables I find out
