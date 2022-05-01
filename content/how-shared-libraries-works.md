@@ -26,6 +26,18 @@ tramolines
 TODO nice image of binary
 Interactive svg image?
 
+https://reverseengineering.stackexchange.com/questions/1992/what-is-plt-got
+
+https://www.airs.com/blog/archives/38
+
+https://www.technovelty.org/linux/plt-and-got-the-key-to-code-sharing-and-dynamic-libraries.html
+
+https://www.ibm.com/developerworks/linux/library/l-shlibs/index.html
+
+https://www.ibm.com/developerworks/linux/library/l-dll/index.html
+
+https://www.ibm.com/developerworks/linux/library/l-shobj/index.html
+
 
 ### Terminology
 

@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 {% block navclass %}active{%endblock%}
 {% block content %}
+    {% include 'author.html' %}
+    <hr/>
     <section id="content" class="content">
+        <div id="article-list">
       {% block content_title %}
       {% endblock %}
       {% for article in articles_page.object_list %}
-      <div class="row">
+      <div class="row" style="line-height: 20px;">
         <div class="col-sm-3">
           <span class="text-muted">{{article.locale_date}}</span>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-auto">
           <p>
             <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title|striptags }}</a>
             <br/>
@@ -18,7 +21,7 @@
         </div>
       </div>
       {% endfor %}
-      {% include 'pagination.html' %}
+        </div>
     </section>
     <!-- content -->
 {% endblock content %}

@@ -51,7 +51,7 @@ DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
 
 # Sitemap
-DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', 'sitemap')
+DIRECT_TEMPLATES = ('index', 'sitemap')
 SITEMAP_SAVE_AS = 'sitemap.xml'
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
@@ -84,6 +84,9 @@ PLUGINS = [
 
 MARKDOWN = {
   'extension_configs': {
+    'markdown.extensions.codehilite': {
+        'css_class': 'highlight'
+    },
     'markdown.extensions.toc': {
       'title': 'Table of contents:' 
     },

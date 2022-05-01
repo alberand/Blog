@@ -1,11 +1,20 @@
-{% extends "index.html" %}
-{% block title %}{{ SITENAME }} - {{ author }}{% endblock %}
-{% block navclass %}{%endblock%}
-{% block content_title %}
-      <ol class="breadcrumb">
-        <li><a href="{{SITEURL}}"><div class="fa fa-lg fa-home"></div><span class="hidden-xs"> Home</span></a></li>
-        <li><a href="{{SITEURL}}/authors.html"><div class="fa fa-lg fa-pencil"></div><div class="fa fa-pencil"></div> Authors <span class="badge">{{ authors|count }}</span></a></li>
-        <li class="active"><div class="fa fa-lg fa-pencil"></div> {{ author }} <span class="badge">{{ articles|count }}</span></li>
-      </ol>
-{% endblock %}
+<div id="author" class="row">
+    <div id="author-photo" class="col-sm-auto">
+        <img width="130px" height="130px" 
+                src="{{ SITEURL }}/theme/profile-photo-circle.png">
+    </div>
+    <div id="author-description" class="col-sm">
+        Hey👋 I'm Software Engineer from Prague, Czechia. I do Linux Kernel
+        Hacking and IoT.
 
+        <p style="padding: 10px 0 0 0; text-align: center;">
+        <i class="fas fa-envelope fa-1g" aria-hidden="true"></i>
+            <a class="link-in-code"
+                href="mailto:andrey.albershteyn@gmail.com"
+                target="_top">email</a>
+        or <i class="fab fa-telegram fa-1g" aria-hidden="true"></i>
+                  <a class="link-in-code"
+                      href="https://t.me/alberand">@alberand</a>
+        </p>
+    </div>
+</div>
