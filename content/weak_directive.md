@@ -131,15 +131,15 @@ Disassembly of the main function should be similar to this:
 ```
 
 The first two instruction are used to save address of the previous stack frame
-and switch to the frame local the current function (for more info see \[4\][4]).
+and switch to the frame local the current function (for more info see [\[4\]][4]).
 The third one moves value located at address 0x4028 to the %rax register. This, in
 turn, is used in the following `test` instruction which checks if it is equals
-to zero and if so it sets `ZF` flag to 1\[5\][5]. The next instruction `je`
+to zero and if so it sets `ZF` flag to 1 [\[5\]][5]. The next instruction `je`
 jumps to the address 1139 if `ZF` flag is equal to 1. The 1139 address is the
 end of the function (`return 0;`).
 
 The 0x4028 address is equal to 0x2f04 + %rip (0x1124 - the address of the next
-instruction). The %rip is used for relative referencing (see \[6\][6]).
+instruction). The %rip is used for relative referencing (see [\[6\]][6]).
 
 What is located at address 0x4028? As we know that it is global static variable
 it should be somewhere in the `.data` section. We can find it out with following
