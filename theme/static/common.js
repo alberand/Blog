@@ -9,7 +9,7 @@ function fancyNotes(enabled=true){
     if(enabled){
         value = "";
     }
-        
+
     var x = document.getElementsByClassName("note-left");
     for (i = 0; i < x.length; i++) {
         x[i].setAttribute('id', value);
