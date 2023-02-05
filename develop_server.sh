@@ -63,7 +63,6 @@ function start_up(){
   local port=$1
   echo "Starting up Pelican and HTTP server"
   shift
-  $PELICAN --debug --autoreload -r $INPUTDIR -o $OUTPUTDIR -s $CONFFILE $PELICANOPTS &
   pelican_pid=$!
   echo $pelican_pid > $PELICAN_PID
   cd $OUTPUTDIR
