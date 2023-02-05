@@ -76,10 +76,10 @@ EXTRA_PATH_METADATA = {
 # To publish article add metadata Status: published
 DEFAULT_METADATA = {'status': 'draft'}
 DEFAULT_CATEGORY = 'Article'
-PLUGIN_PATHS = ["plugins", "/home/alberand/.local/share/pelican-plugins"]
+PLUGIN_PATHS = ["plugins", "@pelican_plugins@"]
 PLUGINS = [
-    'liquid_tags.include_code',
-    'render_math'
+        # 'liquid_tags.include_code',
+        #'render_math'
 ]
 
 MARKDOWN = {
