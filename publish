@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git init .
+git config user.name "nix"
+git config user.email "nix@host.com"
+git checkout master
+git add .
+git commit -m "Automatic update"
+git remote add origin git@github.com:alberand/alberand.github.io.git
+git push -f origin master
