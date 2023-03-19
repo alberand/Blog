@@ -5,6 +5,11 @@ import ntpath
 import uuid
 from pygments.formatters import HtmlFormatter
 from markdown.extensions.codehilite import CodeHiliteExtension
+from markdown.extensions import Extension
+from markdown.blockprocessors import BlockProcessor
+from markdown.inlinepatterns import LinkInlineProcessor
+import re
+import xml.etree.ElementTree as etree
 
 # Personal Information
 AUTHOR = 'Andrey Albershtein'
@@ -136,15 +141,79 @@ class CodeCopyButtonHtmlFormatter(HtmlFormatter):
         yield from inner
         yield 0, '</div>\n'
 
+class ImageInlineProcessor(LinkInlineProcessor):
+    """ Return a img element from the given match. """
+
+    def handleMatch(self, m, data):
+        text, index, handled = self.getText(data, m.end(0))
+        if not handled:
+            return None, None, None
+
+        src, title, index, handled = self.getLink(data, index)
+        if not handled:
+            return None, None, None
+
+        div = etree.Element("div")
+        div.set("class", "wide-boi")
+
+        a = etree.SubElement(div, "a")
+        a.set("href", src)
+
+        img = etree.SubElement(a, "img")
+
+        img.set("src", src)
+
+        if title is not None:
+            img.set("title", title)
+
+        img.set('alt', self.unescape(text))
+
+        return div, m.start(0), index
+
+class Comments(BlockProcessor):
+    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]+)\]:' # [alberand]:
+
+    def test(self, parent, block):
+        return re.match(self.RE_FENCE_START, block)
+
+    def run(self, parent, blocks):
+        original_block = blocks[0]
+        blocks[0] = re.sub(self.RE_FENCE_START, '', blocks[0])
+
+        # Find block with ending fence
+        for block_num, block in enumerate(blocks):
+            # render fenced area inside a new div
+            e = etree.SubElement(parent, 'div')
+            e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
+            self.parser.parseBlocks(e, blocks[0:block_num + 1])
+            # remove used blocks
+            for i in range(0, block_num + 1):
+                blocks.pop(0)
+            return True  # or could have had no return statement
+        # No closing marker!  Restore and do nothing
+        blocks[0] = original_block
+        return False  # equivalent to our test() routine returning False
+
+IMAGE_LINK_RE = r'\!\['
+
+class AlberandTagsExtension(Extension):
+    def extendMarkdown(self, md):
+        md.parser.blockprocessors.register(Comments(md.parser), 'comments', 175)
+
+        # Deregister default image processor and replace it with our custom one
+        md.inlinePatterns.deregister('image_link')
+        md.inlinePatterns.register(
+                ImageInlineProcessor(IMAGE_LINK_RE, md), 'image_link', 150)
 
 MARKDOWN = {
+  'extensions': [AlberandTagsExtension()],
   'extension_configs': {
     'markdown.extensions.codehilite': {
         'css_class': 'highlight',
         'pygments_formatter': CodeCopyButtonHtmlFormatter,
     },
     'markdown.extensions.toc': {
-      'title': 'Table of contents:' 
+      'title': 'Table of contents:'
     },
     'markdown.extensions.extra': {},
     'markdown.extensions.meta': {},
