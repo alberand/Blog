@@ -14,7 +14,11 @@ user's actions. I used it for a few times and found one important feature which
 is missing - as far as I know it is impossible to handle "Open File" or "Save
 File" dialog:
 
-<img alt="Browser File Dialog" src="{static}/images/firefox_file_upload_dialog_small.png" width="90%" style="margin: 0 auto; display: block;">
+<a href="{static}/images/firefox_file_upload_dialog_small.png">
+	<img alt="Browser File Dialog" 
+		src="{static}/images/firefox_file_upload_dialog_small.png" 
+		width="90%" style="margin: 0 auto; display: block;">
+</a>
 
 Selenium uses JavaScript to simulate clicks, typing and many other manipulation
 with a web-page. Unfortunately, when user clicks on the button to save a file

@@ -10,7 +10,10 @@ Lang: en
 Image: images/octave_messages.png
 
 <div>
-    <img class="image" alt="Octave Prompt with colors" src="{static}/images/octave_messages.png">
+	<a href="{static}/images/octave_messages.png">
+		<img class="image" alt="Octave Prompt with colors" 
+			src="{static}/images/octave_messages.png">
+	</a>
 </div>
 
 In Unix terminal we can use colorful output for emphasizing important pieces of 

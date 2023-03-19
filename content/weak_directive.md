@@ -21,7 +21,19 @@ won't show any errors. In this note I will demonstrate how does it work.
 
 Firstly, let's create a simple example to work with:
 
-{% include_code weak-pragma/main.c lang:c :hideall: %}
+```c
+#pragma weak debug
+extern void debug(char*);
+void (*debugfunc)(char*) = debug;
+
+int main(){
+    if(debugfunc){
+        (*debugfunc)("hello");
+    }
+
+    return 0;
+}
+```
 
 At line 2 we define debug function with an `extern` keyword. That means that
 this function can be defined in any of the application source files (or in other
@@ -34,7 +46,13 @@ but zero. If it is not zero we call it, otherwise application terminates.
 Next, let's create second file with the implementation of `debug` function. It
 is very very simple:
 
-{% include_code weak-pragma/debug.c lang:c :hideall: %}
+```c
+#include "stdio.h"
+
+void debug(char * str){
+    printf("[DEBUG] %s\n", str);
+}
+```
 
 ## Interesting part
 

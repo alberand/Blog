@@ -14,8 +14,12 @@ other stuff used on the sites with Bootstrap framework? I think it's really good
 for emphasizing key points in your text especially in technical writing. For
 example, look at this paragraph taken from one of my documentation PDFs.
 
-<div style="margin: 20px 0;">
-    <img class="image" alt="Screenshot of PDF document with Bootstrap highlighting" src="{static}/images/latex_pdf_bcode_example.png">
+<div style="margin: 20px 0; text-align: center;">
+	<a href="{static}/images/latex_pdf_bcode_example.png">
+		<img class="image" 
+			alt="Screenshot of PDF document with Bootstrap highlighting" 
+			src="{static}/images/latex_pdf_bcode_example.png">
+	</a>
 </div>
 
 There is not too many default text decoration styles to play with to emphasize

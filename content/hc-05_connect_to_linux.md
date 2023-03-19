@@ -20,7 +20,9 @@ Arduino Nano (atmega328p) and classical HC-05 with a linear power regulator.
 There is no need to solder anything complicated - only one little wire 😀.
 
 <div style="text-align: center;">
+    <a href="{static}/images/hc-05.jpg">
     <img class="image" alt="HC-05 Bluetooth module" style="max-width: 534px; height: 400px;" src="{static}/images/hc-05.jpg">
+    </a>
     <p class="picture-legend">
         Image is taken from 
         <a alt="Arduino e-shop" href="https://www.laskarduino.cz/bluetooth-modul-hc-05-ttl/">www.laskarduino.cz</a>
@@ -79,7 +81,12 @@ then it sets pin 34 into HIGH state and turns power on. After this HC-05 boot
 into AT mode.
 
 <div style="text-align: center;">
-    <img id="schematics" class="image" alt="Schematics of connection of HC-05 Bluetooth module and Arduino" style="max-height: 400px;" src="{static}/images/008-schematics.png">
+	<a href="{static}/images/008-schematics.png">
+		<img id="schematics" class="image" 
+			alt="Schematics of connection of HC-05 Bluetooth module and Arduino" 
+			style="max-height: 400px;" 
+			src="{static}/images/008-schematics.png">
+	</a>
 </div>
 
 The transistor can be any PNP transistor from your Arduino kit. Make sure that
@@ -310,7 +317,11 @@ Now, if you send something to Arduino it will send it to HC-05 and then to your
 newline it will send it back to you.
 
 <div style="text-align: center;">
-    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" src="{static}/images/008-hc-05-overall.png">
+	<a href="{static}/images/008-hc-05-overall.png">
+		<img class="image" 
+			alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" 
+			src="{static}/images/008-hc-05-overall.png">
+	</a>
 </div>
 
 That basically it. For convenience you can add a `udev` rule to have a nice name

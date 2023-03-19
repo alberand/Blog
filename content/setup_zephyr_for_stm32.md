@@ -14,10 +14,6 @@ Nuremberg's [Embedded World][3]. I was thinking about buying one but didn't have
 excuse to do it. As I got one I started to look on one of the real-time OS
 which catch my attention a long time ago - [Zephyr OS][1].
 
-<div id="zephyr-logo-container" style="margin: -200px 0 0 -40%; width: 400px; position: absolute; z-index: -1; ">
-    <img id="zephyr-logo" style="width:400px; opacity: 0.25;" alt="Zephyr RTOS" src="{static}/images/zephyr-logo.jpg">
-</div>
-
 After a first look it appeared to me as nicely design OS with rapidly growing
 number of features. The other thing which I noticed is that the list of
 supported boards is enormously big, it can come handy in the future. Moreover,
@@ -215,48 +211,13 @@ Now connect your board and run `ninja flash`. It should compile and upload
 application, built-in LED will start blinking.
 
 <div class="wide-boi" >
+	<a href="{static}/images/stm32-zephyr.gif">
     <img id="gifka" alt="Zephyr RTOS blinky app" src="{static}/images/stm32-zephyr.gif">
+	</a>
 </div>
 
 As you can see it is quite convenient to manage your application as it is
 completely separate from source code of the OS. 
-
-<script>
-    switchToVertMobile = function () {
-            console.log("switch to vert. mobile");
-            document.getElementById("gifka").setAttribute("style", "width: 100%;")
-            document.getElementById("zephyr-logo").style["opacity"] = "0.15";
-            document.getElementById("zephyr-logo-container").style["margin-left"] = "-60%";
-            document.getElementById("zephyr-logo-container").style["margin-top"] = "-75%";
-            fancyNotes(false);
-    };
-
-    switchToHorMobile = function () {
-            console.log("switch to hor. mobile");
-            document.getElementById("gifka").setAttribute("style", "width: 80%;")
-            document.getElementById("zephyr-logo").style["opacity"] = "0.25";
-            document.getElementById("zephyr-logo-container").style["margin-left"] = "-30%";
-            document.getElementById("zephyr-logo-container").style["margin-top"] = "-200px";
-            fancyNotes(false);
-    };
-
-    switchToDesktop = function () {
-            console.log("switch to desktop");
-            document.getElementById("gifka").setAttribute("style", "")
-            document.getElementById("zephyr-logo").style["opacity"] = "0.25";
-            document.getElementById("zephyr-logo-container").style["margin-left"] = "-40%";
-            document.getElementById("zephyr-logo-container").style["margin-top"] = "-200px";
-            fancyNotes();
-    };
-</script>
-<style>
-.content h2 {
-    text-shadow: 1px 1px 1px #fff;
-}
-.entry-content p {
-    text-shadow: 1px 1px 1px #fff;
-}
-</style>
 
 #### Update - Use official getting started
 

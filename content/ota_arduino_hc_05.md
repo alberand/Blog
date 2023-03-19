@@ -10,8 +10,10 @@ Summary: Over the air (wireless) programming of the Arduino with HC-05 Bluetooth
 Lang: en
 
 <div class="wide-boi" >
-    <img class="image" alt="Over the air updates based on HC-05 and Arduino Nano" data-action="zoom"
-        src="{static}/images/ota-setup.png">
+	<a href="{static}/images/ota-setup.png">
+		<img class="image" alt="Over the air updates based on HC-05 and Arduino Nano" data-action="zoom"
+			src="{static}/images/ota-setup.png">
+	</a>
 </div>
 
 Wireless firmware updates are attractive. No wires, no broken cheap microUSB
@@ -63,8 +65,10 @@ complete bootloader jumps to the address where application is stored. From now
 on, MCU is in control of the application.
 
 <div class="wide-boi" >
+	<a href="{static}/images/bootloader-principle.png">
     <img class="image" alt="Bootloader process" data-action="zoom"
         src="{static}/images/bootloader-principle.png">
+	</a>
 </div>
 
 **Does it have to be serial/USB?**. No, it does not! It could be anything -
@@ -105,8 +109,10 @@ To make it work we need to do two things:
 ### Needed hardware
 
 <div class="wide-boi" >
+	<a href="{static}/images/hardware-set-photo.png">
     <img class="image" alt="Hardware used for Over the Air updates" data-action="zoom"
         src="{static}/images/hardware-set-photo.png">
+	</a>
 </div>
 
 * Arduino Nano
@@ -160,8 +166,10 @@ upload ArduionISP sketch from the standard set of examples `Examples ->
 programmer (like you heh). 
 
 <div class="wide-boi" >
+	<a href="{static}/images/nano-update-bootloader.png">
     <img class="image" alt="Installing bootloader with Arduino Nano" data-action="zoom"
         src="{static}/images/nano-update-bootloader.png">
+	</a>
 </div>
 
 You can also add some LEDs to a programmer to see the state of uploading
@@ -178,8 +186,10 @@ are connected as follows:
 As I use it quite often I soldered it and now I can use it as standalone device:
 
 <div class="wide-boi" >
+	<a href="{static}/images/arduino-bootloader-loader.png">
     <img class="image" alt="Custom board for uploading bootloading into Arduino" data-action="zoom"
         src="{static}/images/arduino-bootloader-loader.png">
+	</a>
 </div>
 
 **How does it work?** The principle is following - the ArduinoISP is connected
@@ -214,8 +224,10 @@ another Arduino with serial passthrough application.
 </p>
 
 <div class="wide-boi" >
+	<a href="{static}/images/hc-05-configuration.png">
     <img class="image" alt="Image of setup to change configuration in HC-05" data-action="zoom"
         src="{static}/images/hc-05-configuration.png">
+	</a>
 </div>
 
 The Arduino is connected to the PC with a cable. I used Arduino Nano which has
