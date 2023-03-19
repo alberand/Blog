@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+rm -rf /tmp/alberand-blog
+mkdir -p /tmp/alberand-blog
+cp -r ./result/* /tmp/alberand-blog/
+cd /tmp/alberand-blog
 git init .
 git config user.name "nix"
 git config user.email "nix@host.com"

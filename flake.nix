@@ -1,24 +1,31 @@
 {
 	description = "A very basic flake";
 
-	outputs = { self, nixpkgs }: let
-		blog = (import ./blog.nix { inherit nixpkgs; });
+	inputs = {
+		flake-utils.url = "github:numtide/flake-utils";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+	};
+
+	outputs = { self, nixpkgs, flake-utils }:
+	flake-utils.lib.eachDefaultSystem (system: let
+		pkgs = nixpkgs.legacyPackages.${system};
+		blog = (import ./derivation.nix { inherit self nixpkgs pkgs; });
 	in {
 
-		packages.x86-64-linux.blog = blog.local-blog;
-		packages.x86-64-linux.publish = blog.blog;
+		packages.blog = blog.blog-dev;
+		packages.publish = blog.blog-pub;
 
-		packages.x86_64-linux.default = self.packages.x86_64-linux.blog;
+		packages.default = blog.blog-dev;
 
 		apps = {
 			default = {
 				type = "app";
-				program = "${self.packages.x86_64.default}/bin/go-hello";
+				program = "${self.packages.${system}.default}/serve";
 			};
 		};
 
 		devShells = {
-				default = nixpkgs.mkShell {
+			default = nixpkgs.mkShell {
 					buildInputs = with nixpkgs; [
 						(nixpkgs.python3.withPackages
 							(pythonPackages: with pythonPackages; [
@@ -29,5 +36,5 @@
 					];
 				};
 			};
-	};
+	});
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ self, nixpkgs, pkgs ? import nixpkgs {}, ... }:
 let
 
   #pelican-liquid-tags = pkgs.fetchFromGitHub {
@@ -60,8 +60,7 @@ let
 	  #{ name = "render_math"; path = pelican-render-math; }
   #];
 
-in {
-	local-blog = pkgs.stdenv.mkDerivation {
+	blog-dev = pkgs.stdenv.mkDerivation {
 		name = "alberand-com";
 		src = ./.;
 
@@ -96,32 +95,16 @@ in {
 			cp -r "output/"* $out
 			cp --no-preserve=mode,ownership $src/develop_server.sh $out
 			chmod +x $out/develop_server.sh
+			cp --no-preserve=mode,ownership $src/serve $out
+			chmod +x $out/serve
 			cp --no-preserve=mode,ownership $TMPDIR/pelicanconf.py $out/pelicanconf.py
+			cd $out
 		'';
 	};
 
-	blog = pkgs.stdenv.mkDerivation {
-		name = "alberand-com";
-		src = ./.;
-
-		buildInputs = with pkgs.python3Packages; [ 
-		    pelican
-		    markdown
-		    pkgs.proselint
-		    pygments-markdown-lexer
-		];
-		 
-		propagatedBuildInputs = [
-			(pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
-		    pelican
-		    markdown
-		    (callPackage ./pelican-liquid-tags { })
-		    (callPackage ./pelican-render-math { })
-			]))
-		];
-
-		LC_ALL = "en_US.UTF-8";
-
+in {
+	blog-dev = blog-dev;
+	blog-pub = blog-dev.overrideAttrs (oldAttrs: {
 		buildPhase = ''
 			cp pelicanconf.py $TMPDIR/pelicanconf.py
 			cp publishconf.py $TMPDIR/publishconf.py
@@ -129,14 +112,5 @@ in {
 				#--subst-var pelican_plugins
 			make CONFFILE=$TMPDIR/pelicanconf.py publish
 		'';
-
-		installPhase = ''
-			# Copy the generated result
-			mkdir -p $out
-			cp -r "output/"* $out
-			cp --no-preserve=mode,ownership $src/develop_server.sh $out
-			chmod +x $out/develop_server.sh
-			cp --no-preserve=mode,ownership $TMPDIR/pelicanconf.py $out/pelicanconf.py
-		'';
-	};
+	});
 }
