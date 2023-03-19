@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 import ntpath
+import uuid
+from pygments.formatters import HtmlFormatter
+from markdown.extensions.codehilite import CodeHiliteExtension
 
 # Personal Information
 AUTHOR = 'Andrey Albershtein'
@@ -76,16 +79,69 @@ EXTRA_PATH_METADATA = {
 # To publish article add metadata Status: published
 DEFAULT_METADATA = {'status': 'draft'}
 DEFAULT_CATEGORY = 'Article'
-PLUGIN_PATHS = ["plugins", "@pelican_plugins@"]
+# PLUGIN_PATHS = ["@pelican_plugins@"]
 PLUGINS = [
-        # 'liquid_tags.include_code',
-        #'render_math'
+        'liquid_tags',
+        # 'render_math'
 ]
+
+# Add following code to your JS file:
+# function copy_to_clipboard(element) {
+# 	var range = document.createRange();
+# 	range.selectNode(element);
+# 	window.getSelection().removeAllRanges();
+# 	window.getSelection().addRange(range);
+# 	document.execCommand("copy");
+# 	window.getSelection().removeAllRanges();
+# }
+# Then in your pelicanconf.py do:
+#
+# from pygments_local_formatter import CodeCopyButtonHtmlFormatter
+#
+# MARKDOWN = {
+#   ... <snip>...
+#   'extension_configs': {
+#     'markdown.extensions.codehilite': {
+#         'css_class': 'highlight',
+#         'pygments_formatter': CodeCopyButtonHtmlFormatter,
+#     },
+#   },
+#   ... <snip>...
+# }
+
+class CodeCopyButtonHtmlFormatter(HtmlFormatter):
+    def _wrap_div(self, inner):
+        style = []
+        if (self.noclasses and not self.nobackground and
+                self.style.background_color is not None):
+            style.append('background: %s' % (self.style.background_color,))
+        if self.cssstyles:
+            style.append(self.cssstyles)
+        style = '; '.join(style)
+
+        uid = uuid.uuid1()
+        cssclass = (self.cssclass and ' class="%s"' % self.cssclass)
+        cssstyle = (style and (' style="%s"' % style))
+        open_div = f'''
+            <div {cssclass} {cssstyle} id="code-{uid}">
+                <button
+                  type="button"
+                  class="copy-code-button"
+                  onclick="copy_to_clipboard(document.getElementById('code-{uid}'))">
+                    ⧉
+                </button>
+        '''
+
+        yield 0, open_div
+        yield from inner
+        yield 0, '</div>\n'
+
 
 MARKDOWN = {
   'extension_configs': {
     'markdown.extensions.codehilite': {
-        'css_class': 'highlight'
+        'css_class': 'highlight',
+        'pygments_formatter': CodeCopyButtonHtmlFormatter,
     },
     'markdown.extensions.toc': {
       'title': 'Table of contents:' 
@@ -110,3 +166,4 @@ def getGitHubPage(source_file):
 JINJA_FILTERS = {
     'asGitHubPage' : getGitHubPage
 }
+

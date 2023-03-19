@@ -135,6 +135,6 @@ materials:
 	$(MAKE) -C content/materials
 
 proselint:
-	-for file in $$(git ls-files -m content); do proselint "$$file"; done
+	for file in $$(git ls-files -m content); do proselint "$$file"; done
 
 .PHONY: html help clean regenerate serve serve-global devserver publish proselint ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
