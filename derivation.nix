@@ -64,20 +64,16 @@ let
 		name = "alberand-com";
 		src = ./.;
 
-		buildInputs = with pkgs.python3Packages; [ 
+		buildInputs = with pkgs.python3Packages; [
 		    pelican
 		    markdown
 		    pkgs.proselint
 		    pygments-markdown-lexer
 		];
-		 
-		propagatedBuildInputs = [
-			(pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
-		    pelican
-		    markdown
-		    (callPackage ./pelican-liquid-tags { })
-		    (callPackage ./pelican-render-math { })
-			]))
+
+		propagatedBuildInputs = with pkgs.python3Packages; [
+			pelican
+			markdown
 		];
 
 		LC_ALL = "en_US.UTF-8";
