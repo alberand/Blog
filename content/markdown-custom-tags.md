@@ -39,7 +39,7 @@ can 5 different processors. Each of them should be used depending on what you
 want to achieve. For example, for censorship of words I would probably go with
 [Preprocessors][6].
 
-[alberand]: this is comment I'm talking about. Check out the [source code][7]
+[alberand]: This is comment I'm talking about. Check out the [source code][7]
 
 Add some imports in the pelicanconf.py:
 
@@ -69,32 +69,24 @@ in another block. As an example code block can have newlines in it.
 
 To let python-markdown know that we processed the block we need to `pop()` it
 from the list with `blocks.pop(0)`. Otherwise, if we failed to process the block
-we can return `None` or `False`.
+we can return `False`.
 
 ```python
 class Comments(BlockProcessor):
-    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]+)\]:' # For example [alberand]:
+    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]{3,})\]: ' # [alberand]:
 
     def test(self, parent, block):
         return re.match(self.RE_FENCE_START, block)
 
     def run(self, parent, blocks):
-        original_block = blocks[0]
         blocks[0] = re.sub(self.RE_FENCE_START, '', blocks[0])
 
-        # Find block with ending fence
-        for block_num, block in enumerate(blocks):
-            # render fenced area inside a new div
-            e = etree.SubElement(parent, 'div')
-            e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
-            self.parser.parseBlocks(e, blocks[0:block_num + 1])
-            # remove used blocks
-            for i in range(0, block_num + 1):
-                blocks.pop(0)
-            return True  # or could have had no return statement
-        # No closing marker!  Restore and do nothing
-        blocks[0] = original_block
-        return False  # equivalent to our test() routine returning False
+        e = etree.SubElement(parent, 'div')
+        e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
+        self.parser.parseChunk(e, blocks[0])
+        blocks.pop(0)
+
+        return True
 ```
 
 Next we need to create an Extension. This will be actually quite empty. Just
@@ -197,28 +189,20 @@ import re
 import xml.etree.ElementTree as etree
 
 class Comments(BlockProcessor):
-    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]+)\]:' # For example [alberand]:
+    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]{3,})\]: ' # [alberand]:
 
     def test(self, parent, block):
         return re.match(self.RE_FENCE_START, block)
 
     def run(self, parent, blocks):
-        original_block = blocks[0]
         blocks[0] = re.sub(self.RE_FENCE_START, '', blocks[0])
 
-        # Find block with ending fence
-        for block_num, block in enumerate(blocks):
-            # render fenced area inside a new div
-            e = etree.SubElement(parent, 'div')
-            e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
-            self.parser.parseBlocks(e, blocks[0:block_num + 1])
-            # remove used blocks
-            for i in range(0, block_num + 1):
-                blocks.pop(0)
-            return True  # or could have had no return statement
-        # No closing marker!  Restore and do nothing
-        blocks[0] = original_block
-        return False  # equivalent to our test() routine returning False
+        e = etree.SubElement(parent, 'div')
+        e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
+        self.parser.parseChunk(e, blocks[0])
+        blocks.pop(0)
+
+        return True
 
 class AlberandTagsExtension(Extension):
     def extendMarkdown(self, md):
@@ -240,4 +224,4 @@ MARKDOWN = {
 [4]: https://github.com/Python-Markdown/markdown
 [5]: https://python-markdown.github.io/extensions/api/#writing-extensions-for-python-markdown
 [6]: https://python-markdown.github.io/extensions/api/#preprocessors
-[7]:
+[7]: https://xeiaso.net/blog
