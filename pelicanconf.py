@@ -86,7 +86,7 @@ DEFAULT_METADATA = {'status': 'draft'}
 DEFAULT_CATEGORY = 'Article'
 # PLUGIN_PATHS = ["@pelican_plugins@"]
 PLUGINS = [
-        'liquid_tags',
+        #'liquid_tags',
         # 'render_math'
 ]
 
@@ -171,28 +171,20 @@ class ImageInlineProcessor(LinkInlineProcessor):
         return div, m.start(0), index
 
 class Comments(BlockProcessor):
-    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]+)\]:' # [alberand]:
+    RE_FENCE_START = r'^\[([a-zA-Z0-9_-]{3,})\]: ' # [alberand]:
 
     def test(self, parent, block):
         return re.match(self.RE_FENCE_START, block)
 
     def run(self, parent, blocks):
-        original_block = blocks[0]
         blocks[0] = re.sub(self.RE_FENCE_START, '', blocks[0])
 
-        # Find block with ending fence
-        for block_num, block in enumerate(blocks):
-            # render fenced area inside a new div
-            e = etree.SubElement(parent, 'div')
-            e.set('style', 'display: inline-block; color: blue; border: 1px solid red;')
-            self.parser.parseBlocks(e, blocks[0:block_num + 1])
-            # remove used blocks
-            for i in range(0, block_num + 1):
-                blocks.pop(0)
-            return True  # or could have had no return statement
-        # No closing marker!  Restore and do nothing
-        blocks[0] = original_block
-        return False  # equivalent to our test() routine returning False
+        e = etree.SubElement(parent, 'div')
+        e.set('class', 'note-left')
+        self.parser.parseChunk(e, blocks[0])
+        blocks.pop(0)
+
+        return True
 
 IMAGE_LINK_RE = r'\!\['
 
