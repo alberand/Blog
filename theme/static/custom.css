@@ -146,6 +146,11 @@ a:hover {
   display: inline-block;
 }
 
+.comment {
+	font-style: italic;
+	color: #828282;
+}
+
 /* Liquid tags - title for include code */
 .liquid-tags-code-title {
   color: grey;

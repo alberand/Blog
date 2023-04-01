@@ -179,8 +179,10 @@ class Comments(BlockProcessor):
     def run(self, parent, blocks):
         blocks[0] = re.sub(self.RE_FENCE_START, '', blocks[0])
 
+        blocks[0] = f'/\* {blocks[0]} \*/'
+
         e = etree.SubElement(parent, 'div')
-        e.set('class', 'note-left')
+        e.set('class', 'comment')
         self.parser.parseChunk(e, blocks[0])
         blocks.pop(0)
 
