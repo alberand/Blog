@@ -66,10 +66,9 @@ SITEMAP_SAVE_AS = 'sitemap.xml'
 
 # Copy files from conent folder to output folder
 STATIC_PATHS = [
-	'images', 
-	'pdfs', 
+	'images',
 	'materials',
-    	'extra'
+	'extra'
 ]
 
 EXTRA_PATH_METADATA = {
