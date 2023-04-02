@@ -329,7 +329,39 @@ doesn't seem to work yet.
 
 #### Network and SSH
 
-TODO
+Create interface on the host side, assuming you are on NixOS:
+
+```nix
+# This goes into your host configuration.nix
+networking.interfaces.tap0 = {
+	name = "tap0";
+	virtual = true;
+	virtualType = "tap";
+	virtualOwner = "alberand";
+};
+
+networking.interfaces.tap0 = {
+	ipv4 = {
+		addresses = [{
+			address = "192.168.10.1";
+			prefixLength = 16;
+		}];
+	};
+};
+```
+
+Then set IP static address for VM and enable SSH server:
+
+```nix
+# This goes into your vm.nix
+networking.interfaces.eth1 = {
+	ipv4.addresses = [{
+		address = "192.168.10.2";
+		prefixLength = 24;
+	}];
+};
+services.openssh.enable = true;
+```
 
 #### Adding package to VM
 
@@ -350,12 +382,27 @@ Adding overlay on top to build with your local changes and it becomes amazingly
 easy to get a VM with custom environment. To add overlay:
 
 ```nix
-nixpkgs.overlays = [ 
+let
+	# Let's use local source for this package
+	xfstests-overlay = (self: super: {
+		xfstests = super.xfstests.overrideAttrs (super: {
+			version = "git";
+			src = /home/alberand/Projects/xfstests-dev;
+		});
+	});
+in {
+...
+<snip>
+...
+
+nixpkgs.overlays = [
 	xfstests-overlay-remote
 ];
 ```
 
 #### Bypassing hardware to VM (USB, HDD)
+
+##### Disks and partitions
 
 To share partition with VM add an option to Qemu:
 
@@ -379,17 +426,110 @@ virtualisation.qemu.options.drives = [
 ];
 ```
 
-To pass a USB device to VM add following configuration:
+##### USB devices
+
+To pass a USB device to VM there's three things need to be done:
+
+- Find out device Bus, Port, Vendor ID, and Product ID
+- Configure permission to the USB device
+- Add configuration to QEMU
+
+Firstly, we need to find out metadata of the device to identify it. This can be
+done with `lsusb` utility. Before connecting your device run `lsusb`, then
+connect the device and run it again. Compare to list to find out what's new. The
+name of the device could also give a hint (like manufacturer name or that it is
+keyboard). Save device Bus, Port, Vendor ID, and Product ID:
+
+```
+       bus        port    vend prod
+       vvv        vvv     vvvv vvvv
+
+   Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+   Bus 003 Device 124: ID 0424:2514 Microchip Technology, Inc. (formerly SMSC) USB 2.0 Hub
+   Bus 003 Device 123: ID 413c:2113 Dell Computer Corp. KB216 Wired Keyboard
+   Bus 003 Device 122: ID 03f0:0941 HP, Inc X500 Optical Mouse
+   Bus 003 Device 121: ID 1a40:0101 Terminus Technology Inc. Hub
+   Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+>> Bus 002 Device 003: ID 8564:1000 Transcend Information, Inc. JetFlash
+   Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+   Bus 001 Device 006: ID 1b3f:2002 Generalplus Technology Inc. 808 Camera
+   Bus 001 Device 002: ID 8087:0032 Intel Corp. AX210 Bluetooth
+   Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
+
+Note that Bus and Device number could change depending on which USB port you
+use!
+
+Second step is to configure permissions since only root has access to USB
+devices by default. To achieve this we can use `udev`. This utility is
+responsible for preparing device for use when hardware is connected - for
+example loading kernel driver. We need to create a rule to tell `udev` make our
+device accessible for our user. I recommend using `vendorid` and `productid`
+attributes to always uniquely identify the device:
+
+```
+# 32G flash drive
+#
+# From lsusb:
+# Bus 002 Device 003: ID 8564:1000 Transcend Information, Inc. JetFlash
+#
+#                                   vvvvvvvvvvvvvvvvvvvvvvvvvv change vvvvvvvvvvvvvvvvvvvvvvvvvv
+#                                   vvvv                     vvvv                       vvvvvvvv
+SUBSYSTEMS=="usb", ATTR{idVendor}=="8564", ATTR{idProduct}=="1000", MODE="0660", OWNER="alberand"
+```
+
+Add this rule to `/etc/udev/rules.d/99-vm.rules` or on NixOS to
+`services.udev.extraRules`. Lastly, let's reload the rules so new rule is
+applied:
+
+```shell
+$ sudo udevadm control --reload-rules && sudo udevadm trigger
+$ # Check that owner changed (path could differ!):
+$ ls -la /dev/bus/usb/002
+total 0
+drwxr-xr-x 2 root     root       80 Apr  2 14:36 .
+drwxr-xr-x 6 root     root      120 Mar 24 11:55 ..
+crw-rw-r-- 1 root     root 189, 128 Apr  2 14:38 001
+crw-rw---- 1 alberand root 189, 130 Apr  2 14:39 003
+```
+
+For more details on `udev` see [arch wiki][2].
+
+The last step is to add configuration to QEMU. Add one of the following line
+with changed parameters to `virtualisation.qemu.options`:
 
 ```nix
-	TODO
+"-usb -device usb-host,hostbus=2,hostport=4"
+# or
+"-usb -device usb-host,vendorid=0x8564,productid=0x1000"
 ```
+
+Boot your VM and check that device is there with `lsusb`, it should have same
+vendor and product IDs.
 
 #### Create a bootable ISO
 
-Time to deploy the VM to cloud or other machine.
+Time to deploy the VM to cloud or other machine. This is as easy as:
 
-TODO
+```shell
+$ nix-shell -p nixos-generators --run "nixos-generate --format iso --configuration ./vm.nix -o result"
+```
+
+Test it with:
+
+```shell
+$ nix-shell -p qemu
+$ qemu-system-x86_64 -enable-kvm -m 256 -cdrom result/iso/nixos-*.iso
+```
+
+Flash it to disk:
+
+```shell
+                              your disk
+                                 vvv
+$ dd if=result/iso/*.iso of=/dev/sdX status=progress
+$ sync
+```
 
 #### Tips & tricks to configure the VM
 
@@ -422,3 +562,4 @@ Qemu options, shared directories, shared disks could be added in
 * [Download vm.nix][1]
 
 [1]: https://www.google.com/
+[2]: https://wiki.archlinux.org/title/udev
