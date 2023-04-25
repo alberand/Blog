@@ -1,40 +1,53 @@
 {
-	description = "A very basic flake";
+  description = "alberand blog";
 
-	inputs = {
-		flake-utils.url = "github:numtide/flake-utils";
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-	};
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
 
-	outputs = { self, nixpkgs, flake-utils }:
-	flake-utils.lib.eachDefaultSystem (system: let
-		pkgs = nixpkgs.legacyPackages.${system};
-		blog = (import ./derivation.nix { inherit self nixpkgs pkgs; });
-	in {
+  outputs = { self, nixpkgs, flake-utils }:
+  flake-utils.lib.eachDefaultSystem (system: let
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [ self.overlays.${system}.default ];
+    };
+    blog = (import ./derivation.nix { inherit self pkgs; });
+  in rec {
+    overlays.default = (final: prev: {
+      serve = pkgs.writeScriptBin "serve" ''
+#!/usr/bin/env bash
 
-		packages.blog = blog.blog-dev;
-		packages.publish = blog.blog-pub;
+python -m http.server --directory result
+      '';
+      blog = blog.blog-dev;
+      publish = blog.blog-pub;
+    });
 
-		packages.default = blog.blog-dev;
+    packages.${system} = {
+      default = pkgs.blog;
+      publish = pkgs.publish;
+    };
 
-		apps = {
-			default = {
-				type = "app";
-				program = "${self.packages.${system}.default}/serve";
-			};
-		};
+    apps.${system}.default = flake-utils.lib.mkApp {
+      drv = pkgs.serve;
+    };
 
-		devShells = {
-			default = nixpkgs.mkShell {
-					buildInputs = with nixpkgs; [
-						(nixpkgs.python3.withPackages
-							(pythonPackages: with pythonPackages; [
-								pelican
-								markdown
-							])
-						)
-					];
-				};
-			};
-	});
+    devShells = {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          pkgs.serve
+        ];
+
+        buildInputs = with pkgs; [
+          (pkgs.python3.withPackages
+          (pythonPackages: with pythonPackages; [
+            pelican
+            markdown
+          ])
+          )
+        ];
+      };
+    };
+  });
 }
