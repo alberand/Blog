@@ -20,16 +20,18 @@
 
 python -m http.server --directory result
       '';
+      publish = pkgs.writeScriptBin "publish" (builtins.readFile ./publish);
       blog = blog.blog-dev;
-      publish = blog.blog-pub;
+      pub-blog = blog.blog-pub;
     });
 
-    packages.${system} = {
+    packages = {
       default = pkgs.blog;
-      publish = pkgs.publish;
+      blog = pkgs.blog;
+      pub-blog = pkgs.pub-blog;
     };
 
-    apps.${system}.default = flake-utils.lib.mkApp {
+    apps.default = flake-utils.lib.mkApp {
       drv = pkgs.serve;
     };
 
@@ -37,6 +39,7 @@ python -m http.server --directory result
       default = pkgs.mkShell {
         packages = with pkgs; [
           pkgs.serve
+          pkgs.publish
         ];
 
         buildInputs = with pkgs; [

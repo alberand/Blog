@@ -1,4 +1,4 @@
-{ self, pkgs ? import nixpkgs {} }:
+{ self, pkgs }:
 let
   blog-dev = pkgs.stdenv.mkDerivation {
     name = "alberand-com";
@@ -29,12 +29,8 @@ let
                         # Copy the generated result
                         mkdir -p $out
                         cp -r "output/"* $out
-                        cp --no-preserve=mode,ownership $src/develop_server.sh $out
-                        chmod +x $out/develop_server.sh
-                        cp --no-preserve=mode,ownership $src/serve $out
-                        chmod +x $out/serve
-                        cp --no-preserve=mode,ownership $TMPDIR/pelicanconf.py $out/pelicanconf.py
-                        cd $out
+                        #cp --no-preserve=mode,ownership $src/develop_server.sh $out
+                        #chmod +x $out/develop_server.sh
     '';
   };
 
