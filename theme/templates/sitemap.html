@@ -4,13 +4,13 @@
 {% for article in articles %}
   <url>
     <loc>{{ SITEURL }}/{{ article.url }}</loc>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
 
   {% for translation in article.translations %}
   <url>
     <loc>{{ SITEURL }}/{{ translation.url }}</loc>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
   {% endfor %}
 {% endfor %}
