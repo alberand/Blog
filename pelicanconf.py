@@ -74,6 +74,7 @@ STATIC_PATHS = [
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/favicon.ico': {'path': 'favicon.ico'},  # and this
+    'extra/CNAME': {'path': 'CNAME'},  # and this
     'extra/LICENSE': {'path': 'LICENSE'},
     'extra/.htaccess' : { 'path' : '.htaccess'},
     'extra/robots.txt' : { 'path' : 'robots.txt' }
