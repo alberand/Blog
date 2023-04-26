@@ -166,10 +166,12 @@ a:hover {
 	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 	font-size: 14px;
 	line-height: normal;
-	background: black;
 	padding: 20px 10px 10px 10px;
 	overflow: hidden;
 	position: relative;
+	color: #f8f8f2;
+	border: 2px dotted #4c4d4f;
+	border-radius: 5px;
 }
 
 .highlight pre {
