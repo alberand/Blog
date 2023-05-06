@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+nix build .#pub-blog
 rm -rf /tmp/alberand-blog
 mkdir -p /tmp/alberand-blog
 cp -r ./result/* /tmp/alberand-blog/
