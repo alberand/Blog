@@ -23,6 +23,25 @@ python -m http.server --directory result
       publish = pkgs.writeScriptBin "publish" (builtins.readFile ./publish);
       blog = blog.blog-dev;
       pub-blog = blog.blog-pub;
+      new = pkgs.writeScriptBin "new" ''
+        #!/usr/bin/env bash
+
+        DIR=$(pwd)
+        cat <<EOF > "$DIR/content/$1.md"
+Title: Template
+Date: $(date '+%d.%m.%Y')
+Modified: $(date '+%d.%m.%Y')
+Status: draft
+Tags: pelican, publishing
+Keywords: pelican, publishing
+Slug: $1
+Author: Andrey Albershtein
+Summary: Short version for index and feeds
+Lang: en
+
+This is the content of my super blog post.
+EOF
+      '';
     });
 
     packages = {
@@ -40,6 +59,7 @@ python -m http.server --directory result
         packages = with pkgs; [
           pkgs.serve
           pkgs.publish
+          pkgs.new
         ];
 
         buildInputs = with pkgs; [
