@@ -23,7 +23,7 @@ around it.
 
 ## The simplest VM
 
-Create a directory and a simple vm.nix with following content:
+Create a directory and a simple `vm.nix` with following content:
 
 ```nix
 { pkgs, ... }:
@@ -41,8 +41,23 @@ Create a directory and a simple vm.nix with following content:
 }
 ```
 
-I also suggest to `git init .` to not lose any progress. That's actually enough
-to get a working VM. Compile it as follows:
+In the file above we imported a pair of Nix configuration files. The
+`qemu-guest.nix` is quite simple - it just adds most of the `virtio` kernel
+modules, so the system can work under QEMU. The `qemu-guest.nix` defines a Nix
+module. This module defines how NixOS configuration from `vm.nix` is build into
+virtual machine. The module defines many parameters to tweak the final VM, most
+of them is defined under `virtualization.` (see examples below). You can find
+both of these files in the nixpkgs repo ([qemu-guest.nix][8] and
+[qemu-vm.nix][9]).
+
+Next, we set `root` password to be empty. The `mutableUsers` parameter tells Nix
+to have only those users which are defined in Nix configuration. In other words,
+your system will have only those users which are defined in `vm.nix`.
+
+The last parameter is used for internal Nix states. Just leave it like this.
+
+I also suggest to `git init .` to not lose any progress. This is actually enough
+to get a working VM. Compile it with following command:
 
 ```console
                               what
@@ -54,7 +69,7 @@ nix-build '<nixpkgs/nixos>' -A vm --arg configuration ./vm.nix
 ```
 
 The command above will take quite some time, especially compiling the kernel.
-Eventually `nix-build` creates a `./result` directory. The directory contains
+Eventually `nix-build` will create a `./result` directory. The directory contains
 shell script to run VM:
 
 ```console
@@ -83,8 +98,13 @@ environment.systemPackages = with pkgs; [
 Much much easier than using Buildroot or any other tool. The system will have
 all necessary packages and will not be bloated as full-blown linux distribution.
 
-Adding overlay on top, to build with your local changes and the process becomes
-amazingly easy to get a VM with custom environment. To add overlay:
+## Customizing packages
+
+Adding overlay on top of the packages, to build with your local changes and the
+process becomes amazingly easy to get a VM with custom environment. In the
+following example I have a local copy of `xfstests` sources which I modified.
+With overlay I tell Nix to use my local source instead one defined in the
+nixpkgs repository.
 
 ```nix
 let
@@ -103,8 +123,6 @@ nixpkgs.overlays = [
   xfstests-overlay-remote
 ];
 ```
-
-## Customize packages/derivations
 
 In Nix derivation is a package and overlay can be used to change build inputs of
 that package. With overlay you can change sources, version, metadata, build
@@ -200,7 +218,8 @@ quickly modify the kernel and fire up the VM with testsuite.
 
 # Network and SSH
 
-Create interface on the host side, assuming you are on NixOS:
+Create interface on the host side, assuming you are on NixOS (this is not for
+`vm.nix`):
 
 ```nix
 # This goes into your host configuration.nix
@@ -221,7 +240,7 @@ networking.interfaces.tap0 = {
 };
 ```
 
-Then set IP static address for VM and enable SSH server:
+Then set IP static address for VM and enable SSH server (in `vm.nix`):
 
 ```nix
 # This goes into your vm.nix
@@ -632,3 +651,5 @@ in
 [5]: https://github.com/NixOS/nixpkgs/blob/23968f4c5dba6a59ec7b54fe2dcaebaccefb8bfe/nixos/modules/virtualisation/qemu-vm.nix#L1158-L1176
 [6]: https://alberand.com/host-only-networking-set-up-for-qemu-hypervisor.html
 [7]: https://github.com/alberand/nix-kernel-vm
+[8]: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/qemu-guest.nix
+[9]: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/virtualisation/qemu-vm.nix
