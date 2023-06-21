@@ -34,7 +34,7 @@ but it is simpler than doing everything by hand.
 
 [TOC]
 
-### [`HCTOOLS`][3] - Arduino application
+# [`HCTOOLS`][3] - HC-05 Configuration tool
 
 This application can be used on most of the Arduinos starting from Arduino Nano.
 You can download it from the [Github][3]. I used [platformio][2] as a development
@@ -109,7 +109,7 @@ application as well and re-upload it.
 
 Type `help` into the application shell to see all the available commands.
 
-### Back to PC
+# Back to PC
 
 So, after you set name for your module and configure it as a slave you can try
 to setup wireless connection. Install Bluetooth stack:
@@ -200,7 +200,7 @@ $ dmesg | grep Bluetooth
 [    6.505851] Bluetooth: hci0: Broadcom Bluetooth Device (43142)
 ```
 
-### Pairing with the device
+# Pairing PC with the HC-05 device
 
 First of all, I always try to connect to the HC-05 with Android phone. I used
 [Serial Bluetooth Terminal][10] to connect and send some text to the module to
@@ -270,7 +270,7 @@ If you'd like to check if disconnect works:
 [bluetooth]# 
 ```
 
-### Time to open serial monitor
+# Time to open serial monitor
 
 The last step is to create serial port. The following command binds your
 Bluetooth device with rfcomm device (`/dev/rmcomm0` in this case). It won't
@@ -354,7 +354,7 @@ and the attributes from one single parent device.
 
 Now your device should be available under `/dev/blueled` path.
 
-#### Troubleshooting
+## Troubleshooting HC-05
 
 There is list of problems which I faced during my attempts to configure
 everything right.
@@ -397,10 +397,10 @@ everything right.
 4. As always power on/off helped in a few cases 😀.
 5. A lot of information about Bluetooth is available on the [Arch Linux Wiki][8]
 
-#### References
+## References
 
 * [HC-05 Bluetooth modules on Aliexpress (non-referal link)][1]
-* [HCTOOLS application on Github][3]
+* [HC-05 configuration tool on Github][3]
 * [How to fix Bluetooth with Broadcom chip][4]
 * [Arch Linux Wiki - Bluetooth][5]
 * [RFCOMM Protocol][6]
