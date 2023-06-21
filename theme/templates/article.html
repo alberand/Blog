@@ -3,11 +3,10 @@
 {% block title %}{{ article.title }} - {{SITENAME}}{% endblock title %}
 {% block content %}
 
-<a href="#">
-	<div>
-		<span class="comment-scroll-arrow"></span>
-	</div>
-</a>
+<div class="row" id="home-button-row">
+	<a href="{{ SITEURL }}" id="home-button">&#x2190 home</a>
+</div>
+
 <script>
 	document.getElementById("scroll-up-zone").onclick = function (){
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -15,10 +14,6 @@
 </script>
 
 <section id="content" class="article content">
-
-	<div class="row" id="home-button-row">
-		<a href="{{ SITEURL }}" id="home-button">&#x2190 home</a>
-	</div>
 
     <div class="row">
         <div class="col">
@@ -61,6 +56,12 @@
 	    </p>
     </div>
 </div>
+
+<a href="#">
+	<div>
+		<span class="comment-scroll-arrow"></span>
+	</div>
+</a>
 
 <!-- Structured data -->
 <!-- Google's Metadata -->
