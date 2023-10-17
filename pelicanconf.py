@@ -132,7 +132,7 @@ class CodeCopyButtonHtmlFormatter(HtmlFormatter):
                 <button
                   type="button"
                   class="copy-code-button"
-                  onclick="copy_to_clipboard(document.getElementById('code-{uid}'))">
+                  onclick="copy_to_clipboard(document.getElementById('code-{uid}').getElementsByTagName('code')[0])">
                     ⧉
                 </button>
         '''
