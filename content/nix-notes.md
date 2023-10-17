@@ -19,7 +19,7 @@ From time to time I google for an expression to put into `default.nix` to build
 a derivation a defined in `derivation.nix` with `stdenv.mkDerivation`. Here is
 oneliner:
 
-```nix
+```shell
 nix-build -E 'with import <nixpkgs> { }; callPackage ./derivation.nix { }'
 ```
 
