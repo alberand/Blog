@@ -26,6 +26,11 @@ python -m http.server --directory result
       new = pkgs.writeScriptBin "new" ''
         #!/usr/bin/env bash
 
+        if [ "$#" -ne 1 ]; then
+          echo "Specify artiicle name"
+          exit 1
+        fi
+
         DIR=$(pwd)
         cat <<EOF > "$DIR/content/$1.md"
 Title: Template
