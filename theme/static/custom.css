@@ -176,6 +176,8 @@ a:hover {
 
 .highlight pre {
 	margin-bottom: 8px;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 /* Table of content in articles */
 .toc {
@@ -307,8 +309,8 @@ a:hover {
 	padding: 0;
 	cursor: pointer;
 	outline: inherit;
-	font-size: 20px;
+	font-size: 14px;
 	position: absolute;
-	right: 5px;
-	top: 5px;
+	right: 8px;
+	top: 3px;
 }
