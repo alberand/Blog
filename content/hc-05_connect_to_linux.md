@@ -272,7 +272,7 @@ find instruction of how to install it on your particular system (See [Arch
 Wiki][9]). 
 
 ```console
-    $ sudo rfcomm bind rfcomm0 <MAC-OF-HC-05>
+$ sudo rfcomm bind rfcomm0 <MAC-OF-HC-05>
 ```
 
 Now you should have serial port `/dev/rmcomm0` which is attached to your
@@ -282,23 +282,23 @@ Let's test that it works. In another terminal open serial monitor attached to
 Arduino with `HCTOOLS` application and run `echo` command:
 
 ```console
-    $ pio -e nano -t monitor
-    ...some output is hidden...
-    --- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
-    --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-    HCTOOLS. Version: 1.0
-    # echo
-    Echoing every received character. CTRL-D to stop it.
+$ pio -e nano -t monitor
+...some output is hidden...
+--- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+HCTOOLS. Version: 1.0
+# echo
+Echoing every received character. CTRL-D to stop it.
 ```
 
 Try to open serial monitor on the `rfcomm` port and send something to the device:
 
 ```console
-    $ pio device monitor -p /dev/rfcomm0 -b 115200
-    ...long output is hidden...
-    --- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
-    --- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-    Hello
+$ pio device monitor -p /dev/rfcomm0 -b 115200
+...long output is hidden...
+--- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+Hello
 ```
 
 Now, if you send something to Arduino it will send it to HC-05 and then to your
