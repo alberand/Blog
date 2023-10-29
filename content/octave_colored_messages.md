@@ -9,12 +9,7 @@ Summary: How to print colorful messages in the Octave prompt using shell escape 
 Lang: en
 Image: images/octave_messages.png
 
-<div>
-	<a href="{static}/images/octave_messages.png">
-		<img class="image" alt="Octave Prompt with colors" 
-			src="{static}/images/octave_messages.png">
-	</a>
-</div>
+![Octave Prompt with colors](images/octave_messages.png)
 
 In Unix terminal we can use colorful output for emphasizing important pieces of 
 information such as fatal errors or warnings. As a student in the Technical

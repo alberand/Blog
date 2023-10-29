@@ -9,12 +9,7 @@ Author: Andrey Albershtein
 Summary: Over the air (wireless) programming of the Arduino with HC-05 Bluetooth module
 Lang: en
 
-<div class="wide-boi" >
-	<a href="{static}/images/ota-setup.png">
-		<img class="image" alt="Over the air updates based on HC-05 and Arduino Nano" data-action="zoom"
-			src="{static}/images/ota-setup.png">
-	</a>
-</div>
+![Over the air updates based on HC-05 and Arduino Nano](images/ota-setup_768x432.png)
 
 Wireless firmware updates are attractive. No wires, no broken cheap microUSB
 cables, no annoying grabbing in the box full cables to find the right one 😁.
@@ -64,12 +59,7 @@ receives data from the PC and writes it to the memory. After communication is
 complete bootloader jumps to the address where application is stored. From now
 on, MCU is in control of the application.
 
-<div class="wide-boi" >
-	<a href="{static}/images/bootloader-principle.png">
-    <img class="image" alt="Bootloader process" data-action="zoom"
-        src="{static}/images/bootloader-principle.png">
-	</a>
-</div>
+![Bootloader process](images/bootloader-principle.png)
 
 **Does it have to be serial/USB?**. No, it does not! It could be anything -
 memory chip, USB, wifi or even LoRa (wouldn't use this one for firmware updates
@@ -108,12 +98,7 @@ To make it work we need to do two things:
 
 ### Needed hardware
 
-<div class="wide-boi" >
-	<a href="{static}/images/hardware-set-photo.png">
-    <img class="image" alt="Hardware used for Over the Air updates" data-action="zoom"
-        src="{static}/images/hardware-set-photo.png">
-	</a>
-</div>
+![Hardware used for Over the Air updates](images/hardware-set-photo.png)
 
 * Arduino Nano
 * Arduino Nano
@@ -165,12 +150,7 @@ upload ArduionISP sketch from the standard set of examples `Examples ->
 11. ArduinoISP -> ArduinoISP`. This application turns your Arduino into a
 programmer (like you heh). 
 
-<div class="wide-boi" >
-	<a href="{static}/images/nano-update-bootloader.png">
-    <img class="image" alt="Installing bootloader with Arduino Nano" data-action="zoom"
-        src="{static}/images/nano-update-bootloader.png">
-	</a>
-</div>
+![Installing bootloader with Arduino Nano](images/nano-update-bootloader.png)
 
 You can also add some LEDs to a programmer to see the state of uploading
 process. I highly recommend doing so as it helps a lot with debugging. The LEDs
@@ -185,12 +165,7 @@ are connected as follows:
 
 As I use it quite often I soldered it and now I can use it as standalone device:
 
-<div class="wide-boi" >
-	<a href="{static}/images/arduino-bootloader-loader.png">
-    <img class="image" alt="Custom board for uploading bootloading into Arduino" data-action="zoom"
-        src="{static}/images/arduino-bootloader-loader.png">
-	</a>
-</div>
+![Custom board for uploading bootloading into Arduino](images/arduino-bootloader-loader.png)
 
 **How does it work?** The principle is following - the ArduinoISP is connected
 to the PC. Over the SPI this Arduino connects to the ICSP (those six pin put
@@ -223,12 +198,7 @@ another Arduino with serial passthrough application.
     and vise versa.
 </p>
 
-<div class="wide-boi" >
-	<a href="{static}/images/hc-05-configuration.png">
-    <img class="image" alt="Image of setup to change configuration in HC-05" data-action="zoom"
-        src="{static}/images/hc-05-configuration.png">
-	</a>
-</div>
+![Image of setup to change configuration in HC-05](images/hc-05-configuration.png)
 
 The Arduino is connected to the PC with a cable. I used Arduino Nano which has
 only one serial port. Therefore, my only port is occupied by a PC. But we need a

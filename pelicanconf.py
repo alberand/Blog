@@ -153,15 +153,18 @@ class ImageInlineProcessor(LinkInlineProcessor):
         if not handled:
             return None, None, None
 
-        div = etree.Element("div")
-        div.set("class", "wide-boi")
 
-        a = etree.SubElement(div, "a")
-        a.set("href", src)
+        div = etree.Element("figure")
+        div.set("class", "article-figure")
 
-        img = etree.SubElement(a, "img")
-
+        img = etree.SubElement(div, "img")
         img.set("src", src)
+
+        if re.search('\d+x\d+', src):
+            width, height = src.split('_')[-1].split('.')[0].split('x')
+            img.set("width", width)
+            img.set("height", height)
+            img.set("style", f'aspect-ratio: {width}/{height};')
 
         if title is not None:
             img.set("title", title)

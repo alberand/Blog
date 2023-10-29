@@ -164,7 +164,7 @@ correctly uploaded. I use `minicom`:
 ```console
 $ sudo minicom -s
 ```
-    
+
 Press reset button on the DevKit and you should see similar message:
 
 ```text
@@ -210,14 +210,10 @@ folder and then take `samples/basic/blinky/src/main.c` and copy `main.c`.
 Now connect your board and run `ninja flash`. It should compile and upload
 application, built-in LED will start blinking.
 
-<div class="wide-boi" >
-	<a href="{static}/images/stm32-zephyr.gif">
-    <img id="gifka" alt="Zephyr RTOS blinky app" src="{static}/images/stm32-zephyr.gif">
-	</a>
-</div>
+![Zephyr RTOS blinky app](images/stm32-zephyr.gif)
 
 As you can see it is quite convenient to manage your application as it is
-completely separate from source code of the OS. 
+completely separate from source code of the OS.
 
 #### Update - Use official getting started
 

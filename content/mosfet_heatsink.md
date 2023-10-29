@@ -52,7 +52,6 @@ temperature will differ for 3 C for every applied Watt.
 
 <!-- P = \frac{T_j - T_a}{R} = \frac{120^{\circ}\text{C}-
 25^{\circ}\text{C}}{52^{\circ}\text{C/W}} = 1.82 W -->
-<div id="mosfet" class="wide-boi"></div>
 
 <div id="dynamic_formula">
 \begin{equation*}

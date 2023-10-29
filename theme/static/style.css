@@ -320,3 +320,19 @@ code {
   padding: 0;
   border-radius: 0;
 }
+
+.article-figure {
+  width: unset;
+  max-width: 96vw;
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.article-figure img {
+  border-radius: 3px;
+  height: auto;
+  max-width: 96vw;
+}

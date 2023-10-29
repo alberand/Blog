@@ -58,7 +58,7 @@ void debug(char * str){
 
 See what happens if we compile `main.c` only:
 
-```console
+```shell
 andrew at andrew-laptop in /tmp/mainfun
 ➔ gcc -Wall -o app main.c
 
@@ -69,7 +69,7 @@ andrew at andrew-laptop in /tmp/mainfun
 Nothing =). But if we compile `debug.c` and then link it together with newly
 compiled `main.c`, then:
 
-```console
+```shell
 andrew at andrew-laptop in /tmp/mainfun
 ➔ gcc -Wall -c main.c
 
@@ -100,7 +100,7 @@ Let's look what is really happening in the binaries and if it is true what is
 described in the previous paragraph. Firstly, let's compile both examples as two
 separated binaries for further comparison:
 
-```console
+```shell
 andrew at andrew-laptop in /tmp/mainfun
 ➔ gcc -Wall -o app main.o
 
@@ -112,7 +112,7 @@ Next let's look what is the difference between them. With `nm` utility we can se
 that in the first binary there no `debug` symbol (reference to the function) at
 all.
 
-```console
+```shell
 andrew at andrew-laptop in /tmp/mainfun
 ➔ nm app | grep debug
 0000000000004028 D debugfunc
@@ -126,7 +126,7 @@ andrew at andrew-laptop in /tmp/mainfun
 Actually, there quite a lot of small discrepancies between two binaries. You can
 look on the differences with the following command:
 
-```console
+```shell
 andrew at andrew-laptop in /tmp/mainfun
 ➔ vimdiff <(objdump -d app) <(objdump -d appd)
 ```
@@ -163,7 +163,7 @@ What is located at address 0x4028? As we know that it is global static variable
 it should be somewhere in the `.data` section. We can find it out with following
 command:
 
-```console
+```shell
 ➔ objdump -s -j .data app
 app:     file format elf64-x86-64
 
@@ -196,7 +196,7 @@ different addresses the `main()` is completely the same.
 The address of the to which `debugfunc` points is 0x4030. Again, let's use
 `objdump` to see what is in the `.data` section:
 
-```console
+```shell
 ➔ objdump -s -j .data appd
 
 appd:     file format elf64-x86-64

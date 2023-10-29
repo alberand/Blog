@@ -19,15 +19,11 @@ application which can help to diagnose and configure them. In this article I use
 Arduino Nano (atmega328p) and classical HC-05 with a linear power regulator.
 There is no need to solder anything complicated - only one little wire 😀.
 
-<div style="text-align: center;">
-    <a href="{static}/images/hc-05.jpg">
-    <img class="image" alt="HC-05 Bluetooth module" style="max-width: 534px; height: 400px;" src="{static}/images/hc-05.jpg">
-    </a>
-    <p class="picture-legend">
-        Image is taken from 
+![HC-05 Bluetooth module](images/hc-05.jpg)
+<p class="picture-legend">
+        Image is taken from
         <a alt="Arduino e-shop" href="https://www.laskarduino.cz/bluetooth-modul-hc-05-ttl/">www.laskarduino.cz</a>
-    </p>
-</div>
+</p>
 
 Firstly, let me describe this Arduino app. I can't say that it is reliable
 but it is simpler than doing everything by hand.
@@ -80,14 +76,7 @@ to the way HC-05 is switched to AT mode. Firstly, Arduino powers off the module
 then it sets pin 34 into HIGH state and turns power on. After this HC-05 boot
 into AT mode.
 
-<div style="text-align: center;">
-	<a href="{static}/images/008-schematics.png">
-		<img id="schematics" class="image" 
-			alt="Schematics of connection of HC-05 Bluetooth module and Arduino" 
-			style="max-height: 400px;" 
-			src="{static}/images/008-schematics.png">
-	</a>
-</div>
+![Schematics of connection of HC-05 Bluetooth module and Arduino](images/008-schematics.png)
 
 The transistor can be any PNP transistor from your Arduino kit. Make sure that
 it is PNP by googling its datasheet. I used `2N3906`. The resistor also can
@@ -316,13 +305,7 @@ Now, if you send something to Arduino it will send it to HC-05 and then to your
 `/dev/rfcomm0` port. If you will send something to the `/dev/rfcomm0` with a
 newline it will send it back to you.
 
-<div style="text-align: center;">
-	<a href="{static}/images/008-hc-05-overall.png">
-		<img class="image" 
-			alt="HC-05 Bluetooth module" style="max-width: 700px; max-height: 400px;" 
-			src="{static}/images/008-hc-05-overall.png">
-	</a>
-</div>
+![HC-05 Bluetooth module](images/008-hc-05-overall.png)
 
 That basically it. For convenience you can add a `udev` rule to have a nice name
 for your device instead of `/dev/rfcomm0`.  The name is specified in the
