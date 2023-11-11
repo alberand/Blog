@@ -156,13 +156,6 @@ a:hover {
 	color: #828282;
 }
 
-/* Liquid tags - title for include code */
-.liquid-tags-code-title {
-  color: grey;
-  margin: 0 10px;
-  font-size: 12px;
-}
-
 .code > figcaption:nth-child(1) > a:nth-child(2) {
   font-size: 12px;
 }
@@ -171,7 +164,7 @@ a:hover {
 	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 	font-size: 14px;
 	line-height: normal;
-	padding: 20px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 	overflow: hidden;
 	position: relative;
 	color: #f8f8f2;
@@ -180,7 +173,7 @@ a:hover {
 }
 
 .highlight pre {
-	margin-bottom: 8px;
+	margin-bottom: 0;
 	overflow-x: auto;
 	overflow-y: hidden;
 }
