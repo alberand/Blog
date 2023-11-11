@@ -10,7 +10,24 @@
   flake-utils.lib.eachDefaultSystem (system: let
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [ self.overlays.${system}.default ];
+      overlays = [
+        self.overlays.${system}.default
+        #(self: super: {
+        #  python3 = super.python3.override {
+        #    packageOverrides = pyself: pysuper: {
+        #      pygments = pysuper.pygments.overrideAttrs (_: {
+        #        version = "git";
+        #        src = pkgs.fetchFromGitHub {
+        #          owner = "pygments";
+        #          repo = "pygments";
+        #          rev = "33c66e714e35b345ac634691488fac564589ced6";
+        #          hash = "sha256-jNm3T5k5+CtWMXHSNd9zVCAry4JXCQnmcOd11QzAfOo=";
+        #        };
+        #      });
+        #    };
+        #  };
+        #})
+      ];
     };
     blog = (import ./derivation.nix { inherit self pkgs; });
   in rec {
