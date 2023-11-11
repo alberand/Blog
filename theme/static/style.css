@@ -3,35 +3,35 @@ html {
 }
 
 body {
-	color: #DDD;
-	background-color: #282c35;
-}
-
-img {
-	background-color: white;
-}
-
-h5 {
-    font-weight: bold;
-}
-
-h4 {
-    padding: 14px 0 14px 0;
-    font-weight: bold;
-}
-
-h3 {
-    font-weight: bold;
-}
-
-h2 {
-  margin: 30px 0;
+  color: #DDD;
+  background-color: #282c35;
 }
 
 h1, h2, h3, h4, h5 {
   margin-top: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   font-weight: bold;
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: 1.7em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+h4 {
+  padding: 14px 0 14px 0;
+}
+
+h5 {
 }
 
 hr {
@@ -52,19 +52,32 @@ a:hover {
   max-width: 720px;
 }
 
-.entry-content {
+.content {
   font-size: 16px;
   line-height: 27px;
+  align-items: center;
 }
 
-.entry-content p {
-  margin: 10px 0 10px 0;
+.content p {
+  /*margin: 10px 0 10px 0;*/
+  width: 96vw;
 }
 
-.entry-title {
+#title {
+  font-size: 2.5em;
   margin: 25px 0 0 0;
   text-align: center;
+  width: 100%;
 }
+
+#title-date {
+    text-align: center;
+    color: #5b5f68;
+    margin-top: 12px;
+    margin-bottom: 35px;
+    display: block;
+}
+
 
 .link-in-code {
   color: #ff6204;

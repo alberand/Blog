@@ -4,29 +4,20 @@
 {% block content %}
 
 <div class="row" id="home-button-row">
-	<a href="{{ SITEURL }}" id="home-button">&#x2190 home</a>
+  <a href="{{ SITEURL }}" id="home-button">&#x2190 home</a>
 </div>
 
-<section id="content" class="article content">
+<section class="row">
+  <article id="content">
+    <header>
+        <h1 id="title"> {{ article.title }} </h1>
 
-    <div class="row">
-        <div class="col">
-        <header>
-            <h1 class="entry-title"> {{ article.title }} </h1>
-
-            <div class="text-muted" style="margin-top: 12px;">
-                {{ article.locale_date }}
-            </div>
-        </header>
-        </div>
-    </div>
-
-    <div class="row entry-content">
-      <article>
-		{{ article.content }}
-      </article>
-    </div>
-
+        <time id="title-date">
+            {{ article.locale_date }}
+        </time>
+    </header>
+    {{ article.content }}
+  </article>
 </section>
 
 <hr/>
