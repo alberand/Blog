@@ -4,6 +4,7 @@ nix build .#pub-blog
 rm -rf /tmp/alberand-blog
 mkdir -p /tmp/alberand-blog
 cp -r ./result/* /tmp/alberand-blog/
+chmod -R u+w /tmp/alberand-blog
 cd /tmp/alberand-blog
 git init .
 git config user.name "nix"
