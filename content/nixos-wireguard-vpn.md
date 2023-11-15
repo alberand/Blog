@@ -256,6 +256,113 @@ ${pkgs.iptables}/bin/iptables -I OUTPUT -s 10.233.1.0/24 -d 10.233.1.0/24 \
     -j ACCEPT
 ```
 
+# Split Tunnel
+
+Ok, but what if I want to route some traffic through the Wireguard and other
+traffic through other tunnel. For example, I have a company VPN which is needed
+for work. There is a way.
+
+In this section I will describe how to add OpenVPN tunnel in addition to setup
+above. With the tunnel my machine would be connected to another subnet without
+going through Wireguard tunnel.
+
+**First of all**, killswitch/iptables needs to know that traffic going to
+OpenVPN subnet should not be rejected. To accept new connection add these rules:
+
+```nix
+${pkgs.iptables}/bin/iptables -A INPUT -s 19.29.79.10 -d 192.168.0.100 \
+  -m state --state NEW,ESTABLISHED -j ACCEPT
+${pkgs.iptables}/bin/iptables -I OUTPUT -s 192.168.0.100 -d 19.29.79.10 \
+  -m state --state NEW,ESTABLISHED -j ACCEPT
+```
+
+Where:
+
+- `19.29.79.10` is IP of OpenVPN endpoint/server
+- `192.168.0.100` is IP of this machine
+
+Note that I explicitly specified source `-s` and `-d` destination IPs instead of
+subnets. In my case I want node to node connection. For subnets IP mask need to
+be used `/32`.
+
+**Next**, obtain your OpenVPN configuration file `*.ovpn`. This file is also
+**secret** and can not be shared, so, don't put it into Nix configuration. Copy
+it somewhere in your system.
+
+I copied mine into `/etc/openvpn/jellyfin-tunnel.ovpn`. Also, as system already
+has VPN, OpenVPN needs to know that it should not route all the traffic through
+itself. Usually it does it with a network route. To tell OpenVPN not to create a
+global route add following line to your `*.ovpn` config:
+
+```text
+pull-filter ignore redirect-gateway
+```
+
+That's all for preparations phase, now let's create the tunnel in the system:
+
+```nix
+# MANUAL ACTIONS ARE REQUIRED!
+# - Copy your VPN configuration to /etc/openvpn/jellyfin-tunnel.ovpn
+# - Add following line to /etc/openvpn/jellyfin-tunnel.ovpn
+#
+#     pull-filter ignore redirect-gateway
+#
+#   This means that OpenVPN won't create route which routes all the
+#   traffic through OpenVPN tunnel.
+{ config, pkgs, lib, ...}: {
+  networking.dhcpcd.runHook = ''
+    ${pkgs.iproute2}/bin/ip route add 19.29.79.10 via 192.168.0.1 dev enp34s0
+  '';
+
+  users.users = {
+    openvpn = {
+      name = "openvpn";
+      group = "openvpn";
+      isNormalUser = true;
+      uid = 1100;
+    };
+  };
+
+  users.groups.openvpn = {
+    name = "openvpn";
+    members = ["openvpn"];
+    gid = 1100;
+  };
+
+  # Configure our OpenVPN client
+  services.openvpn.servers = {
+    jellyfin = {
+      config = ''config /etc/openvpn/jellyfin-tunnel.ovpn'';
+      autoStart = true;
+    };
+  };
+}
+```
+
+Here, new network route is created to route all the traffic addressed to OpenVPN
+endpoint `19.29.79.10` through LAN gateway `192.168.0.1` (e.g. WiFi router).
+This is needed as without the route OpenVPN client will try to reach endpoint
+through Wireguard tunnel, which won't work (not sure why).
+
+Then, new `openvpn` user and group are created with specific UID/GID. Specific
+UID/GID could be anything or you can even left it out. I like to specify user ID
+as then it's convenient in places where ID instead of name is used.
+
+Finally, config declares OpenVPN connection with name `openvpn-jellyfin`. This
+name is used as a systemd's service name. You can check status of your VPN
+tunnel with:
+
+```shell
+sudo systemctl status openvpn-jellyfin
+```
+
+Enabling/Disabling `autoStart` is straightforward. Otherwise, you can start your
+tunnel with systemd:
+
+```shell
+sudo systemctl start openvpn-jellyfin
+```
+
 # I want to use `networking.wireguard`
 
 This was my initial approach and there's two additional things to handle:
