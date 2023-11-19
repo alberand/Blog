@@ -68,7 +68,8 @@ SITEMAP_SAVE_AS = 'sitemap.xml'
 STATIC_PATHS = [
 	'images',
 	'materials',
-	'extra'
+	'extra',
+	'static'
 ]
 
 EXTRA_PATH_METADATA = {
