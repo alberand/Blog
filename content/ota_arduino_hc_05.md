@@ -338,3 +338,10 @@ much more details on how to build reliable firmware update mechanism.
 [11]: https://www.avrfreaks.net/sites/default/files/bootloader_faq.pdf
 [12]: https://interrupt.memfault.com/blog/device-firmware-update-cookbook
 [13]: https://www.itead.cc/wiki/Serial_Port_Bluetooth_Module_(Master/Slave)_:_HC-05
+
+<style>
+#content img {
+    background: white;
+    max-width: 820px;
+}
+</style>
