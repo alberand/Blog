@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block navclass %}active{%endblock%}
 {% block content %}
+<div id="about">
 {% include 'author.html' %}
     <hr/>
+</div>
     <section id="content" class="content">
         <div id="article-list">
       {% block content_title %}

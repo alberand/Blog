@@ -1,3 +1,6 @@
+:root {
+  --width: 720px;
+}
 html {
   overflow-y: scroll;
 }
@@ -36,6 +39,7 @@ h5 {
 
 hr {
   border-top: 1px dashed #4f4e4e;
+  max-width: var(--width);
 }
 
 a {
@@ -49,17 +53,20 @@ a:hover {
 }
 
 .container {
-  max-width: 720px;
+  max-width: 96vw;
 }
 
-.content {
+#content {
   font-size: 16px;
   line-height: 27px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.content p {
-  /*margin: 10px 0 10px 0;*/
+#content > * {
+  width: 96vw;
+  max-width: var(--width);
 }
 
 #title {
@@ -77,6 +84,16 @@ a:hover {
     display: block;
 }
 
+#about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#about > * {
+  width: 96vw;
+  max-width: var(--width);
+}
 
 .link-in-code {
   color: #ff6204;
@@ -219,6 +236,7 @@ a:hover {
 
 #author {
   margin: 15px 0;
+  max-width: var(--width);
 }
 
 #author-photo {

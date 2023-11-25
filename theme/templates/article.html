@@ -7,19 +7,18 @@
   <a href="{{ SITEURL }}" id="home-button">&#x2190 home</a>
 </div>
 
-<section class="row">
-  <article id="content">
-    <header>
-        <h1 id="title"> {{ article.title }} </h1>
+<article id="content">
+  <header>
+      <h1 id="title"> {{ article.title }} </h1>
 
-        <time id="title-date">
-            {{ article.locale_date }}
-        </time>
-    </header>
-    {{ article.content }}
-  </article>
-</section>
+      <time id="title-date">
+          {{ article.locale_date }}
+      </time>
+  </header>
+  {{ article.content }}
+</article>
 
+<div id="about">
 <hr/>
 
 {% include 'author.html' %}
@@ -40,6 +39,7 @@
                 pull request with improvements</a>
 	    </p>
     </div>
+</div>
 </div>
 
 <a href="#">
