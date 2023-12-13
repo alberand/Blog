@@ -172,8 +172,20 @@ focus much more than is pleasant for a walk. I blame it on two things:
         style: function (feature) {
             return {color: "#ff6204"};
         }
-        })
+      })
       map.fitBounds(route.getBounds())
+      route.addTo(map)
+    }
+  );
+
+  fetch("../static/prague-yellow-line/yello-line.geojson")
+  .then(response => response.json())
+  .then(json => {
+      route = L.geoJSON(json, {
+        style: function (feature) {
+            return {color: "#eec331"};
+        }
+      })
       route.addTo(map)
     }
   );
@@ -222,8 +234,8 @@ focus much more than is pleasant for a walk. I blame it on two things:
 
     var arrowIcon = L.icon({
         iconUrl: '../static/prague-yellow-line/arrow.png',
-        iconSize:     [24, 24], // size of the icon
-        iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+        iconSize:     [124, 124], // size of the icon
+        iconAnchor:   [62, 62], // point of the icon which will correspond to marker's location
         popupAnchor:  [12, -12] // point from which the popup should open relative to the iconAnchor
     });
   var coords = L.latLng(0, 0);
