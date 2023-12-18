@@ -29,8 +29,6 @@ let
                         # Copy the generated result
                         mkdir -p $out
                         cp -r "output/"* $out
-                        #cp --no-preserve=mode,ownership $src/develop_server.sh $out
-                        #chmod +x $out/develop_server.sh
     '';
   };
 
