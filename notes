@@ -1,0 +1,7 @@
+How to rename photos
+
+for file in *.jpg; do feh $file; echo "New name: "; read name; mv $file $name; done
+
+How to get coordinates:
+
+for file in *.jpg; do exiftool -c "%+.6f" -gpslatitude -gpslongitude -json $file > $file.json; done
