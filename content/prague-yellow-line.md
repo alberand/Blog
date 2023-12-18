@@ -1,6 +1,6 @@
 Title: Prague Yellow Line Walk
 Date: 19.11.2023
-Modified: 19.11.2023
+Modified: 18.12.2023
 Status: published
 Tags: sport, prague, yellow line
 Keywords: sport, prague, yellow line
@@ -231,7 +231,7 @@ path.leaflet-interactive:nth-child(2) {
     <div id="popup">
       <a href="${image}">
         <figure id="popup-figure">
-          <img id="popup-image" src="${image}">
+          <img id="popup-image" src="${image}.thumb">
           <figcaption id="popup-figcaption">
             ${msg}
           </figcaption>
