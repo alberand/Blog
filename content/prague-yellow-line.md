@@ -1,5 +1,5 @@
 Title: Prague Yellow Line Walk
-Date: 19.11.2023
+Date: 18.12.2023
 Modified: 18.12.2023
 Status: published
 Tags: sport, prague, yellow line
