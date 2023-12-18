@@ -1,7 +1,7 @@
 Title: Prague Yellow Line Walk
 Date: 19.11.2023
 Modified: 19.11.2023
-Status: draft
+Status: published
 Tags: sport, prague, yellow line
 Keywords: sport, prague, yellow line
 Slug: prague-yellow-line
@@ -36,7 +36,9 @@ total covering **27.8 km**.
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
-<div id="map"></div>
+<div id="max-container">
+    <div id="map"></div>
+</div>
 
 Google Fit says that over this walk I spent `~1600 calories` which is
 incredible. I calculated that I need about 2000 to 2300 calories to stay in the
@@ -50,19 +52,22 @@ joints or strange unpleasant feelings.
 Overall, this was an interesting experience. Now I thinking about going along
 Green and Red lines; both of them are shorter. In terms of joy, I think it's too
 long. My mind was really enjoying first 2 hours of the walk but then I needed to
-focus much more than is pleasant for a walk. I blame it on two things:
-
-- the fact that in about 2 hours I got to the city center, where I had to be
-  careful in the crowd.
-- Second thing is that muscle pain become really noticeable which quite
-  destructing.
+focus much more than is pleasant for a walk. I blame it on the fact that in
+about 2 hours I got to the city center, where I had to be careful in the crowd
+and is that muscle pain become really noticeable which quite destructing.
 
 <style>
-#map {
-    padding-top: 60%;
+#max-container {
     max-width: 1150px;
     margin-bottom: 20px;
-    max-height: 50vw;
+    max-height: 500px;
+    height: 500px;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
 }
 
 .leaflet-control-attribution {
@@ -149,6 +154,14 @@ focus much more than is pleasant for a walk. I blame it on two things:
   border-radius: 5px;
 }
 
+path.leaflet-interactive:nth-child(1) {
+  filter: drop-shadow(0px 0px 2px rgb(0 0 0 / 0.4));
+}
+
+path.leaflet-interactive:nth-child(2) {
+  filter: drop-shadow(0px 0px 2px rgb(0 0 0 / 0.4));
+}
+
 </style>
 <script>
   // Create Map instance
@@ -158,6 +171,8 @@ focus much more than is pleasant for a walk. I blame it on two things:
     zoomControl: false
   }).setView([50.080786, 14.428592], 12);
 
+  setTimeout(function(){ map.invalidateSize()}, 400);
+
   // Add tile layer to the map
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '',
@@ -165,20 +180,22 @@ focus much more than is pleasant for a walk. I blame it on two things:
 
   // Load and add track to the map
   // TODO remove ../ when published!
-  fetch("../static/prague-yellow-line/tracks.geojson")
-  .then(response => response.json())
-  .then(json => {
-      route = L.geoJSON(json, {
-        style: function (feature) {
-            return {color: "#ff6204"};
-        }
-      })
-      map.fitBounds(route.getBounds())
-      route.addTo(map)
-    }
-  );
+  function addTrack() {
+    fetch("static/prague-yellow-line/tracks.geojson")
+    .then(response => response.json())
+    .then(json => {
+        route = L.geoJSON(json, {
+          style: function (feature) {
+              return { color: "#ff6204" };
+          }
+        })
+        map.fitBounds(route.getBounds().pad(0.01))
+        route.addTo(map)
+      }
+    );
+  }
 
-  fetch("../static/prague-yellow-line/yello-line.geojson")
+  fetch("static/prague-yellow-line/yellow-line.geojson")
   .then(response => response.json())
   .then(json => {
       route = L.geoJSON(json, {
@@ -187,6 +204,7 @@ focus much more than is pleasant for a walk. I blame it on two things:
         }
       })
       route.addTo(map)
+      addTrack()
     }
   );
 
@@ -200,7 +218,7 @@ focus much more than is pleasant for a walk. I blame it on two things:
                         parseFloat(json["GPSLongitude"])];
 
     var photoIcon = L.icon({
-        iconUrl: '../static/prague-yellow-line/photo_icon.png',
+        iconUrl: 'static/prague-yellow-line/photo_icon.png',
         iconSize:     [24, 24], // size of the icon
         iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
         popupAnchor:  [12, -12] // point from which the popup should open relative to the iconAnchor
@@ -211,7 +229,7 @@ focus much more than is pleasant for a walk. I blame it on two things:
 
     var popupContent = `
     <div id="popup">
-      <a href="#">
+      <a href="${image}">
         <figure id="popup-figure">
           <img id="popup-image" src="${image}">
           <figcaption id="popup-figcaption">
@@ -233,35 +251,35 @@ focus much more than is pleasant for a walk. I blame it on two things:
   }
 
     var arrowIcon = L.icon({
-        iconUrl: '../static/prague-yellow-line/arrow.png',
+        iconUrl: 'static/prague-yellow-line/arrow.png',
         iconSize:     [124, 124], // size of the icon
         iconAnchor:   [62, 62], // point of the icon which will correspond to marker's location
         popupAnchor:  [12, -12] // point from which the popup should open relative to the iconAnchor
     });
-  var coords = L.latLng(0, 0);
+    var coords = L.latLng(0, 0);
     L.marker(coords, {icon: arrowIcon}).addTo(map);
-L.marker(coords, {
-  icon: L.divIcon({
-      html: "Null Island",
-      className: 'text-below-marker',
-    })
-}).addTo(map);
+    L.marker(coords, {
+        icon: L.divIcon({
+            html: "Null Island",
+            className: 'text-below-marker',
+        })
+    }).addTo(map);
 
-  addImage('../static/prague-yellow-line/andel_river_repairs.jpg',
+  addImage('static/prague-yellow-line/andel_river_repairs.jpg',
             'Repair works on the Vltava\'s weir')
-  addImage('../static/prague-yellow-line/andel_river_repairs_2.jpg',
+  addImage('static/prague-yellow-line/andel_river_repairs_2.jpg',
             'Repair works on the Vltava\'s weir from other spot')
-  addImage('../static/prague-yellow-line/cerny_most_station.jpg',
+  addImage('static/prague-yellow-line/cerny_most_station.jpg',
             'Inside of Černý Most station')
-  addImage('../static/prague-yellow-line/cerny_most_yellow_path.jpg',
+  addImage('static/prague-yellow-line/cerny_most_yellow_path.jpg',
             'Almost there!')
-  addImage('../static/prague-yellow-line/invalidovna_hands.jpg',
+  addImage('static/prague-yellow-line/invalidovna_hands.jpg',
             'The building with hands designed by David Černý')
-  addImage('../static/prague-yellow-line/invalidovna_woman.jpg',
+  addImage('static/prague-yellow-line/invalidovna_woman.jpg',
             'Woman by David Černý. So cool!')
-  addImage('../static/prague-yellow-line/krizikova.jpg',
+  addImage('static/prague-yellow-line/krizikova.jpg',
             'Just an entrance to the Křižíkova station')
-  addImage('../static/prague-yellow-line/rajska_zahrada_yellow_path.jpg',
+  addImage('static/prague-yellow-line/rajska_zahrada_yellow_path.jpg',
             'Really great walk/bike path on top of the metro (rather Soviet style)')
 
 </script>
