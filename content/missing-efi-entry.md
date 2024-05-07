@@ -6,13 +6,13 @@ Tags: linux, boot, grub, efibootmgr, bios, nixos
 Keywords: linux, boot, grub, efibootmgr, bios
 Slug: missing-efi-entry
 Author: Andrey Albershtein
-Summary: In dual-booting system or during BIOS update, your EFI entry for booting Linux can disappear. To boot back into linux you need to get into UEFI shell
+Summary: Fixing missing EFI entry for Linux
 Lang: en
 
 In dual-booting system or during BIOS update, your EFI entry for booting Linux
 can disappear. To boot back into linux you need to get into UEFI shell. The
 easiest way is to boot Linux from USB key. Or if you have a fancy motherboard it
-can have it out of the box as one of the boot variants.
+can have UEFI shell out of the box as one of the boot options.
 
 # Create Linux USB key
 
@@ -22,22 +22,30 @@ There's plenty of examples how to do it. I booted into Windows and used
 # Finding Linux boot
 
 Insert USB drive, change boot priority, boot it. You should see something like
-this (I had only one UEFI shell entry):
+this:
 
 ![Arch Linux USB key boot menu](images/arch-linux-boot-menu.png)
 
 After booting into shell you will see device list (all your HDD/SSD/NVME
-drives):
+drives and partitions):
 
 ![UEFI shell - devices (screenshot taken from Wikipedia)](images/UEFI_shell_2.2_screenshot.png)
+
+Handy commands:
+
+- `cls` clears screen
+- `map` lists all devices
+- `ls` lists directory content
+- `BLK15` goes into this device
+- `cd dir` go to the directory
 
 Now quite tedious part. You need to find which devices is the one with Linux. I
 have around 7 devices. With all partitions it ended up to be a ~17 different
 items.
 
-Mine was `BLK15` duh. To find one you can use `ls BLK15:` command. This will
-list directories and files on the partition/device. You need to find one which
-looks like Linux `/boot` directory, mine looks like this:
+Mine was `BLK15` duh. To check which one is the one use `ls BLK15:` command.
+This will list directories and files on the partition/device. You need to find
+one which looks like Linux `/boot` directory, mine looks like this:
 
 ```shell
 [nix-shell:~]$ tree -L 1 /boot
@@ -57,20 +65,12 @@ Shell> ls BLK15:\EFI\EFI\grub\
 grubx64.efi
 ```
 
-Handy commands:
-
-- `cls` clears screen
-- `map` lists all devices
-- `ls` lists directory content
-- `BLK15` goes into this device
-- `cd dir` go to the directory
-
 Typing `BLK15:\EFI\EFI\grub\grubx64.efi` will boot you into the grub and
 then into your system. **Note!** this path can be completely different for you.
 For example, mine is actually `BLK15:\EFI\NixOS-boot\grubx64.efi`.
 
-To find out which one is correct - run it to boot. When you find the path which
-boots into your system - this is the one.
+To find out which one is correct - run it. When you find the path which boots
+into your system - this is the one.
 
 # Creating EFI entry to make it permanent
 
