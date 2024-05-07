@@ -16,8 +16,8 @@ on Mullvad VPN which is amazing. They don't even need your email for an account
 This guide is for configuring Wireguard tunnel using Mullvad VPN servers, but
 you can apply this configuration to any Wireguard VPN.
 
-The [NixOS wiki][1] shows starting ground for running Wireguard tunnel. The wiki
-shows multiple example with `networking.wireguard`, `networking.wg-quick` and
+The [NixOS wiki][1] provides a starting ground for running Wireguard tunnel. The
+wiki has multiple example with `networking.wireguard`, `networking.wg-quick` and
 `systemd-networkd` for both server and client. Moreover you can find
 [mullvad-vpn app][2] and configure VPN through the clean GUI, but it will not be
 declarative (not in your `configuration.nix`.
@@ -100,8 +100,8 @@ Endpoint = 146.70.197.194:51820
 
 We can not put Mullvad VPN configuration file to the Nix configuration directly.
 The `dk-cph-wg-401.conf` contains private key which should not be shared.
-`/nix/store` is world readable, by putting this file in the `*.nix` any user
-would be able to read your private key.
+`/nix/store` is world readable, by putting this file in the `*.nix` any system
+user would be able to read your private key.
 
 Let's put private key to the `/etc/mullvad-vpn.key`:
 
@@ -118,9 +118,9 @@ sudo chmod 400 /etc/mullvad-vpn.key
 
 # Copy configuration from `dk-cph-wg-401.conf` to `modules/wireguard.nix`
 
-Now you need to copy values from Mullvad config to Nix configuration so it's
-declarative. Each parameter has a line above it, which describes corresponding
-item inf Mullvad's `dk-cph-wg-401.conf` file.
+Now you need to copy values from Mullvad config to Nix configuration. Each
+parameter has a comment above it describing corresponding item in Mullvad's
+`dk-cph-wg-401.conf` file.
 
 ```nix
 { pkgs, ... }: {
@@ -152,7 +152,7 @@ item inf Mullvad's `dk-cph-wg-401.conf` file.
 }
 ```
 
-Now, that's enough to have a VPN tunnel. But, to be on a safe side you need a
+Done! That's enough to have a VPN tunnel. But, to be on a safe side you need a
 killswitch. The killswitch is networking filter which will allow traffic go only
 through VPN. So, when VPN tunnel suddenly goes down you won't expose your real
 IP address.
