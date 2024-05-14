@@ -9,17 +9,18 @@ Author: Andrey Albershtein
 Summary: Using Linker's directive '#pragma weak' to define optional functions or use it for debugging
 Lang: en
 
-From this very [interesting article][1] about linking of executables I find out
+From this very [interesting article][1] about linking of executables I found out
 that there exist a `#pragma weak foofunction` directive. It tells linker to
-handle the following function as weakly defined. What it means is that if linker
-fails to find definition (implementation) of the function it will skip it and
-won't show any errors. In this note I will demonstrate how does it work.
+handle the function as weakly defined. What it means is that if linker
+fails to find definition (implementation) of the function it will skip the
+function and won't show any errors. In this note I will demonstrate how does it
+work.
 
 [TOC]
 
-## Demo application
+# Example Application
 
-Firstly, let's create a simple example to work with:
+Let's create a simple example:
 
 ```c
 #pragma weak debug
@@ -36,9 +37,9 @@ int main(){
 ```
 
 At line 2 we define debug function with an `extern` keyword. That means that
-this function can be defined in any of the application source files (or in other
-words in any object file). The next line contains pointer (named `debugfunc`) to
-this function.
+this function can be defined in any of the application source files (or in any
+object file). The next line contains pointer (named `debugfunc`) to this
+function.
 
 In the `main()` in the if-condition we check that if `debugfunc` have anything
 but zero. If it is not zero we call it, otherwise application terminates.
@@ -54,7 +55,7 @@ void debug(char * str){
 }
 ```
 
-## Interesting part
+# What does #pragma weak does?
 
 See what happens if we compile `main.c` only:
 
@@ -88,13 +89,13 @@ Note that to compile files separately without linking you need to use `-c`
 argument.
 
 In the first case linker couldn't find implementation for `debug()` and replace it
-with zero. Therefore, at all places where we reference `debug()` we get
-zero. As `debugfunc` pointer points to the `debug()` and also contains 0 it
-isn't called.  In the second case linker found implementation for `debug()` and
+with zero. Therefore, in all places where we reference `debug()` we get
+zero. As `debugfunc` pointer points to the `debug()` and also contains 0 it's
+not called.  In the second case linker found implementation for `debug()` and
 treat it as a normal function. In this case `debugfunc` is pointing to the
 `debug()` (non-zero address in memory) and therefore will be called.
 
-## Look inside
+# Look inside
 
 Let's look what is really happening in the binaries and if it is true what is
 described in the previous paragraph. Firstly, let's compile both examples as two
@@ -212,7 +213,7 @@ Personally, I don't think that it is a good approach to base your debugging
 function on this directive. As initially it was created for backward
 compatibility and general definition of function in the libraries (function
 overriding) [\[2\]][2], [\[3\]][3]. But if you are using third party library
-with weak function you can define your for debugging. 
+with weak function you can define your for debugging.
 
 I search through some GNU project and other projects for the use-cases of this
 directive. It seems like it is not commonly used. Only in some specific
