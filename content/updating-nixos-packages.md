@@ -20,25 +20,25 @@ Useful links:
 First of all create your environment
 
 ```console
-    $ git clone xxx
-    $ cd nixpkgs
-    $ git checkout update-package
-    $ export NIXPKGS=$(pwd)
+$ git clone git@github.com:NixOS/nixpkgs.git
+$ cd nixpkgs
+$ git checkout -b update-package
+$ export NIXPKGS=$(pwd)
 ```
 
 Build a packages
 
 ```console
-    $ nix-build $NIXPKGS -k -A xfsprogs
+$ nix-build $NIXPKGS -k -A xfsprogs
 ```
 
 Run shell with your new updated packages and play around with it to make sure it
 works:
 
 ```console
-    $ nix-shell -I nixpkgs=$NIXPKGS -p xfsprogs
-    ...
-    $ mkfs.xfs -V
-    mkfs.xfs version 6.12.0
+$ nix-shell -I nixpkgs=$NIXPKGS -p xfsprogs
+...
+$ mkfs.xfs -V
+mkfs.xfs version 6.12.0
 ```
 
