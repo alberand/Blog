@@ -40,5 +40,19 @@ example, I did a backup of `/var/lib/minecraft/My World`. By default borg will
 create `./var/lib/minecraft/My World`. To strip these first 3 directories use
 `--strip-components 3`.
 
+To restore specific files or directories:
+
+```shell
+borg extract /path/to/repository::archive-name path/to/file path/to/directory
+```
+
+For extracting only certain file types or using patterns:
+
+```shell
+borg extract /path/to/repository::archive-name --pattern '*.jpg'
+```
+
+Use `--exclude` to skip certain patterns.
+
 [1]: https://en.wikipedia.org/wiki/Borg_(backup_software)
 [2]: https://www.borgbase.com/
