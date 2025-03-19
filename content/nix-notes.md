@@ -111,3 +111,15 @@ nix-store -gc
 
 Note that this command remove only unused packages (ones which are not installed
 into the system).
+
+## Disable remote builders/distributed build
+
+I have two machines, one is more powerful which is used as Binary cache and
+remote builder. However, when debugging broken build there's need to build nix
+derivation locally. To disable distributed build without changing system
+configuration one can use:
+
+
+```shell
+nix-build --builders "" /nix/store/ls9jdiy2ihizrglvba080565rrk1ri3b-xfstests-git.drv
+```
