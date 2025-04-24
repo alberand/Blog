@@ -10,8 +10,7 @@ Summary: Let's configure wireguard VPN on NixOS with a kill-switch
 Lang: en
 
 Recently I finally decided to configure VPN for my main machine. My choice fell
-on Mullvad VPN which is amazing. They don't even need your email for an account
-(first time seeing this :D).
+on Mullvad VPN. They are amazing, they don't even need your email for an account.
 
 This guide is for configuring Wireguard tunnel using Mullvad VPN servers, but
 you can apply this configuration to any Wireguard VPN.
@@ -20,7 +19,7 @@ The [NixOS wiki][1] provides a starting ground for running Wireguard tunnel. The
 wiki has multiple example with `networking.wireguard`, `networking.wg-quick` and
 `systemd-networkd` for both server and client. Moreover you can find
 [mullvad-vpn app][2] and configure VPN through the clean GUI, but it will not be
-declarative (not in your `configuration.nix`.
+declarative (not in your `configuration.nix`).
 
 I **recommend** going with `networking.wg-quick` as it's probably the easiest one.
 
@@ -153,23 +152,23 @@ parameter has a comment above it describing corresponding item in Mullvad's
 ```
 
 Done! That's enough to have a VPN tunnel. But, to be on a safe side you need a
-killswitch. The killswitch is networking filter which will allow traffic go only
-through VPN. So, when VPN tunnel suddenly goes down you won't expose your real
-IP address.
+killswitch. The killswitch is a network filter which allows traffic to go only
+through VPN, without VPN all the trafic is blocked. So, when VPN tunnel suddenly
+goes down you won't expose your real IP address.
 
 # Killswitch! All traffic through VPN
 
 If you enabled killswitch checkbox on Mullvad's configuration page, then, your
 *.conf file will have `PostUp` and `PreDown` fields. These are shell commands
-run before and after VPN is started.
+run before and after VPN is started/stopped.
 
 ```ini
 PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
 PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
 ```
 In my config, Wireguard runs `iptables` to tell network stack that any packet
-which goes not through wg0 interface should be REJECTed. `iptables` is utility
-used to create network filters. Now copy those rules to the `postUp` and
+which does not go through **wg0** interface should be REJECTed. `iptables` is
+utility used to create network filters. Now copy those rules to the `postUp` and
 `postDown` parametrs in `modules/wireguard.nix`.
 
 ```nix
@@ -225,9 +224,9 @@ postDown = ''
 
 Local network application don't need VPN. We can exclude particular IP
 addresses or ports. For example to exclude `kdeconnect` ports (range 1714-1764
-for UDP and TCP) from VPN add following `iptables` rules into `postSetup`:
+for UDP and TCP) from VPN add the following `iptables` rules into `postUp`:
 
-```nix
+```shell
 # Accept kdeconnect connections
 ${pkgs.iptables}/bin/iptables -A INPUT -i wg0 -p udp \
     --dport 1714:1764 -m state --state NEW,ESTABLISHED -j ACCEPT
@@ -242,7 +241,7 @@ ${pkgs.iptables}/bin/iptables -A OUTPUT -o wg0 -p tcp \
 To exclude local port (in this case Deluge web client is running in container on
 port 8112):
 
-```nix
+```shell
 # Allow deluge web gui
 ${pkgs.iptables}/bin/iptables -I OUTPUT -o lo -p tcp \
     --dport 8112 -m state --state NEW,ESTABLISHED -j ACCEPT
@@ -251,7 +250,7 @@ ${pkgs.iptables}/bin/iptables -I OUTPUT -o lo -p tcp \
 Another example is to exclude subnet for Nix containers (container has IP of
 10.233.1.2 and host 10.233.1.1):
 
-```nix
+```shell
 ${pkgs.iptables}/bin/iptables -I OUTPUT -s 10.233.1.0/24 -d 10.233.1.0/24 \
     -j ACCEPT
 ```
@@ -269,7 +268,7 @@ going through Wireguard tunnel.
 **First of all**, killswitch/iptables needs to know that traffic going to
 OpenVPN subnet should not be rejected. To accept new connection add these rules:
 
-```nix
+```shell
 ${pkgs.iptables}/bin/iptables -A INPUT -s 19.29.79.10 -d 192.168.0.100 \
   -m state --state NEW,ESTABLISHED -j ACCEPT
 ${pkgs.iptables}/bin/iptables -I OUTPUT -s 192.168.0.100 -d 19.29.79.10 \
@@ -397,12 +396,12 @@ networking.interfaces.enp34s0.ipv4.routes = [{
 
 Unfortunately, `dhcpcd` will not re-create an additional route created via
 `networking.interfaces`. There is similar problem described at [Arch Wiki][4],
-but I don't use `systemd-networkd` so that doesn't apply.
+but I don't use `systemd-networkd` so the solution suggested doesn't apply.
 
-On my system `dhcpcd.service` creates all necessary IP routes. But the one
-necessary for Wireguard is created by `network-addresses-enp34s0.service`. This
-service doesn't restart after suspend. As `dhcpcd` will remove all routes on
-wake-up, Wireguard will fail to connect to the endpoint.
+As `dhcpcd` will remove all routes on wake-up, Wireguard will fail to connect to
+the endpoint. On my system `dhcpcd.service` creates all necessary IP routes. But
+the one necessary for Wireguard is created by
+`network-addresses-enp34s0.service`. This service doesn't restart after suspend.
 
 Note that by using `networking.dhcpcd.runHook` this problem is solved as route
 is created by `dhcpcd` itself.
