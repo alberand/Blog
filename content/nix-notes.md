@@ -1,4 +1,4 @@
-Title: Nix common issues
+Title: Nix cheatsheet
 Date: 13.09.2023
 Modified: 16.10.2023
 Status: published
@@ -122,4 +122,42 @@ configuration one can use:
 
 ```shell
 nix-build --builders "" /nix/store/ls9jdiy2ihizrglvba080565rrk1ri3b-xfstests-git.drv
+```
+
+## List of derivation phases
+
+The `$` marks empty by default phases. Depending on the package other phases
+could also be empty.
+
+ - $prePhases
+ - unpackPhase
+ - patchPhase
+ - $preConfigurePhases
+ - configurePhase
+ - $preBuildPhases
+ - buildPhase
+ - checkPhase
+ - $preInstallPhases
+ - installPhase
+ - fixupPhase
+ - installCheckPhase
+ - $preDistPhases
+ - distPhase
+ - $postPhases
+
+## Get a hash of a source
+
+`nurl` can also use fetcher set with an argument or overwrite any fetcher
+arguments (pretty handy to set `allRefs` when commit is not on master)
+
+```
+nix-shell -p nurl --run \
+    "nurl https://github.com/alberand/linux 007f6ea233d9d18e7d44dbf643bf900967a55ef9 2>/dev/null"
+```
+
+with `allRefs`:
+
+```
+nix-shell -p nurl --run \
+    "nurl --fetcher builtins.fetchGit --arg allRefs true https://github.com/alberand/linux v6.15 2>/dev/null"
 ```
