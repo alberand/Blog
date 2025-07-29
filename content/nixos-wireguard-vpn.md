@@ -123,7 +123,7 @@ parameter has a comment above it describing corresponding item in Mullvad's
 
 ```nix
 { pkgs, ... }: {
-  networking.wireguard.interfaces = let
+  networking.wg-quick.interfaces = let
     # [Peer] section -> Endpoint
     server_ip = "18.19.23.66";
   in {
@@ -149,6 +149,14 @@ parameter has a comment above it describing corresponding item in Mullvad's
     };
   };
 }
+```
+
+Now, open Wireguard port, if your are using firewall:
+
+```nix
+networking.firewall = {
+  allowedUDPPorts = [config.networking.wg-quick.interfaces.wg0.listenPort];
+};
 ```
 
 Done! That's enough to have a VPN tunnel. But, to be on a safe side you need a
