@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
 
 nix build .#pub-blog
-rm -rf /tmp/alberand-blog
-mkdir -p /tmp/alberand-blog
-cp -r ./result/* /tmp/alberand-blog/
-chmod -R u+w /tmp/alberand-blog
-cd /tmp/alberand-blog
-git init .
-git config user.name "nix"
-git config user.email "nix@host.com"
-git checkout master
-git add .
-git commit -m "Automatic update"
-git remote add origin git@github.com:alberand/alberand.github.io.git
-git push -f origin master
+rsync -r -v -z --delete --partial --progress --chown=caddy:caddy \
+	./result/ \
+	door.vps:/var/lib/www/blog
+ssh door.vps 'sudo chown -R caddy:caddy /var/lib/www/blog'
+ssh door.vps 'sudo chmod -R u+w,g-r,o-r /var/lib/www/blog'
