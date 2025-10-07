@@ -1,8 +1,14 @@
 :root {
   --width: 720px;
 }
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url(/static/font.ttf) format("truetype");
+}
+
 html {
   overflow-y: scroll;
+  font-family: "IBM Plex Mono";
 }
 
 body {
