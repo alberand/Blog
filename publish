@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-nix build .#pub-blog
-rsync -r -v -z --delete --partial --progress --chown=caddy:caddy \
+# nix build .#pub-blog
+ssh door.vps 'mkdir /tmp/blog'
+rsync -a -v -z --progress \
 	./result/ \
-	door.vps:/var/lib/www/blog
-ssh door.vps 'sudo chown -R caddy:caddy /var/lib/www/blog'
-ssh door.vps 'sudo chmod -R u+w,g-r,o-r /var/lib/www/blog'
+	door.vps:/tmp/blog
+ssh door.vps 'sudo chown -R caddy:caddy /tmp/blog'
+ssh door.vps 'sudo chmod -R u+w,g+w,o-r /tmp/blog'
+ssh door.vps 'sudo mv /tmp/blog /var/www/blog'
