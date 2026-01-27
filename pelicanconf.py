@@ -12,8 +12,8 @@ import re
 import xml.etree.ElementTree as etree
 
 # Personal Information
-AUTHOR = 'Andrey Albershtein'
-SITENAME = 'Andrey Albershtein'
+AUTHOR = 'alberand'
+SITENAME = 'alberand'
 EMAIL = 'andrey.albershteyn@gmail.com'
 TWITTER_USERNAME = 'alberand_'
 # General configuration
