@@ -56,26 +56,6 @@ src = fetchgit {
 
 Note that you will need to commit all your changes.
 
-## error: cycle detected in build of '/nix/store/xxx.drv' in the references of output 'bin' from output 'out'
-
-Don't know what this error is about but I solved it by removing "bin" from the
-`outputs`:
-
-```nix
-{ pkgs ? import <nixpkgs> {} }:
-with pkgs; stdenv.mkDerivation rec {
-
-  ...
-
-  #          "bin" was here
-  #          v
-  outputs = [ "dev" "out" "doc" ];
-
-  ...
-
-}
-```
-
 ## Flake input is not the latest commit
 
 From time to time results of the `nix build .#` didn't have the latest inputs.
@@ -161,3 +141,35 @@ with `allRefs`:
 nix-shell -p nurl --run \
     "nurl --fetcher builtins.fetchGit --arg allRefs true https://github.com/alberand/linux v6.15 2>/dev/null"
 ```
+
+## Use local tarball
+
+When releasing software it's useful to test your release tarball. Here's how to
+spawn the shell with new release:
+
+```nix
+{
+  pkgs ?
+    import <nixpkgs> {
+      overlays = [
+        (final: prev: {
+          xfsdump = prev.xfsdump.overrideAttrs (old: rec {
+            pname = "xfsdump";
+            version = "3.3.0";
+            src = pkgs.requireFile {
+              name = "xfsdump-3.3.0.tar.gz";
+              url = "#";
+              sha256 = "917ad88543c64a8db8e14a98b4de4e0bc65bf1b46c7ff28fc7377870fdd8a496";
+            };
+          });
+        })
+      ];
+    },
+}:
+pkgs.mkShell {
+  buildInputs = [
+    pkgs.xfsdump
+  ];
+}
+```
+
