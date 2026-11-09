@@ -11,7 +11,7 @@ Lang: en
 
 
 <figure>
-    <img src="../static/memes/spent-time-on-the-computer.png">
+    <img src="../static/memes/spend-time-on-the-computer.png">
     <figcaption>No computer in afterlife</figcaption>
 </figure>
 
