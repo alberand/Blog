@@ -328,7 +328,7 @@ If you're using firewall don't forget to open these ports
 ```diff
 @@ -54,6 +54,9 @@ systemd.tmpfiles.rules = [
  ];
- 
+
  networking = {
 +  firewall.allowedTCPPorts = [
 +    3333
