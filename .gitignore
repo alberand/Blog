@@ -1,5 +1,6 @@
 activate
 *.pyc
 *.swp
+__pycache__/
 output
 result

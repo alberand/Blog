@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-#pelican -l -o output
-python -m http.server --directory result
